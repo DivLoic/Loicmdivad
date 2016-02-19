@@ -1,0 +1,75 @@
+/* -- DEMO PAGE -- */
+/* Keep uniq
+	.icon-type
+	.demo-title
+	.demo-img-icon
+	.democard
+	.demoh1
+	#listofdemos
+*/
+img.icon-type{
+		display: inline-block;
+		vertical-align:bottom;
+}
+span.demo-title{
+	font-size: 1.3em;
+	font-weight: bold;
+}
+#listofdemos{
+	margin-top: 16px;
+}
+#listofdemos li{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+span.demo-description{
+	font-style: italic;
+}
+a.demo-img-icon,
+a.demo-img-icon:hover{
+	text-decoration:none;
+}
+img.icon-type{
+		opacity:0.6;
+		transition:0.4s;
+		width: 50px;
+		height: 50px;
+		border-radius:100%;
+		display: inline-block;
+		vertical-align:middle;
+}
+div.democard, h1.demoh1{
+	display: inline-block;
+	vertical-align:middle;
+}
+div.democard a{
+  color: #47494D;
+  transition: 0.4s;
+}
+div.democard a:hover,
+div.democard a:hover span.demo-description{
+  color: #1EAEDB;
+}
+div.democard a span.demo-description,
+div.democard a samll{
+	color: #999999;
+	transition: 0.4s;
+}
+img.icon-type.flag{
+	opacity: 1;
+	margin-bottom: 2rem;
+	cursor: pointer;
+}
+
+img.icon-type:hover {
+  opacity: 1;
+}
+@media only screen and (max-width: 610px) {
+		a.demo-img-icon{
+			display: block;
+		}
+		a.demo-img-icon img.icon-type{
+			display: block;
+			margin:auto;
+		}
+}

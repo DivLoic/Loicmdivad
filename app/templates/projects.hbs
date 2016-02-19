@@ -1,0 +1,39 @@
+<div id="main" class="container">
+    <h1 class="htitle">{{title}}</h1>
+  {{#each model as |project|}}
+      <div class="row project-row class-project" >
+          <div class="project-pic-column project-part" >
+              <a href="{{project.link}}" target="_blank">
+                  <img src="img/{{project.icon}}" alt="" style="height:80px;"/>
+              </a>
+          </div>
+          <div class="ten columns class-project">
+              <div class="project-part">
+                  <h4 class="h4project" style="margin-bottom:0px;">{{project.name}}: <small>
+                      <a href="{{project.link}}" target="blank">{{project.link}}</a>
+                  </small>
+                  </h4>
+              </div>
+              <div class="project-part">
+                  <em>Technologies:</em>
+                  <ul class="project-list">
+                    {{#each project.technologies as |tech|}}
+                        <li>{{tech}},</li>
+                    {{/each}}
+                  </ul>
+                  <a href="{{project.readme}}" target="_blank">
+                      <span class="fa fa-sign-in"></span>
+                  </a>
+              </div>
+              <div class="project-part">
+                  <em>Team:</em>
+                  <ul class="project-list">
+                    {{#each project.coworkers as |worker|}}
+                        <li ><a href="#" alt="" target="blank">{{worker.alias}}</a></li>
+                    {{/each}}
+                  </ul>
+              </div>
+          </div>
+      </div>
+  {{/each}}
+</div>

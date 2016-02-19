@@ -1,0 +1,83 @@
+/* ---------------------------------------------------------------------------*/
+/* -- PLAYER PAGE
+/* ---------------------------------------------------------------------------*/
+
+/* Keep uniq
+  .tools-bar
+*/
+
+h1.hply, h4.hply{
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* -- tools -- */
+div#tools-bar p, div#tools-bar h5{
+    display:inline-block;
+    margin-bottom: 1rem;
+    margin-right: 5px;
+}
+
+div#tools-bar p{
+    background-color:transparent;
+    display:inline-block;
+    list-style-type: none;
+    word-break: break-all;
+}
+
+div#tools-bar p span{
+    line-height: 1.8;
+    display: inline-block;
+    font-size: 1.6rem;
+    color: #FFFFFF;
+    background-color: #A3A4A6;
+    padding: 0px 9px 0px 10px;
+    border-radius: 24px 8px 8px 24px;
+}
+
+div#tools-bar p span .fa{
+    float: left;
+    position: relative;
+    left: -9px;
+    top: 2px;
+    padding: 4px;
+    border-radius: 100%;
+    background-color: #47494D;
+    color:white;
+
+}
+
+/* -- credits -- */
+div#credits{}
+
+div#credits ul, div#credits h5 {
+    margin-bottom: 0.5rem;
+}
+
+div#credits ul li{
+    margin-bottom: 0px;
+    font-style: italic;
+}
+
+/* -- see also --*/
+div#see-also a{
+  font-size: 2rem;
+}
+
+div#see-also ul, div#see-also h5{
+    margin-bottom: 1rem;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+div#see-also ul li{
+    margin-bottom: 0px;
+    display: inline-block;
+    list-style-type: none;
+}
+
+@media only screen and (max-width: 560px) {
+  table{
+    font-size: 0.6em;
+  }
+}

@@ -1,0 +1,62 @@
+/* ---------------------------------------------------------------------------*/
+/* -- PROJECT PAGE
+/* ---------------------------------------------------------------------------*/
+
+/* Keep uniq
+  .project-row
+  .project-pic-column
+  .project-side
+  .project-part
+  .project-list
+*/
+
+div.project-pic-column{
+  display: inline-block;
+  width: 80px;
+  height: 90px;
+  margin: 0px;
+  padding: 0px;
+  float: left;
+}
+div.project-pic-column + div{
+  margin-left: 5px;
+}
+div.project-side img{
+  margin-top: 5px;
+}
+
+div.project-row{
+  margin-bottom: 12px;
+}
+
+div.project-part{
+  margin: 0px;
+  padding: 0px;
+}
+
+ul.project-list{
+  margin: 0px;
+  list-style: outside circle;
+}
+ul.project-list, ul.project-list li {
+  display:inline-block;
+  width: auto;
+}
+
+ul.project-list li {
+  margin-bottom: 2px;
+  list-style-type: circle;
+}
+
+@media only screen and (max-width: 610px) {
+  div.project-pic-column{
+    width: 100%
+  }
+  div.project-pic-column img{
+    display:block;
+    margin:auto;
+  }
+  div.class-project  div.project-part div{
+    text-align: center;
+  }
+}
