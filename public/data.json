@@ -1,0 +1,102 @@
+{
+  "projects": {
+    "_weshare": {
+      "name": "weshare",
+      "description": "...",
+      "date": "01/10/13",
+      "link": "http://weshare-isepdev.rhcloud.com/",
+      "readme": "",
+      "icon": "weshare.svg",
+      "team": "G8B",
+      "technologies": ["PHP", "JavaScript", "MySQl"],
+      "coworkers": [1, 9, 6, 7, 8]
+    },
+    "_flatracing": {
+      "name": "FlatRacing",
+      "description": "",
+      "date": "01/03/14",
+      "link": "http://flatracing.github.io",
+      "readme": "https://github.com/DivLoic/FlatRacing/blob/master/README.md",
+      "icon": "flatracing.svg",
+      "team": "Div&Puib",
+      "technologies": ["JAVA (with JavaScript verison)"],
+      "coworkers": [1]
+    },
+    "_isepapp": {
+      "name": "Isepapp",
+      "description": "...",
+      "date": "01/03/15",
+      "link": "http://purple-isepdev.rhcloud.com/Isepapp",
+      "readme": "https://github.com/PurpleConsulting/Isepapp/blob/master/README.md",
+      "icon": "isepapp.svg",
+      "team": "PurpleConsulting",
+      "technologies": ["JAVA", "MySQl", "jQuery", "Bootstrap"],
+      "coworkers": [2, 5, 4]
+    }
+  },
+  "coworkers": {
+    "_id1":{
+      "id": 1,
+      "firstName": "Matthieu",
+      "lastName": "Puibaraud",
+      "alias": "Matthieu",
+      "link": ""
+    },
+    "_id2":{
+      "id": 2,
+      "firstName": "Zovena",
+      "lastName": "Kaneswaran",
+      "alias": "Zovena",
+      "link": ""
+    },
+    "_id3":{
+      "id": 3,
+      "firstName": "Romain",
+      "lastName": "Philippe",
+      "alias": "Romain",
+      "link": ""
+    },
+    "_id4":{
+      "id": 4,
+      "firstName": "Narisely",
+      "lastName": "Rasolomalala",
+      "alias": "Billy",
+      "link": ""
+    },
+    "_id5":{
+      "id": 5,
+      "firstName": "Delphine",
+      "lastName": "Chanthavong",
+      "alias": "Delphine C.",
+      "link": ""
+    },
+    "_id6":{
+      "id": 6,
+      "firstName": "Thibault",
+      "lastName": "Thibault Dlv",
+      "alias": "Thibault Dlv",
+      "link": ""
+    },
+    "_id7":{
+      "id": 7,
+      "firstName": "Jordan",
+      "lastName": "Sportes",
+      "alias": "Jordan",
+      "link": ""
+    },
+    "_id8":{
+      "id": 8,
+      "firstName": "Sara",
+      "lastName": "Benazzouz",
+      "alias": "Sara B.",
+      "link": ""
+    },
+    "_id9": {
+      "id": 9,
+      "firstName": "Meryam",
+      "lastName": "Fertini",
+      "alias": "Meryam",
+      "link": ""
+    }
+  }
+}

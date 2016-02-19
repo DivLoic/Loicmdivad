@@ -20,5 +20,20 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  app.import('bower_components/skeleton/css/normalize.css');
+  app.import('bower_components/skeleton/css/skeleton.css');
+  app.import('bower_components/font-awesome/css/font-awesome.css');
+
+  app.import('app/styles/css/home.css');
+  app.import('app/styles/css/me.css');
+  app.import('app/styles/css/demos.css');
+  app.import('app/styles/css/projects.css');
+  app.import('app/styles/css/player.css');
+
+  app.import('bower_components/d3/d3.min.js');
+  app.import('bower_components/flip/src/flip.js');
+  app.import('bower_components/typed.js/dist/typed.min.js');
+
+
   return app.toTree();
 };
