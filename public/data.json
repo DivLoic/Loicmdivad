@@ -4,12 +4,18 @@
       "name": "weshare",
       "description": "...",
       "date": "01/10/13",
-      "link": "http://weshare-isepdev.rhcloud.com/",
+      "link": "http://weshare-isepdev.rhcloud.com",
       "readme": "",
       "icon": "weshare.svg",
       "team": "G8B",
       "technologies": ["PHP", "JavaScript", "MySQl"],
-      "coworkers": [1, 9, 6, 7, 8]
+      "coworkers": {
+        "cw_1": true,
+        "cw_9": true,
+        "cw_6": true,
+        "cw_7": true,
+        "cw_8": true
+      }
     },
     "_flatracing": {
       "name": "FlatRacing",
@@ -20,7 +26,7 @@
       "icon": "flatracing.svg",
       "team": "Div&Puib",
       "technologies": ["JAVA (with JavaScript verison)"],
-      "coworkers": [1]
+      "coworkers": {"cw_1": true}
     },
     "_isepapp": {
       "name": "Isepapp",
@@ -31,72 +37,140 @@
       "icon": "isepapp.svg",
       "team": "PurpleConsulting",
       "technologies": ["JAVA", "MySQl", "jQuery", "Bootstrap"],
-      "coworkers": [2, 5, 4]
+      "coworkers": {"cw_2": true, "cw_5": true, "cw_4": true}
+    },
+    "_bamboo": {
+      "name": "Bamboo Data Warehouse",
+      "description": "...",
+      "date": "01/9/15",
+      "link": "#",
+      "readme": "https://github.com/DivLoic/Bamboo/blob/master/README.md",
+      "icon": "pandascorp1.svg",
+      "team": "PandasCorp",
+      "technologies": ["Hadoop - Hortonworks", "Hive", "Tableau Software"],
+      "coworkers": {"cw_3": true, "cw_4": true, "cw_5": true}
+    },
+    "_iosmove": {
+      "name": "iOSMove",
+      "description": "...",
+      "date": "15/9/15",
+      "link": "http://iosmove-isepdev.rhcloud.com",
+      "readme": "https://github.com/DivLoic/iOSMove/blob/master/README.md",
+      "icon": "iosmove.svg",
+      "team": "Team5",
+      "technologies": ["Swift", "Xcode", "Cocoa Pod", ""],
+      "coworkers": {"cw_5": true, "cw_11": true, "cw_12": true}
+    },
+    "_challengedata": {
+      "name": "Challenge Data",
+      "description": "...",
+      "date": "01/11/15",
+      "link": "#",
+      "readme": "#",
+      "icon": "pandascorp2.svg",
+      "team": "PandasCorp",
+      "technologies": ["R", "RStudio"],
+      "coworkers": {"cw_3": true, "cw_4": true, "cw_5": true, "cw_10": true}
     }
   },
   "coworkers": {
-    "_id1":{
-      "id": 1,
+    "cw_1":{
       "firstName": "Matthieu",
       "lastName": "Puibaraud",
       "alias": "Matthieu",
       "link": ""
     },
-    "_id2":{
-      "id": 2,
+    "cw_2":{
       "firstName": "Zovena",
       "lastName": "Kaneswaran",
       "alias": "Zovena",
       "link": ""
     },
-    "_id3":{
-      "id": 3,
+    "cw_3":{
       "firstName": "Romain",
       "lastName": "Philippe",
       "alias": "Romain",
       "link": ""
     },
-    "_id4":{
-      "id": 4,
+    "cw_4":{
       "firstName": "Narisely",
       "lastName": "Rasolomalala",
       "alias": "Billy",
       "link": ""
     },
-    "_id5":{
-      "id": 5,
+    "cw_5":{
       "firstName": "Delphine",
       "lastName": "Chanthavong",
       "alias": "Delphine C.",
       "link": ""
     },
-    "_id6":{
-      "id": 6,
+    "cw_6":{
       "firstName": "Thibault",
-      "lastName": "Thibault Dlv",
+      "lastName": "Delevoye",
       "alias": "Thibault Dlv",
       "link": ""
     },
-    "_id7":{
-      "id": 7,
+    "cw_7":{
       "firstName": "Jordan",
       "lastName": "Sportes",
       "alias": "Jordan",
       "link": ""
     },
-    "_id8":{
-      "id": 8,
+    "cw_8":{
       "firstName": "Sara",
       "lastName": "Benazzouz",
       "alias": "Sara B.",
       "link": ""
     },
-    "_id9": {
-      "id": 9,
+    "cw_9": {
       "firstName": "Meryam",
       "lastName": "Fertini",
       "alias": "Meryam",
       "link": ""
+    },
+    "cw_10": {
+      "firstName": "Ines",
+      "lastName": "Dembedydy",
+      "alias": "Ines",
+      "link": ""
+    },
+    "cw_11": {
+      "firstName": "Marie-Thérèse",
+      "lastName": "Bomtemps",
+      "alias": "MT",
+      "link": ""
+    },
+    "cw_12": {
+      "firstName": "Xavier",
+      "lastName": "Frebault",
+      "alias": "Xavier",
+      "link": ""
+    }
+  },
+  "locations": {
+    "loc_0": {
+      "place": "Sainte-Anne - Guadeloupe",
+      "img": "img/gwada.png",
+      "lat": 0,
+      "lng": 0,
+      "alt": "Picture took from Guadeloupe",
+      "text": ""
+    },
+    "loc_1": {
+      "place": "Paris - France",
+      "img": "img/paris.png",
+      "lat": 0,
+      "lng": 0,
+      "alt": "Picture took from Paris",
+      "text": ""
+    },
+    "loc_2": {
+      "place": "Wuhan - China",
+      "img": "img/wuhan.png",
+      "lat": 0,
+      "lng": 0,
+      "alt": "Picture took from China",
+      "text": ""
     }
   }
 }
