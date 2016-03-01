@@ -1,0 +1,20 @@
+{{yield}}
+<div id="terminal" style="white-space:pre; font-size: 1.5em;"></div>
+<div id="shortcutdemo" style="font-size: 0.8em; margin-top: 30px;display: none">
+  <em>
+      Let's jump directly to a <u>random</u>
+      <a href="/demos/">demo...</a>
+  </em>
+</div>
+<script>
+    $("#terminal").typed({
+        strings: ["I study Software Architecture.^500" +
+            "\nI'm a Machine Learning addict.^1000" +
+            "\nI develope in Python / Scala and Spark."],
+        showCursor: false,
+        typeSpeed: 0,
+        callback: function(){
+            //$("#shortcutdemo").show("slow");
+        }
+    });
+</script>
