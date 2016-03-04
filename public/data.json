@@ -58,14 +58,14 @@
       "readme": "https://github.com/DivLoic/iOSMove/blob/master/README.md",
       "icon": "iosmove.svg",
       "team": "Team5",
-      "technologies": ["Swift", "Xcode", "Cocoa Pod", ""],
+      "technologies": ["iOS", "Swift", "Xcode", "Cocoa Pod"],
       "coworkers": {"cw_5": true, "cw_11": true, "cw_12": true}
     },
     "_challengedata": {
       "name": "Challenge Data",
       "description": "...",
       "date": "01/11/15",
-      "link": "#",
+      "link": "player/demo_5",
       "readme": "#",
       "icon": "pandascorp2.svg",
       "team": "PandasCorp",
@@ -145,6 +145,68 @@
       "lastName": "Frebault",
       "alias": "Xavier",
       "link": ""
+    }
+  },
+  "demos": {
+    "demo_0": {
+      "title": "Paris car accidents 12/13",
+      "description": "Which types of vehicule are involved in accidents for this period?",
+      "type": "graph",
+      "date": "2015-04-20",
+      "source": "cars_one.html",
+      "tools": ["python", "spark", "D3.js"],
+      "seeAlso": [],
+      "credits": []
+    },
+    "demo_1": {
+      "title": "Paris car accidents per rings",
+      "description": "Lets have a look the accident distribution in Paris",
+      "type": "graph",
+      "date": "2015-04-20",
+      "source": "cars_two.html",
+      "tools": ["python", "spark", "D3.js"],
+      "seeAlso": [],
+      "credits": []
+    },
+    "demo_2": {
+      "title": "Fake demo N° 3",
+      "description": "The quick brown fox jumps over the lazy dog ...",
+      "type": "code",
+      "date": "2015-04-20",
+      "source": "cars_two.html",
+      "tools": ["Java", "Tomcat"],
+      "seeAlso": [],
+      "credits": []
+    },
+    "demo_3": {
+      "title": "Fake demo N° 4",
+      "description": "The quick brown fox jumps over the lazy dog ...",
+      "type": "ML",
+      "date": "2015-04-20",
+      "source": "cars_two.html",
+      "tools": ["R"],
+      "seeAlso": [],
+      "credits": []
+    },
+    "demo_4": {
+      "title": "Fake demo N° 5",
+      "description": "The quick brown fox jumps over the lazy dog ...",
+      "type": "db",
+      "date": "2015-04-20",
+      "source": "cars_two.html",
+      "tools": ["R"],
+      "seeAlso": [],
+      "credits": []
+    },
+    "demo_5": {
+      "title": "ChallengeData: Plume Labs",
+      "description": "The quick brown fox jumps over the lazy dog ...",
+      "type": "ML",
+      "date": "2015-11-01",
+      "source": "plumelabs.html",
+      "tools": ["R"],
+      "seeAlso": [],
+      "credits": []
     }
   },
   "locations": {

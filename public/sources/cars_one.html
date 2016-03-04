@@ -1,0 +1,235 @@
+<style scoped>
+  #chart {
+    /*height: 360px;
+    width: 360px;*/
+    margin: 0 auto;
+    position: relative;
+
+  }
+  .tooltip {
+    background: #eee;
+    border-radius:4px;
+    /*box-shadow: 0 0 5px #999999;*/
+    color: #246482;
+    display: none;
+    font-size: 12px;
+    left: 175px;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    top: 350px;
+    width: 80px;
+    z-index: 10;
+  }
+  .legend {
+    font-size: 12px;
+  }
+  rect {
+    cursor: pointer;
+    stroke-width: 2;
+  }
+  rect.disabled {
+    fill: transparent !important;
+  }
+  div#chart svg{
+    display: block;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 610px) {
+    div#legend svg{
+      display: block;
+      margin: auto;
+    }
+  }
+</style>
+<div class="row">
+  <div id="chart" class="six columns"></div>
+  <div id="legend" class="five columns"></div>
+</div>
+<div class="row">
+  <div id="story" class="">
+    <p>
+      This school project propose to study a dataset of car crash around Paris.
+      The <em>.csv</em> file with all the records can be download from
+      <a href="http://opendata.paris.fr/explore/?q=accidentologie">opendata.paris.fr</a>.
+      Each lines represente a crash, and the columns stand for information like: address, date of the accident
+      type of vehicule and so on...
+    </p>
+    <table class="u-full-width">
+      <thead>
+      <tr>
+        <th><u>date</u></th>
+        <th>...</th>
+        <!--<th>...</th>-->
+        <th><u>adresse</u></th>
+        <th><u>type</u></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>19/03/2012</td>
+        <td>...</td>
+        <!--<td>...</td>-->
+        <td>245, RUE LA FAYETTE</td>
+        <td>VL</td>
+      </tr>
+      <tr>
+        <td>02/06/2012</td>
+        <td>...</td>
+        <!--<td>...</td>-->
+        <td>18, RUE DE LA CHAPELLE</td>
+        <td>Moto>125</td>
+      </tr>
+      </tbody>
+    </table>
+    <p>
+      In order to respond to the project requirement, the file is stored in HDFS and read with Spark.
+      But this could be done with a more simple tool like a Pandas dataframe (Python).
+      Finally you can restitute the result of the processing with a cool data visualisation.
+    </p>
+  </div>
+</div>
+</div>
+<script>
+  (function(d3) {
+    'use strict';
+    var width = 215;//$('div#chart').width();//canvas ; //460
+    var height = 215;//$('div#chart').width();//canvas ;
+    var radius = Math.min(width, height) / 2;
+    var donutWidth = width / 4;
+    var legendRectSize = 18;
+    var legendSpacing = 4;
+
+    var color = d3.scale.category20c();
+
+    d3.selectAll("svg").remove();
+    var svg = d3.select('#chart')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .attr('class', 'svg-graph')
+      .append('g')
+      .attr('transform', 'translate(' + (width / 2) +
+        ',' + (height / 2) + ')');
+
+    var arc = d3.svg.arc()
+      .innerRadius(radius - donutWidth)
+      .outerRadius(radius);
+
+    var pie = d3.layout.pie()
+      .value(function(d) { return d.count; })
+      .sort(null);
+
+//    var tooltip = d3.select('#chart')
+//    .append('div')
+//    .attr('class', 'tooltip');
+//
+//    tooltip.append('div')
+//    .attr('class', 'label');
+//
+//    tooltip.append('div')
+//    .attr('class', 'count');
+//
+//    tooltip.append('div')
+//    .attr('class', 'percent');
+
+    d3.json('/datastore/cars_one.json', function(error, dataset) {
+      dataset.forEach(function(d) {
+        d.count = +d.count;
+        d.enabled = true;
+      });
+
+      var path = svg.selectAll('path')
+        .data(pie(dataset))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('fill', function(d, i) {
+          return color(d.data.label);
+        }).each(function(d) { this._current = d; });
+
+//        path.on('mouseover', function(d) {
+//        var total = d3.sum(dataset.map(function(d) {
+//            return (d.enabled) ? d.count : 0;
+//        }));
+//
+//            var percent = Math.round(1000 * d.data.count / total) / 10;
+//            tooltip.select('.label').html(d.data.label);
+//            tooltip.select('.count').html(d.data.count);
+//            tooltip.select('.percent').html(percent + '%');
+//            tooltip.style('display', 'block');
+//        });
+//
+//        path.on('mouseout', function() {
+//            tooltip.style('display', 'none');
+//        });
+
+// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+// -- Legend part
+// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+      var lgd = d3.select('#legend').append('svg').attr('width', 150).attr('height', 250)
+      var legend = lgd.selectAll('.legend')
+        .data(color.domain())
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+          var height = legendRectSize + legendSpacing;
+          //var offset =  height * color.domain().length / 2;
+          var offset = -4;
+          var horz = -1 * -2 * legendRectSize;
+          var vert = 1.4 *i * height - offset;
+          return 'translate(' + horz + ',' + vert + ')';
+        });
+
+      legend.append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .style('fill', color)
+        .style('stroke', color)
+        .on('click', function(label) {
+          var rect = d3.select(this);
+          var enabled = true;
+          var totalEnabled = d3.sum(dataset.map(function(d) {
+            return (d.enabled) ? 1 : 0;
+          }));
+
+          if (rect.attr('class') === 'disabled') {
+            rect.attr('class', '');
+          } else {
+            if (totalEnabled < 2) return;
+            rect.attr('class', 'disabled');
+            enabled = false;
+          }
+
+          pie.value(function(d) {
+            if (d.label === label) d.enabled = enabled;
+            return (d.enabled) ? d.count : 0;
+          });
+
+          path = path.data(pie(dataset));
+
+          path.transition()
+            .duration(750)
+            .attrTween('d', function(d) {
+              var interpolate = d3.interpolate(this._current, d);
+              this._current = interpolate(0);
+              return function(t) {
+                return arc(interpolate(t));
+              };
+            });
+        });
+
+// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+// -- Text legend part
+// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+      legend.append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .text(function(d) { return d; });
+    });
+
+  })(window.d3);
+</script>
