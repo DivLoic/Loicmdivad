@@ -15,21 +15,16 @@
                   </h4>
               </div>
               <div class="project-part">
-                  <em>Technologies:</em>
-                  <ul class="project-list">
-                    {{#each project.technologies as |tech|}}
-                        <li>{{tech}},</li>
-                    {{/each}}
-                  </ul>
+                  <em>Technologies:</em> {{project.stack}}
                   <a href="{{project.readme}}" target="_blank">
                       <span class="fa fa-sign-in"></span>
                   </a>
               </div>
               <div class="project-part">
-                  <em>Team:</em>
+                  <em>{{project.team}}: </em>
                   <ul class="project-list">
                     {{#each project.coworkers as |worker|}}
-                        <li ><a href="#" alt="" target="blank">{{worker.alias}}</a></li>
+                        <li><a href="#" alt="" target="blank">{{worker.alias}}</a></li>
                     {{/each}}
                   </ul>
               </div>

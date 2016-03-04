@@ -1,7 +1,4 @@
-/* ---------------------------------------------------------------------------*/
-/* -- PROJECT PAGE
-/* ---------------------------------------------------------------------------*/
-
+/* -- PROJECT PAGE --*/
 /* Keep uniq
   .project-row
   .project-pic-column
@@ -9,7 +6,6 @@
   .project-part
   .project-list
 */
-
 div.project-pic-column{
   display: inline-block;
   width: 80px;
@@ -24,16 +20,13 @@ div.project-pic-column + div{
 div.project-side img{
   margin-top: 5px;
 }
-
 div.project-row{
   margin-bottom: 12px;
 }
-
 div.project-part{
   margin: 0px;
   padding: 0px;
 }
-
 ul.project-list{
   margin: 0px;
   list-style: outside circle;
@@ -42,12 +35,10 @@ ul.project-list, ul.project-list li {
   display:inline-block;
   width: auto;
 }
-
 ul.project-list li {
   margin-bottom: 2px;
   list-style-type: circle;
 }
-
 @media only screen and (max-width: 610px) {
   div.project-pic-column{
     width: 100%

@@ -2,11 +2,10 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 
-  firstName:   DS.attr('string'),
-  lastName:    DS.attr('string'),
-  alias:       DS.attr('string'),
-  link:        DS.attr(),
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
+  alias: DS.attr('string'),
+  link: DS.attr('string'),
 
-  //projects:    DS.hasMany('project')
-
+  projects: DS.hasMany('project')
 });

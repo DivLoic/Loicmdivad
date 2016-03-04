@@ -1,1 +1,21 @@
 {{outlet}}
+<div id="main" class="container">
+    <h1 class="htitle demoh1"> {{title}}</h1>
+    <img {{action 'typeFilter' '_all'}} class="icon-type flag"  src="img/{{type}}demo.svg" alt="View all types of demos."/>
+    <div id="listofdemos">
+
+      {{#each records as |demo|}}
+          <div class="row">
+              <a {{action 'typeFilter' demo.type}} class="demo-img-icon" href="demos/type/{{demo.type}}">
+                  <img class="icon-type"  src="img/{{demo.type}}demo.svg" alt=""/>
+              </a>
+              <div class="" class="democard">
+                  <a href="player/{{demo.id}}">
+                      <span class="demo-title">{{demo.title}} </span><small> {{demo.date_str}} • {{demo.type}} </small><br/>
+                      <span class="demo-description">{{demo.description}}</span>
+                  </a>
+              </div>
+          </div>
+      {{/each}}
+    </div>
+</div>

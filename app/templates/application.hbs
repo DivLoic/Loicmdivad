@@ -1,21 +1,12 @@
 <nav class="sidebar">
     <div class="container">
-        <h1>你好世界</h1>
-        <div id="flipcard">
-            <div class="front">
-                <img src="img/lmd.svg" alt="" width="170px"/>
-            </div>
-            <div class="back">
-                <img id="portrait" src="img/portrait.jpg" alt="" width="170px"/>
-            </div>
-        </div>
-        <script></script>
-        <p>
-            IT Engineering student,
+        <h1 style="font-size:2em">
+            Loïc M. DIVAD
+        </h1><!-- 你好世界 -->
+        {{fliper-card}}
+        <p> IT Engineering student,
             fonctional programming lover,
-            & new player in DataScience.
-        </p>
-
+            & new player in DataScience </p>
         <ul>
             <li><a href="https://twitter.com/Isep">@ISEP</a> student</li>
             <li><a href="http://startuppirates.org">#Startup pirate</a> Alumni</li>
@@ -40,8 +31,7 @@
 </nav>
 <div id="body">
     <header class="container">
-        <div class="dd-horizotal-menu" style="background-image: url(img/lmd.svg);">
-            <!-- <img src="img/lmd.svg" style="float: right; height: 30px;">-->
+        <div class="dd-horizotal-menu">
             <ul class="">
                 <li class="two columns">{{#link-to 'home'}}Home{{/link-to}}</li>
                 <li class="two columns">{{#link-to 'demos'}}Demos{{/link-to}}</li>

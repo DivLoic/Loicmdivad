@@ -1,1 +1,41 @@
 {{outlet}}
+<div id="main" class="container">
+    <h1 class="htitle hply">Demo</h1>
+    {{demo-card demo=model}}
+  <div class="row">
+    {{#unless false}}
+        <div id="tools-bar">
+            <h5 class="htitle">Tools:</h5>
+            <p>
+              {{#each model.tools key="@guid" as |tool|}}
+                  <span class="tag-badge">
+                      <i class="fa fa-wrench"></i>{{tool}}
+                  </span>
+              {{/each}}
+            </p>
+        </div>
+    {{/unless}}
+
+    <div id="credits">
+        <h5 class="htitle">Thanks to:</h5>
+        <ul>
+          {{#each model.credits as |credit|}}
+              <li>
+                  <a href="{{credit.link}}" target="_blank">{{credit.alias}}</a>
+              </li>
+          {{/each}}
+        </ul>
+    </div>
+
+    <div id="see-also">
+        <h5 class="htitle">See Also:</h5>
+        <ul>
+          {{#each model.seeAlso as |see|}}
+              <li>
+                  <a href="{{see.link}}">{{see.alias}}</a>,
+              </li>
+          {{/each}}
+        </ul>
+    </div>
+  </div>
+</div>

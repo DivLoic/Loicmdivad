@@ -1,1 +1,61 @@
 {{outlet}}
+<div id="main" class="container">
+    <h1 class="htitle columns">Me: Loïc DIVAD</h1>
+    <div class="row mebox" id="bio">
+        <div class="bio-edito mesubbox">
+            <h3 class="htitle">A few words ...</h3>
+            <p class="citation">I'm a french IT student tackling more languages than he clearly knows what to do with.
+                I'm part of that generation flooded with the <em>"Big data"</em> things (which is not totaly bad).
+                I like NoSQL & fonctional programming. Above all I'm standing for any opportunities to better understand scaling systems.<br/>
+            </p>
+        </div>
+    </div>
+    <div id="badges" class="row mebox">
+        <div class="mesubbox">
+            <h3 class="htitle">Main achievements</h3>
+            <div class="mybages">
+                <img src="img/studies.svg" alt="" />
+                <p>
+                    <span class="field">School:</span><br/>
+					<span class="text">MP/MP* & IT Engineering
+						<a href="https://twitter.com/Isep" target="blank">@ISEP</a>.
+					</span><br/>
+                </p>
+            </div>
+            <div class="mybages">
+                <img  class="" src="img/exp.svg" alt="" />
+                <p>
+                    <span class="field">Experiances:</span><br/>
+					<span class="text">Work/Study Program
+						<a href="https://fr.wikipedia.org/wiki/Société_générale" target="blank">@Socgen</a>.
+					</span><br/>
+                </p>
+            </div>
+            <div class="mybages">
+                <img class="" src="img/code.svg" alt="" />
+                <p>
+                    <span class="field">Skills:</span><br/>
+                    <span class="text">Python & Java/Scala.</span><br/>
+                </p>
+            </div>
+        </div>
+        {{!--<div><p class="pdf">You'll probably also enjoy a more traditional resume.</p></div> --}}
+    </div>
+    <div class="row mebox" >
+        <div id="map" class="row mesubbox">
+            <h3 class="htitle">Past trips</h3>
+            <div class="map-table">
+              {{#each model as |location| }}
+                {{map-card class='four columns' local=location}}
+              {{/each}}
+            </div>
+        </div>
+    </div>
+    {{!--
+    <div class="row mebox" >
+        <div class="mesubbox" id="mailme">
+            <h3 class="htitle hme">Contact me: <small></small></h3>
+        </div>
+    </div>
+    --}}
+</div>
