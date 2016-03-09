@@ -11,12 +11,7 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver/*: Resolver,
-  ApplicationAdapter: DS.RESTAdapter.extend({
-    host: 'http://localhost:3000',
-    namespace: '',
-    shouldReloadAll: function(){return true;}
-  })*/
+  Resolver
 });
 
 loadInitializers(App, config.modulePrefix);
