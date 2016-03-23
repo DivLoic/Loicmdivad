@@ -4,7 +4,6 @@
     width: 360px;*/
     margin: 0 auto;
     position: relative;
-
   }
   .tooltip {
     background: #eee;
@@ -35,7 +34,6 @@
     display: block;
     margin: auto;
   }
-
   @media only screen and (max-width: 610px) {
     div#legend svg{
       display: block;
@@ -53,7 +51,7 @@
       This school project propose to study a dataset of car crash around Paris.
       The <em>.csv</em> file with all the records can be download from
       <a href="http://opendata.paris.fr/explore/?q=accidentologie">opendata.paris.fr</a>.
-      Each lines represente a crash, and the columns stand for information like: address, date of the accident
+      Each lines represente a crash, and the columns stand for informations like: address, date of the accident
       type of vehicule and so on...
     </p>
     <table class="u-full-width">
@@ -84,7 +82,7 @@
       </tbody>
     </table>
     <p>
-      In order to respond to the project requirement, the file is stored in HDFS and read with Spark.
+      In order to respond to the project requirements, the file is stored in HDFS and read with Spark.
       But this could be done with a more simple tool like a Pandas dataframe (Python).
       Finally you can restitute the result of the processing with a cool data visualisation.
     </p>
@@ -220,11 +218,9 @@
               };
             });
         });
-
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 // -- Text legend part
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
       legend.append('text')
         .attr('x', legendRectSize + legendSpacing)
         .attr('y', legendRectSize - legendSpacing)

@@ -1,0 +1,196 @@
+<style>
+  div[class^='tooltip'], p{
+    display: inline-block;
+    vertical-align: top;
+  }
+  div[class^='tooltip']{
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    margin-right: 10px;
+  }
+
+  .tooltip0{ background-color: rgb(198,219,239);  }
+  .tooltip1{ background-color: rgb(158,202,225);  }
+  .tooltip2{ background-color: rgb(107,174,214);  }
+  .tooltip3{ background-color: rgb(66,146,198);   }
+  .tooltip4{ background-color: rgb(33,113,181);   }
+  .tooltip5{ background-color: rgb(8,81,156);     }
+  .tooltip6{ background-color: rgb(8,48,107);     }
+  .tooltip7{ background-color: rgb(4,57,111);     }
+
+</style>
+<!-- <script src="//d3js.org/topojson.v1.min.js"></script> -->
+<!-- see :
+http://www.apur.org/open_data/ARRONDISSEMENT_OD.zip
+-->
+<!-- see :
+https://bost.ocks.org/mike/map/
+-->
+<div>
+  <div class="">
+   <div id="map"></div>
+    <div class="row">
+      <div class="six columns">
+        <div class="ledgend"><div class="tooltip0"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip1"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip2"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip3"></div><p> </p></div>
+      </div>
+      <div class="six columns">
+        <div class="ledgend"><div class="tooltip4"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip5"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip6"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip7"></div><p> </p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+  var bleu_gard = [
+    d3.rgb(198,219,239),
+    d3.rgb(158,202,225),
+    d3.rgb(107,174,214),
+    d3.rgb(66,146,198),
+    d3.rgb(33,113,181),
+    d3.rgb(8,81,156),
+    d3.rgb(8,48,107),
+    d3.rgb(4,57,111)
+  ];
+
+  var grad = {"sc0": d3.rgb(198,219,239),
+    "sc1": d3.rgb(158,202,225),
+    "sc2": d3.rgb(107,174,214),
+    "sc3": d3.rgb(66,146,198),
+    "sc4": d3.rgb(33,113,181),
+    "sc5": d3.rgb(8,81,156),
+    "sc6": d3.rgb(8,48,107),
+    "sc7": d3.rgb(4,57,111)};
+
+  var mapColor = function(tab,dept,scale){
+    var n = tab.filter(function(element){
+      return element["street"] == dept;
+    });
+    n = n[0]["number"];
+
+    if(n < 300){
+      return d3.rgb(198,219,239);
+    }else if(n < 400){
+      return d3.rgb(158,202,225);
+    }else if(n < 500){
+      return d3.rgb(107,174,214);
+    }else if(n < 800){
+      return d3.rgb(66,146,198);
+    }else if(n < 900){
+      return d3.rgb(33,113,181);
+    }else if(n < 1000){
+      return d3.rgb(8,81,156);
+    }else if(n < 1100){
+      return d3.rgb(8,48,107);
+    }else{
+      return d3.rgb(4,57,111);
+    }
+
+    /*n = Math.floor(parseInt(n) / scale);
+    key = 'sc' + String(n);
+    return grad[key]*/
+  };
+
+  var width = 680;
+  var height =  400;
+
+  var canvas = d3.select('div#map').append('svg')
+    .attr('width', 680)
+    .attr('height', 400);
+
+  d3.json('/datastore/paris.json', function(data){
+    var group = canvas.selectAll('g')
+      .data(data.features)
+      .enter()
+      .append('g');
+
+    var projection = d3.geo.mercator()
+      .scale(150000)
+      .translate([ -5790, 147200]);
+
+    var path = d3.geo.path().projection(projection);
+
+    Ember.$.get("/datastore/parisRings.json", function(doc) {
+      group.append('path')
+        .attr('d', path)
+        .attr('class','stroke')
+        .attr('fill', function(d){return mapColor(doc, d.properties.CODE_COMM, 200)})
+        .style('stroke', 'white')
+        .style("stroke-width", "1.5");
+
+      group.append('svg:text')
+        .attr('x', function(d){ return path.centroid(d)[0]})
+        .attr('y',function(d){return path.centroid(d)[1] + 10})
+        .text(function(d){return d.properties.CODE_COMM.slice(-2);})
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
+        .style("fill",'white');
+    });
+
+
+  });
+
+  /*var reDraw = function(id,scale){
+    Ember.$.get("/datastore/parisRings.json"+id, function(doc) {
+      d3.selectAll('.stroke')
+        .transition()
+        .duration(750)
+        .style("fill", function(d){
+          return mapColor(doc['_spk_results'], d.properties.CODE_COMM, scale);
+        });
+    })
+  };*/
+
+/*  $(document).ready(function(){
+    $("button.12").first().on('click', function(){
+      reDraw('_spk4',100);
+      $("button.btn-primary").removeClass("btn-primary");
+      $(this).addClass("btn-primary");
+    })
+    $("button.13").first().on('click', function(){
+      reDraw('_spk5',100);
+      $("button.btn-primary").removeClass("btn-primary");
+      $(this).addClass("btn-primary");
+    })
+    $("button.1213").first().on('click', function(){
+      reDraw('_spk6',300);
+      $("button.btn-primary").removeClass("btn-primary");
+    })
+  })*/
+
+  /*Ember.$.post("/datastore/parisRings.json", function(data, status){
+    data.forEach(function(ring){
+      Ember.$("svg polygon#" +ring.street+ "E-ARRONDISSEMENT").attr("fill", "red");
+    });
+  });*/
+  /*d3.json("/datastore/uk.json", function(error, paris) {
+
+    var width = 560, height = 560;
+
+    var svg = d3.select("div#map").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    if (error) return console.error(error);
+
+    var projection = d3.geo.albers()
+      .center([0, 55.4])
+      .rotate([4.4, 0])
+      .parallels([50, 60])
+      .scale(6000)
+      .translate([width / 2, height / 2]);
+
+    var path = d3.geo.path().projection(projection);
+
+    svg.append("path")
+      .datum(topojson.feature(paris, paris.objects.subunits))
+      .attr("d", d3.geo.path().projection(d3.geo.mercator()));
+  });*/
+</script>
+

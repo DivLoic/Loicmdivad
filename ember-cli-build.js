@@ -30,7 +30,9 @@ module.exports = function(defaults) {
   app.import('app/styles/css/projects.css');
   app.import('app/styles/css/player.css');
 
+
   app.import('bower_components/d3/d3.min.js');
+  app.import('bower_components/topojson/topojson.js');
   app.import('bower_components/flip/src/flip.js');
   app.import('bower_components/typed.js/dist/typed.min.js');
 
