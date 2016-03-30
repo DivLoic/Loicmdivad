@@ -87,6 +87,31 @@
       Finally you can restitute the result of the processing with a cool data visualisation.
     </p>
   </div>
+  <pre><code class="python">from pyspark import SparkConf, SparkContext
+conf = (SparkConf().setMaster("local")
+.setAppName("ISEP_A2_Paris_CarCount"))
+
+sc = SparkContext(conf = conf)
+
+car_one = 8
+car_two = 9
+
+print u'--- Debut du Job ---'
+
+csv = sc.textFile("hdfs://{ip}:{port}/home/accidentologie.csv")
+res = csv.map(lambda line: line.split(";"))
+.flatMap(lambda y: [(y[car_one],1),(y[car_two],1)])
+#('bus', 1), ('scoo', 1)
+.reduceByKey(lambda a, b: a + b)
+.sortBy(lambda y: y[1], ascending=False)
+
+res.saveAsTextFile("hdfs://{ip}:{port}/home/job.txt")
+#bus;11
+#sccoo;10
+print u'--- Fin du Job ---'</code></pre>
+
+
+
 </div>
 </div>
 <script>

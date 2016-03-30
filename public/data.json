@@ -142,7 +142,7 @@
     },
     "cw_12": {
       "firstName": "Xavier",
-      "lastName": "Frebault",
+      "lastName": "Dembedydy",
       "alias": "Xavier",
       "link": ""
     }
@@ -154,9 +154,9 @@
       "type": "graph",
       "date": "2015-04-20",
       "source": "cars_one.html",
-      "tools": ["python", "spark", "D3.js"],
-      "seeAlso": [],
-      "credits": []
+      "tools": ["Python", "Spark", "D3.js"],
+      "seeAlso": {"ref":"...", "link": "..."},
+      "credits": {"ref":"...", "link":"..."}
     },
     "demo_1": {
       "title": "Paris car accidents per rings",
@@ -164,9 +164,9 @@
       "type": "graph",
       "date": "2015-04-20",
       "source": "cars_two.html",
-      "tools": ["python", "spark", "D3.js"],
-      "seeAlso": [],
-      "credits": []
+      "tools": ["Python", "Spark", "D3.js"],
+      "seeAlso": {"ref":"...", "link": "..."},
+      "credits": {"ref":"...", "link": "..."}
     },
     "demo_2": {
       "title": "Fake demo N° 3",

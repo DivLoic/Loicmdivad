@@ -2,23 +2,24 @@
   div[class^='tooltip'], p{
     display: inline-block;
     vertical-align: top;
+    margin-bottom: 0;
+
   }
   div[class^='tooltip']{
     height: 20px;
     width: 20px;
     border-radius: 100%;
     margin-right: 10px;
+    margin-top: 5px;
   }
-
   .tooltip0{ background-color: rgb(198,219,239);  }
   .tooltip1{ background-color: rgb(158,202,225);  }
   .tooltip2{ background-color: rgb(107,174,214);  }
   .tooltip3{ background-color: rgb(66,146,198);   }
   .tooltip4{ background-color: rgb(33,113,181);   }
   .tooltip5{ background-color: rgb(8,81,156);     }
-  .tooltip6{ background-color: rgb(8,48,107);     }
-  .tooltip7{ background-color: rgb(4,57,111);     }
-
+  .tooltip6{ background-color: rgb(4,57,111);     }
+  .tooltip7{ background-color: rgb(8,48,107);     }
 </style>
 <!-- <script src="//d3js.org/topojson.v1.min.js"></script> -->
 <!-- see :
@@ -28,22 +29,70 @@ http://www.apur.org/open_data/ARRONDISSEMENT_OD.zip
 https://bost.ocks.org/mike/map/
 -->
 <div>
-  <div class="">
-   <div id="map"></div>
+    <div id="map"></div>
+    <div style="margin: auto; color:#777777; text-align: center;">
+      - Number of accidents per rings or arrondissements of paris <br/>
+      between 2012 / 2013 -
+    </div> <br/>
     <div class="row">
       <div class="six columns">
-        <div class="ledgend"><div class="tooltip0"></div><p> </p></div>
-        <div class="ledgend"><div class="tooltip1"></div><p> </p></div>
-        <div class="ledgend"><div class="tooltip2"></div><p> </p></div>
-        <div class="ledgend"><div class="tooltip3"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip0"></div><p>Less than 400</p></div>
+        <div class="ledgend"><div class="tooltip1"></div><p>Between 400-600</p></div>
+        <div class="ledgend"><div class="tooltip2"></div><p>Between 600-800</p></div>
+        <div class="ledgend"><div class="tooltip3"></div><p>Between 800-1000</p></div>
       </div>
       <div class="six columns">
-        <div class="ledgend"><div class="tooltip4"></div><p> </p></div>
-        <div class="ledgend"><div class="tooltip5"></div><p> </p></div>
-        <div class="ledgend"><div class="tooltip6"></div><p> </p></div>
-        <div class="ledgend"><div class="tooltip7"></div><p> </p></div>
+        <div class="ledgend"><div class="tooltip4"></div><p>Between 1000-1200</p></div>
+        <div class="ledgend"><div class="tooltip5"></div><p>Between 1200-1400</p></div>
+        <div class="ledgend"><div class="tooltip6"></div><p>Between 1400-1600</p></div>
+        <div class="ledgend"><div class="tooltip7"></div><p>More than 1600</p></div>
       </div>
     </div>
+    <br/>
+    <div class="row">
+      <p>
+        This school project propose to study a dataset of car accidents around Paris.
+        The <em>.csv</em> file with all the records can be download from
+        <a href="http://opendata.paris.fr/explore/?q=accidentologie">opendata.paris.fr</a>.
+        Once the file have been load into the Hadoop filesystem we are able to run un really simple Map/Reduce job
+        with Python and Spark, then save the result as json. Here the Python code:
+      <p>
+    <div>
+    <pre><code class="python">from pyspark.sql import Row
+from pyspark.sql import DataFrame
+
+rdd = sc.textFile('/home/loicmdivad/accidents.csv')
+count = rdd.map(lambda line: line.split(";")) \
+.filter(lambda y: y[0] == TARGET_YEAR) \
+.map(lambda y: (y[3] , 1)) \
+.reduceByKey(lambda a, b: a + b) \
+.sortBy(lambda y: y[1])
+
+Rings = Row("code", "crash")
+table = count.map(lambda y: Rings(y[0], y[1]))
+count.toDF().toJSON() # {"code": 01, "crash": 321}, ...
+# here the action triggers all previous transformations
+      </code></pre>
+    <div class="row">
+      <p>
+        Here we can conclude a simple thing. The first rings (01, 02 etc...) are inside the city.
+        So there are less car then places at the edge, crossed by the highway
+        (<a href="https://en.wikipedia.org/wiki/Boulevard_Périphérique"> Bld Périphérique</a>).
+        Once the json is ready a simple plot can be done with D3.js. This is a piece of
+        javascript code:
+      <p>
+    </div>
+    <pre><code class="javascript">Ember.$.get("/datastore/parisRings.json", function(doc) {
+  group.append('path')
+  .attr('d', path)
+  .attr('class','stroke')
+  .attr('fill', function(d){
+    return mapColor(doc, d.properties.CODE_COMM, 200)
+   })
+  .style('stroke', 'white')
+  .style("stroke-width", "1.5");
+});
+      </code></pre>
   </div>
 </div>
 <script>
@@ -55,8 +104,8 @@ https://bost.ocks.org/mike/map/
     d3.rgb(66,146,198),
     d3.rgb(33,113,181),
     d3.rgb(8,81,156),
-    d3.rgb(8,48,107),
-    d3.rgb(4,57,111)
+    d3.rgb(4,57,111),
+    d3.rgb(8,48,107)
   ];
 
   var grad = {"sc0": d3.rgb(198,219,239),
@@ -78,15 +127,15 @@ https://bost.ocks.org/mike/map/
       return d3.rgb(198,219,239);
     }else if(n < 400){
       return d3.rgb(158,202,225);
-    }else if(n < 500){
+    }else if(n < 600){
       return d3.rgb(107,174,214);
     }else if(n < 800){
       return d3.rgb(66,146,198);
-    }else if(n < 900){
-      return d3.rgb(33,113,181);
     }else if(n < 1000){
-      return d3.rgb(8,81,156);
+      return d3.rgb(33,113,181);
     }else if(n < 1100){
+      return d3.rgb(8,81,156);
+    }else if(n < 1200){
       return d3.rgb(8,48,107);
     }else{
       return d3.rgb(4,57,111);
@@ -97,12 +146,26 @@ https://bost.ocks.org/mike/map/
     return grad[key]*/
   };
 
+  var threshold = 770;
+  var windowsize = Ember.$(window).width();
+
   var width = 680;
   var height =  400;
 
+  var scale = 150000;
+  var tx = -5790;
+  var ty = 147200;
+
+  if (windowsize < threshold){
+    width = width / 2;
+    height =  height / 2;
+    scale = scale  / 2;
+    tx = tx / 2; ty = ty / 2;
+  }
+
   var canvas = d3.select('div#map').append('svg')
-    .attr('width', 680)
-    .attr('height', 400);
+    .attr('width', width)
+    .attr('height', height);
 
   d3.json('/datastore/paris.json', function(data){
     var group = canvas.selectAll('g')
@@ -111,8 +174,8 @@ https://bost.ocks.org/mike/map/
       .append('g');
 
     var projection = d3.geo.mercator()
-      .scale(150000)
-      .translate([ -5790, 147200]);
+      .scale(scale)
+      .translate([tx, ty]);
 
     var path = d3.geo.path().projection(projection);
 
@@ -120,6 +183,8 @@ https://bost.ocks.org/mike/map/
       group.append('path')
         .attr('d', path)
         .attr('class','stroke')
+        .attr('fill', '#ffffff')
+        .transition().duration(4000)
         .attr('fill', function(d){return mapColor(doc, d.properties.CODE_COMM, 200)})
         .style('stroke', 'white')
         .style("stroke-width", "1.5");
@@ -132,65 +197,5 @@ https://bost.ocks.org/mike/map/
         .attr("font-size", "11px")
         .style("fill",'white');
     });
-
-
   });
-
-  /*var reDraw = function(id,scale){
-    Ember.$.get("/datastore/parisRings.json"+id, function(doc) {
-      d3.selectAll('.stroke')
-        .transition()
-        .duration(750)
-        .style("fill", function(d){
-          return mapColor(doc['_spk_results'], d.properties.CODE_COMM, scale);
-        });
-    })
-  };*/
-
-/*  $(document).ready(function(){
-    $("button.12").first().on('click', function(){
-      reDraw('_spk4',100);
-      $("button.btn-primary").removeClass("btn-primary");
-      $(this).addClass("btn-primary");
-    })
-    $("button.13").first().on('click', function(){
-      reDraw('_spk5',100);
-      $("button.btn-primary").removeClass("btn-primary");
-      $(this).addClass("btn-primary");
-    })
-    $("button.1213").first().on('click', function(){
-      reDraw('_spk6',300);
-      $("button.btn-primary").removeClass("btn-primary");
-    })
-  })*/
-
-  /*Ember.$.post("/datastore/parisRings.json", function(data, status){
-    data.forEach(function(ring){
-      Ember.$("svg polygon#" +ring.street+ "E-ARRONDISSEMENT").attr("fill", "red");
-    });
-  });*/
-  /*d3.json("/datastore/uk.json", function(error, paris) {
-
-    var width = 560, height = 560;
-
-    var svg = d3.select("div#map").append("svg")
-      .attr("width", width)
-      .attr("height", height);
-
-    if (error) return console.error(error);
-
-    var projection = d3.geo.albers()
-      .center([0, 55.4])
-      .rotate([4.4, 0])
-      .parallels([50, 60])
-      .scale(6000)
-      .translate([width / 2, height / 2]);
-
-    var path = d3.geo.path().projection(projection);
-
-    svg.append("path")
-      .datum(topojson.feature(paris, paris.objects.subunits))
-      .attr("d", d3.geo.path().projection(d3.geo.mercator()));
-  });*/
 </script>
-

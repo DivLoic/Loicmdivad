@@ -23,6 +23,7 @@ module.exports = function(defaults) {
   app.import('bower_components/skeleton/css/normalize.css');
   app.import('bower_components/skeleton/css/skeleton.css');
   app.import('bower_components/font-awesome/css/font-awesome.css');
+  app.import('/bower_components/highlightjs/styles/tomorrow.css');
 
   app.import('app/styles/css/home.css');
   app.import('app/styles/css/me.css');
@@ -30,12 +31,11 @@ module.exports = function(defaults) {
   app.import('app/styles/css/projects.css');
   app.import('app/styles/css/player.css');
 
-
   app.import('bower_components/d3/d3.min.js');
-  app.import('bower_components/topojson/topojson.js');
   app.import('bower_components/flip/src/flip.js');
   app.import('bower_components/typed.js/dist/typed.min.js');
-
+  app.import('bower_components/highlightjs/highlight.pack.min.js');
 
   return app.toTree();
+
 };

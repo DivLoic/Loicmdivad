@@ -12,13 +12,15 @@
     "jquery": "1.11.3",
     "loader.js": "ember-cli/loader.js#3.4.0",
     "qunit": "~1.20.0",
-    "firebase": "^2.1.0",
-    "normalize-css": "normalize.css#^3.0.3",
-    "font-awesome": "^4.5.0",
-    "skeleton": "^2.0.4",
+    "firebase": "^2.1.0"
+  },
+  "devDependencies": {
+    "highlightjs": "^9.2.0",
+    "flip": "^1.0.20",
+    "d3": "^3.5.16",
     "typed.js": "^1.1.1",
-    "d3": "^3.5.14",
-    "flip": "^1.0.19",
-    "topojson": "^1.6.24"
+    "skeleton": "^2.0.4",
+    "font-awesome": "^4.5.0",
+    "normalize-css": "^4.0.0"
   }
 }
