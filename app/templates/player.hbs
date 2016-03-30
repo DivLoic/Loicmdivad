@@ -1,13 +1,21 @@
 {{outlet}}
 <div id="main" class="container">
-    <h1 class="htitle hply">Demo</h1>
+    <h1 class="htitle hply">
+      <img class="icon-type flag"  src="img/{{model.type}}demo.svg"
+           alt="This is a {{model.type}} demo"/>
+        Demo
+      <small style="font-size: 0.5em; font-style: italic;">
+          <span class="tag-badge">#{{model.type}} </span> - {{model.date_str}}
+      </small>
+    </h1>
+  {{!-- --}}
     {{demo-card demo=model}}
   <div class="row">
     {{#unless false}}
         <div id="tools-bar">
             <h5 class="htitle">Tools:</h5>
             <p>
-              {{#each model.tools key="@guid" as |tool|}}
+              {{#each model.tools as |tool|}}
                   <span class="tag-badge">
                       <i class="fa fa-wrench"></i>{{tool}}
                   </span>

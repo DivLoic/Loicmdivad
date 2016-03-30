@@ -1,8 +1,5 @@
 {{yield}}
 <h4 class="htitle hply"> {{demo.title}}
-    <small>
-        <span class="tag-badge">#{{demo.type}}</span>'{{demo.date_str}}'
-    </small>
 </h4>
 {{#if true}}
   <div id="source" data-source="{{demo.source}}"></div>
@@ -11,6 +8,15 @@
       Ember.$.get('/sources/' + sourceName, {}, function(data){
           var node = Ember.$( data );
           Ember.$('#source').append(node);
+          Ember.$(document).ready(function() {
+              $('pre code').each(function(i, block) {
+                  hljs.highlightBlock(block);
+              });
+          });
       });
   </script>
 {{/if}}
+
+<script>
+
+</script>

@@ -1,9 +1,8 @@
 {{outlet}}
 <div id="main" class="container">
-    <h1 class="htitle demoh1"> {{title}}</h1>
     <img {{action 'typeFilter' '_all'}} class="icon-type flag"  src="img/{{type}}demo.svg" alt="View all types of demos."/>
+    <h1 class="htitle demoh1"> {{title}}</h1>
     <div id="listofdemos">
-
       {{#each records as |demo|}}
           <div class="row">
               <a {{action 'typeFilter' demo.type}} class="demo-img-icon" href="demos/type/{{demo.type}}">
