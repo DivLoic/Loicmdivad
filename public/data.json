@@ -150,13 +150,13 @@
   "demos": {
     "demo_0": {
       "title": "Paris car accidents 12/13",
-      "description": "Which types of vehicule are involved in accidents for this period?",
+      "description": "Which types of vehicle are involved in accidents for this period?",
       "type": "graph",
       "date": "2015-04-20",
       "source": "cars_one.html",
       "tools": ["Python", "Spark", "D3.js"],
-      "seeAlso": {"ref":"...", "link": "..."},
-      "credits": {"ref":"...", "link":"..."}
+      "seeAlso": [{"ref":"...", "link": "..."}],
+      "credits": [{"ref":"...", "link":"..."}]
     },
     "demo_1": {
       "title": "Paris car accidents per rings",
@@ -165,16 +165,16 @@
       "date": "2015-04-20",
       "source": "cars_two.html",
       "tools": ["Python", "Spark", "D3.js"],
-      "seeAlso": {"ref":"...", "link": "..."},
-      "credits": {"ref":"...", "link": "..."}
+      "seeAlso": [{"ref":"...", "link": "..."}],
+      "credits": [{"ref":"...", "link": "..."}]
     },
     "demo_2": {
-      "title": "Fake demo N° 3",
-      "description": "The quick brown fox jumps over the lazy dog ...",
-      "type": "code",
+      "title": "The rolling statistics",
+      "description": "A few cool plots from stock data.",
+      "type": "graph",
       "date": "2015-04-20",
-      "source": "cars_two.html",
-      "tools": ["Java", "Tomcat"],
+      "source": "stock_one.html",
+      "tools": ["Python", "Pandas", "Numpy"],
       "seeAlso": [],
       "credits": []
     },
@@ -189,12 +189,12 @@
       "credits": []
     },
     "demo_4": {
-      "title": "Fake demo N° 5",
-      "description": "The quick brown fox jumps over the lazy dog ...",
+      "title": "Riak",
+      "description": "A quick tour of a really fast key-value databases.",
       "type": "db",
       "date": "2015-04-20",
-      "source": "cars_two.html",
-      "tools": ["R"],
+      "source": "riak.html",
+      "tools": ["Erlang", "Riak"],
       "seeAlso": [],
       "credits": []
     },
@@ -205,6 +205,16 @@
       "date": "2015-11-01",
       "source": "plumelabs.html",
       "tools": ["R"],
+      "seeAlso": [],
+      "credits": []
+    },
+    "demo_6": {
+      "title": "Jupyter kernels",
+      "description": "",
+      "type": "code",
+      "date": "2015-04-20",
+      "source": "jupyter.html",
+      "tools": ["Python", "Scala", "R"],
       "seeAlso": [],
       "credits": []
     }

@@ -7,7 +7,7 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
       'style-src': "'self'",
-      'script-src': "'self'"
+      'script-src': "'self' https://loicdivad.firebaseio.com"
     },
     firebase: 'https://loicdivad.firebaseio.com/',
     baseURL: '/',
