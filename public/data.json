@@ -155,8 +155,11 @@
       "date": "2015-04-20",
       "source": "cars_one.html",
       "tools": ["Python", "Spark", "D3.js"],
-      "seeAlso": [{"ref":"...", "link": "..."}],
-      "credits": [{"ref":"...", "link":"..."}]
+      "seeAlso": [{"ref":"A map with the same Dataset", "link": "https://loicdivad.firebaseapp.com/player/demo_1"}],
+      "credits": [{
+        "ref":"Zero viscosity for his great d3 example",
+        "link":"http://zeroviscosity.com/d3-js-step-by-step/step-5-adding-tooltips"
+      }]
     },
     "demo_1": {
       "title": "Paris car accidents per rings",

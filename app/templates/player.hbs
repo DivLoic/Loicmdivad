@@ -1,4 +1,5 @@
 {{outlet}}
+
 <div id="main" class="container">
     <h1 class="htitle hply">
       <img class="icon-type flag"  src="img/{{model.type}}demo.svg"
@@ -8,44 +9,38 @@
           <span class="tag-badge">#{{model.type}} </span> - {{model.date_str}}
       </small>
     </h1>
-  {{!-- --}}
+
     {{demo-card demo=model}}
-  <div class="row">
-    {{!-- TODO: count the number of tools, thanks and see also --}}
-    {{#if asTools}}
-        <div id="tools-bar">
+
+    <div class="row">
+      {{#if asTools}}
+          <div id="tools-bar">
             <h5 class="htitle">Tools:</h5>
             <p>
               {{#each model.tools as |tool|}}
-                  <span class="tag-badge">
-                      <i class="fa fa-wrench"></i>{{tool}}
-                  </span>
+                <span class="tag-badge">
+                    <i class="fa fa-wrench"></i>{{tool}}
+                </span>
               {{/each}}
             </p>
-        </div>
-    {{/if}}
+          </div>
+      {{/if}}
 
-    {{#if asCredits}}
-      <div id="credits">
+      {{#if asCredits}}
+        <div id="credits">
           <h5 class="htitle">Thanks to:</h5>
-          <ul>
-            {{#each model.credits as |credit|}}
-                <li>
-                    <a href="{{credit.link}}" target="_blank">{{credit.ref}}</a>
-                </li>
-            {{/each}}
-          </ul>
-      </div>
-    {{/if}}
+          {{#each model.credits as |credit|}}
+            <a href="{{credit.link}}" target="_blank">{{credit.ref}}</a>
+          {{/each}}
+        </div>
+      {{/if}}
 
-    {{#if asSeeAlso}}
+      {{#if asSeeAlso}}
       <div id="see-also">
-          <h5 class="htitle">See Also:</h5>
+        <h5 class="htitle">See Also:</h5>
           <ul>
             {{#each model.seeAlso as |see|}}
-                <li>
-                    <a href="{{see.link}}">{{see.alias}}</a>,
-                </li>
+              <li><a href="{{see.link}}">{{see.alias}}</a></li>
             {{/each}}
           </ul>
       </div>

@@ -50,11 +50,11 @@ div#tools-bar p span .fa{
 /* -- credits -- */
 div#credits{}
 
-div#credits ul, div#credits h5 {
+div#credits a, div#credits h5 {
     margin-bottom: 0.5rem;
 }
 
-div#credits ul li{
+div#credits a{
     margin-bottom: 0px;
     font-style: italic;
 }
