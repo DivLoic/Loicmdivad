@@ -5,7 +5,7 @@
       "description": "...",
       "date": "01/10/13",
       "link": "http://weshare-isepdev.rhcloud.com",
-      "readme": "",
+      "readme": "https://github.com/DivLoic/weshare",
       "icon": "weshare.svg",
       "team": "G8B",
       "technologies": ["PHP", "JavaScript", "MySQl"],
@@ -36,24 +36,24 @@
       "readme": "https://github.com/PurpleConsulting/Isepapp/blob/master/README.md",
       "icon": "isepapp.svg",
       "team": "PurpleConsulting",
-      "technologies": ["JAVA", "MySQl", "jQuery", "Bootstrap"],
+      "technologies": ["Java", "MySQl", "jQuery", "Bootstrap"],
       "coworkers": {"cw_2": true, "cw_5": true, "cw_4": true}
     },
     "_bamboo": {
-      "name": "Bamboo Data Warehouse",
+      "name": "Bamboo DMP",
       "description": "...",
-      "date": "01/9/15",
-      "link": "#",
-      "readme": "https://github.com/DivLoic/Bamboo/blob/master/README.md",
+      "date": "01/09/15",
+      "link": "https://github.com/DivLoic/Bamboo",
+      "readme": "https://github.com/DivLoic/Bamboo/blob/master/II.3503_2015_RAPPORT_PANDA_CORP.pdf",
       "icon": "pandascorp1.svg",
       "team": "PandasCorp",
-      "technologies": ["Hadoop - Hortonworks", "Hive", "Tableau Software"],
+      "technologies": ["Java", "Apache Hive", "Tableau Software"],
       "coworkers": {"cw_3": true, "cw_4": true, "cw_5": true}
     },
     "_iosmove": {
       "name": "iOSMove",
       "description": "...",
-      "date": "15/9/15",
+      "date": "15/09/15",
       "link": "http://iosmove-isepdev.rhcloud.com",
       "readme": "https://github.com/DivLoic/iOSMove/blob/master/README.md",
       "icon": "iosmove.svg",
@@ -66,12 +66,24 @@
       "description": "...",
       "date": "01/11/15",
       "link": "player/demo_5",
-      "readme": "#",
+      "readme": "https://github.com/DivLoic/PlumeChallengeData",
       "icon": "pandascorp2.svg",
       "team": "PandasCorp",
       "technologies": ["R", "RStudio"],
       "coworkers": {"cw_3": true, "cw_4": true, "cw_5": true, "cw_10": true}
+    },
+    "_rico": {
+      "name": "Recommender",
+      "description": "A scalable recommender system",
+      "date": "11/01/16",
+      "link": "https://github.com/DivLoic/Rico",
+      "readme": "https://github.com/DivLoic/Rico/blob/master/README.md",
+      "icon": "rico.svg",
+      "team": "RICOlabs",
+      "technologies": ["Scala", "Spark", "Apache Cassandra"],
+      "coworkers": {"cw_4": true, "cw_7": true}
     }
+
   },
   "coworkers": {
     "cw_1":{
