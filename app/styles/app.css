@@ -115,7 +115,7 @@ header ul li.two.columns{
 		padding-top: 1rem;
 		position: relative;
 	}
-	nav p{
+  nav p{
 		margin-bottom: 2px;
 	}
 	nav.sidebar ul{
@@ -129,8 +129,6 @@ header ul li.two.columns{
 		margin-top: 10px;
 	}
 }
-
-
 code {
   font-size: 0.7em;
   color: none;
