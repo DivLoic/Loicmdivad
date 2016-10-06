@@ -23,8 +23,9 @@
               <div class="project-part">
                   <em>{{project.team}}: </em>
                   <ul class="project-list">
+
                     {{#each project.coworkers as |worker|}}
-                        <li><a href="#" alt="" target="blank">{{worker.alias}}</a></li>
+                        <li><a href="{{worker.link}}" alt="" target="blank">{{worker.alias}}</a></li>
                     {{/each}}
                   </ul>
               </div>

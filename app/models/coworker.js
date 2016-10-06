@@ -7,5 +7,4 @@ export default DS.Model.extend({
   alias: DS.attr('string'),
   link: DS.attr('string'),
 
-  projects: DS.hasMany('project')
 });
