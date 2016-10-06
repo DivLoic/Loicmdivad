@@ -10,8 +10,7 @@ module.exports = function(environment) {
       'script-src': "'self' https://loicdivad.firebaseio.com"
     },
     firebase: 'https://loicdivad.firebaseio.com/',
-    //baseURL: '/',
-    rootURL: '/',
+    baseURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -36,8 +35,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    //ENV.baseURL = '/';
-    ENV.rootURL = '/';
+    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
