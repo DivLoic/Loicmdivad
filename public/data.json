@@ -3,7 +3,7 @@
     "_weshare": {
       "name": "weshare",
       "description": "...",
-      "date": "01/10/13",
+      "date": "10/01/13",
       "link": "http://weshare-isepdev.rhcloud.com",
       "readme": "https://github.com/DivLoic/weshare",
       "icon": "weshare.svg",
@@ -20,7 +20,7 @@
     "_flatracing": {
       "name": "FlatRacing",
       "description": "",
-      "date": "01/03/14",
+      "date": "03/04/14",
       "link": "http://flatracing.github.io",
       "readme": "https://github.com/DivLoic/FlatRacing/blob/master/README.md",
       "icon": "flatracing.svg",
@@ -31,7 +31,7 @@
     "_isepapp": {
       "name": "Isepapp",
       "description": "...",
-      "date": "01/03/15",
+      "date": "03/03/15",
       "link": "http://purple-isepdev.rhcloud.com/Isepapp",
       "readme": "https://github.com/PurpleConsulting/Isepapp/blob/master/README.md",
       "icon": "isepapp.svg",
@@ -40,9 +40,9 @@
       "coworkers": {"cw_2": true, "cw_5": true, "cw_4": true}
     },
     "_bamboo": {
-      "name": "Bamboo DMP",
+      "name": "Bamboo Dmp",
       "description": "...",
-      "date": "01/09/15",
+      "date": "09/15/15",
       "link": "https://github.com/DivLoic/Bamboo",
       "readme": "https://github.com/DivLoic/Bamboo/blob/master/II.3503_2015_RAPPORT_PANDA_CORP.pdf",
       "icon": "pandascorp1.svg",
@@ -53,7 +53,7 @@
     "_iosmove": {
       "name": "iOSMove",
       "description": "...",
-      "date": "15/09/15",
+      "date": "09/01/15",
       "link": "http://iosmove-isepdev.rhcloud.com",
       "readme": "https://github.com/DivLoic/iOSMove/blob/master/README.md",
       "icon": "iosmove.svg",
@@ -64,7 +64,7 @@
     "_challengedata": {
       "name": "Challenge Data",
       "description": "...",
-      "date": "01/11/15",
+      "date": "11/03/15",
       "link": "player/demo_5",
       "readme": "https://github.com/DivLoic/PlumeChallengeData",
       "icon": "pandascorp2.svg",
@@ -75,7 +75,7 @@
     "_rico": {
       "name": "Recommender",
       "description": "A scalable recommender system",
-      "date": "11/01/16",
+      "date": "01/11/16",
       "link": "https://github.com/DivLoic/Rico",
       "readme": "https://github.com/DivLoic/Rico/blob/master/README.md",
       "icon": "rico.svg",
@@ -196,7 +196,7 @@
     "demo_3": {
       "title": "Fake demo N° 4",
       "description": "The quick brown fox jumps over the lazy dog ...",
-      "type": "ML",
+      "type": "ml",
       "date": "2015-04-20",
       "source": "cars_two.html",
       "tools": ["R"],
@@ -216,7 +216,7 @@
     "demo_5": {
       "title": "ChallengeData: Plume Labs",
       "description": "The quick brown fox jumps over the lazy dog ...",
-      "type": "ML",
+      "type": "ml",
       "date": "2015-11-01",
       "source": "plumelabs.html",
       "tools": ["R"],
