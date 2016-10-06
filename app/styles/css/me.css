@@ -23,9 +23,10 @@ div.mebox div.mesubbox{
   vertical-align:middle;
 }
 p.citation{
+  color: #777777;
   padding-left: 16px;
-  border-left: 6px solid #47494D;
-  background-color: rgba(150, 150, 150, 0.1);
+  border-left: 6px solid #dddddd;
+  background-color: #ffffff;/*rgba(150, 150, 150, 0.1);*/
 }
 #badges{
   padding-left:0px;

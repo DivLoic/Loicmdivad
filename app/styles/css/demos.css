@@ -8,15 +8,16 @@
 	#listofdemos
 */
 img.icon-type{
-		display: inline-block;
-		vertical-align:bottom;
+  display: inline-block;
+  vertical-align:bottom;
 }
 span.demo-title{
 	font-size: 1.3em;
 	font-weight: bold;
 }
 #listofdemos{
-	margin-top: 16px;
+	margin-top: 2.5rem;
+  margin-bottom: 2.5rem
 }
 #listofdemos li{
 	margin-top: 1em;
@@ -51,17 +52,31 @@ div.democard a:hover span.demo-description{
   color: #1EAEDB;
 }
 div.democard a span.demo-description,
-div.democard a samll{
+div.democard a small{
 	color: #999999;
 	transition: 0.4s;
 }
 img.icon-type.flag{
 	opacity: 1;
-	margin-bottom: 2rem;
 	cursor: pointer;
+  margin-bottom: 2rem;
 }
 img.icon-type:hover {
   opacity: 1;
+}
+#demos-legend div img{
+  margin: auto;
+  display: block;
+  opacity: 0.6;
+  max-height: 50px;
+}
+#demos-legend div{
+  font-size: small;
+  font-style: italic;
+  text-align: center;
+}
+#demos-legend div div{
+  margin-bottom: 2rem;
 }
 @media only screen and (max-width: 610px) {
 		a.demo-img-icon{
