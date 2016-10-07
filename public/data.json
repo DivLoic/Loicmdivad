@@ -238,26 +238,26 @@
     "loc_0": {
       "place": "Sainte-Anne - Guadeloupe",
       "img": "img/gwada.png",
-      "lat": 0,
-      "lng": 0,
+      "lat": 16.233333,
+      "lng": -61.383333,
       "alt": "Picture took from Guadeloupe",
-      "text": ""
+      "text": "Sainte-Anne, Guadeloupe"
     },
     "loc_1": {
       "place": "Paris - France",
       "img": "img/paris.png",
-      "lat": 0,
-      "lng": 0,
+      "lat": 48.856578,
+      "lng": 2.351828,
       "alt": "Picture took from Paris",
-      "text": ""
+      "text": "Paris, France"
     },
     "loc_2": {
       "place": "Wuhan - China",
       "img": "img/wuhan.png",
-      "lat": 0,
-      "lng": 0,
+      "lat": 30.566667,
+      "lng": 114.266667,
       "alt": "Picture took from China",
-      "text": ""
+      "text": "武汉 Wuhan, China"
     }
   }
 }
