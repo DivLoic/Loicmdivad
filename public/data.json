@@ -183,26 +183,6 @@
       "seeAlso": [{"ref":"...", "link": "..."}],
       "credits": [{"ref":"...", "link": "..."}]
     },
-    "demo_2": {
-      "title": "The rolling statistics",
-      "description": "A few cool plots from stock data.",
-      "type": "graph",
-      "date": "2015-04-20",
-      "source": "stock_one.html",
-      "tools": ["Python", "Pandas", "Numpy"],
-      "seeAlso": [],
-      "credits": []
-    },
-    "demo_3": {
-      "title": "Fake demo N° 4",
-      "description": "The quick brown fox jumps over the lazy dog ...",
-      "type": "ml",
-      "date": "2015-04-20",
-      "source": "cars_two.html",
-      "tools": ["R"],
-      "seeAlso": [],
-      "credits": []
-    },
     "demo_4": {
       "title": "Riak",
       "description": "A quick tour of a really fast key-value databases.",
