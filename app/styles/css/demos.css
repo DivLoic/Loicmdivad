@@ -12,16 +12,15 @@ img.icon-type{
   vertical-align:bottom;
 }
 span.demo-title{
-	font-size: 1.3em;
 	font-weight: bold;
 }
 #listofdemos{
 	margin-top: 2.5rem;
   margin-bottom: 2.5rem
 }
-#listofdemos li{
-	margin-top: 1em;
-	margin-bottom: 1em;
+#listofdemos div.row{
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
 }
 span.demo-description{
 	font-style: italic;

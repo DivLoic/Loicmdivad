@@ -57,8 +57,9 @@ body{
 	text-decoration: none;
 }
 #body{
-	margin-left: 370px;
+	margin-left: 330px;
 }
+iframe { overflow:hidden; }
 /* -- HEADER -- */
 a{
   text-decoration:none;
