@@ -10,15 +10,10 @@
 div.mebox{
   display: table;
   width: 100%;
-  padding: 20px 0px;
-  margin: 20px 0px;
-  /*background-color: green*/
 }
 div.mebox div.mesubbox{
-  /*background: red;*/
   height: 100px;
   width: 100%;
-  margin:10px;
   display:table-cell;
   vertical-align:middle;
 }
@@ -26,7 +21,7 @@ p.citation{
   color: #777777;
   padding-left: 16px;
   border-left: 6px solid #dddddd;
-  background-color: #ffffff;/*rgba(150, 150, 150, 0.1);*/
+  background-color: #ffffff;
 }
 #badges{
   padding-left:0px;
@@ -48,9 +43,7 @@ p.citation{
   margin: 0px 0px 10px 10px ;
   line-height: 1.6em;
 }
-#bio.row{
-  margin-bottom: 12px;
-}
+
 /* -- Achivement bages part --*/
 div.mybages{
   margin-bottom: 12px;
@@ -64,10 +57,11 @@ div.mybages{
    min-width: 150px;
 }
 #map img{
-  display: inline-block;
+  width:150px;
+  height:150px;
+  margin: auto;
+  display: block;
 	vertical-align: top;
-	height:150px;
-	width:150px;
   opacity: 0.3;
   transition: 0.4s;
 }
@@ -75,6 +69,11 @@ div.mybages{
 #map img:active,
 #map img:focus{
     opacity: 0.8;
+}
+#map div.location-legend{
+  text-align: center;
+  font-size: small;
+
 }
 @media only screen and (max-width: 610px) {
   #map div img{
