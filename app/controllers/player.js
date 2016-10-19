@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   title: "Demo",
+
   asTools: function() {
     var tools = this.get('model').get('tools');
     return tools ==  null ? false : true;

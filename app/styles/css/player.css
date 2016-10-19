@@ -48,13 +48,16 @@ div#tools-bar p span .fa{
 }
 
 /* -- credits -- */
-div#credits{}
+div#player-footer{
+  margin-top: 4rem;
+}
 
 div#credits a, div#credits h5 {
     margin-bottom: 0.5rem;
 }
 
-div#credits a{
+div#credits a,
+div#see-also a{
     margin-bottom: 0px;
     font-style: italic;
 }

@@ -10,10 +10,11 @@
 
     {{demo-card demo=model}}
 
-    <div class="row">
+    <div id="player-footer" class="row">
+
       {{#if asTools}}
           <div id="tools-bar">
-            <h5 class="htitle">Tools:</h5>
+            <span class="htitle">Tools:</span>
             <p>
               {{#each model.tools as |tool|}}
                 <span class="tag-badge">
@@ -26,23 +27,19 @@
 
       {{#if asCredits}}
         <div id="credits">
-          <h5 class="htitle">Thanks to:</h5>
-          {{#each model.credits as |credit|}}
-            <a href="{{credit.link}}" target="_blank">{{credit.ref}}</a>
-          {{/each}}
+            <span class="htitle">Thanks to:</span>
+            <a href="{{model.credits.link}}" target="_blank">{{model.credits.ref}}</a>
         </div>
       {{/if}}
 
+
       {{#if asSeeAlso}}
-      <div id="see-also">
-        <h5 class="htitle">See Also:</h5>
-          <ul>
-            {{#each model.seeAlso as |see|}}
-              <li><a href="{{see.link}}">{{see.alias}}</a></li>
-            {{/each}}
-          </ul>
-      </div>
-    {{/if}}
+        <div id="see-also">
+            <span class="htitle">See Also:</span>
+            <a href="{{model.seeAlso.link}}">{{model.seeAlso.ref}}</a>
+        </div>
+      {{/if}}
+
   </div>
 
 </div>
