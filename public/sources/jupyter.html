@@ -1,2 +1,66 @@
 <style>
+  h5{
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
 </style>
+
+<div>
+
+This demo shows how I added other languages to <a href="http://jupyter.org" target="_blank">Jupyter</a>.
+Initially build for Pyhton, it can be fun and useful to add other languages to this interactive editor.
+
+<h5>Quick start</h5>
+
+You can see the version of your jupyter and the available kernels by hitting the following commands:
+
+<pre><code class="shell">jupyter --version
+pip install --upgrade "ipython[all]"
+jupyter kernelspec list</code></pre>
+
+<h5>Scala kernel</h5>
+
+For the scala language I chose <a href="https://github.com/alexarchambault/jupyter-scala" target="_blank">
+jupyter-scala</a> over other solutions, because it was a way lighter.
+
+<pre><code class="shell">wget "https://codeload.github.com/alexarchambault/jupyter-scala/zip/v0.3.0-M3-2" \
+-O jupyter-scala-0.3.0.zip
+unzip jupyter-scala-0.3.0.zip
+cd jupyter-scala-0.3.0-M3-2
+jupyter-scala</code></pre>
+
+Then open your jupyter notebook and start a Scala2.11 sheet.
+You can now write scala code in the notebook cells:
+
+<pre><code class="scala">import scala.math._
+println sys.env("HOME")
+val t = 0.1
+val foo = for(i <- 0 until 10 by 2) yield {
+  pow(t, i)*exp(-t)
+}</code></pre>
+
+<h5>R kernel</h5>
+
+First of all, you need a <a href="https://cran.r-project.org/bin/windows/base/" target="_blank">R distrib</a>.
+Then you can open a R shell or pass this script to a interpreter like <strong>Rstudio</strong>.
+It will install <a href="https://irkernel.github.io" target="_blank">IRKernel</a>.
+
+<pre><code class="R">install.packages( c(
+  'repr', 'IRdisplay', 'evaluate', 'crayon',
+  'pbdZMQ', 'devtools', 'uuid', 'digest')
+)
+devtools::install_github('IRkernel/IRdisplay')
+devtools::install_github('IRkernel/IRkernel')
+IRkernel::installspec()</code></pre>
+
+<h5>PySpark with Jupyter</h5>
+
+It's even easier for running Spark in Jupyter. The pySpark script deal with it. All we have to do is
+define this environment variable:
+
+<pre><code class="shell">export PYSPARK_DRIVER_PYTHON='ipython3'</code></pre>
+
+Then, using the <strong>pyspark</strong> command will start py4J, Jupyter and a Python shell.
+Their are bing to a Spark Context (sc) ready to be used.
+
+</div>
