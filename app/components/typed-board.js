@@ -4,7 +4,7 @@ export default Ember.Component.extend({
 
   linesToType: [
     "I study Software Engineering^500",
-    "work on data-driven topics^1000",
+    "work on data driven topics^1000",
     "and develop in Python and Scala",
   ],
 

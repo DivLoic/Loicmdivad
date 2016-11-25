@@ -37,7 +37,7 @@
       "icon": "isepapp.svg",
       "team": "PurpleConsulting",
       "technologies": ["Java", "MySQl", "jQuery", "Bootstrap"],
-      "coworkers": {"cw_2": true, "cw_5": true, "cw_4": true}
+      "coworkers": {"cw_2": true, "cw_5": true, "cw_4": true, "cw_99": true}
     },
     "_bamboo": {
       "name": "Bamboo Dmp",
@@ -120,7 +120,7 @@
       "firstName": "Thibault",
       "lastName": "Delevoye",
       "alias": "Thibault Dlv",
-      "link": "#"
+      "link": "https://fr.linkedin.com/in/thibault-delevoye/en"
     },
     "cw_7":{
       "firstName": "Jordan",
@@ -157,6 +157,12 @@
       "lastName": "Dembedydy",
       "alias": "Xavier",
       "link": "https://fr.linkedin.com/in/xavier-dembedydy-813b1784/en"
+    },
+    "cw_99": {
+      "firstName": "Shreya",
+      "lastName": "Mittal",
+      "alias": "Shreya",
+      "link": "https://fr.linkedin.com/in/shreya-mittal-8a3a5756"
     }
   },
   "demos": {
@@ -201,17 +207,32 @@
     },
     "demo_6": {
       "title": "Jupyter kernels",
-      "description": "",
+      "description": "Add Scala, Spark & R to Jupyter",
       "type": "code",
       "date": "2015-04-20",
       "source": "jupyter.html",
       "tools": ["Python", "Scala", "R"],
       "seeAlso": {
-        "ref":"a example of kernels in action",
+        "ref": "a example of kernels in action",
         "link": "https://github.com/DivLoic/notebook/blob/master/__SCALA/test.ipynb"},
       "credits": {
-        "ref":"the ipyhton list with more kernels",
+        "ref": "the ipyhton list with more kernels",
         "link": "https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages"
+      }
+    },
+    "demo_7": {
+      "title": "Optionals in Swift 2.0",
+      "description": "Example of optionals in swift",
+      "type": "code",
+      "date": "2016-04-",
+      "source": "iosmove.html",
+      "tools": ["Swift", "iOS", "Xcode"],
+      "seeAlso": {
+        "ref": "Presentation of the school project",
+        "link": "http://iosmove-isepdev.rhcloud.com"},
+      "credits": {
+        "ref": "Documentation of swift",
+        "link": "#"
       }
     }
   },

@@ -1,0 +1,21 @@
+<div>
+  Work with optional value is sometimes pain full. Every Java developer had to face the NPE issue
+  <i>(NullPointerException)</i>. While some programme
+<pre><code class="java">String version = "0.1";
+if(foo != null){
+  FooBar bar = foo.getBar();
+  if(bar != null){
+    String v = bar.getVersion;
+    if(v != null){
+      version = v;
+    }
+  }
+}</code></pre>
+  Other programming languages, like Scala, Julia or Haskel introduice Optional types.
+  This just a type of object that can either a value or nothing. it has easy access that allow to gently unwrap it
+
+<pre><code class="swift">if let version = foo?.getBar?.getVersion {
+    print("the latets version of lolo is: \(v)")
+}</code></pre>
+
+</div>
