@@ -21,8 +21,8 @@
       "name": "FlatRacing",
       "description": "",
       "date": "03/04/14",
-      "link": "http://flatracing.github.io",
-      "readme": "https://github.com/DivLoic/FlatRacing/blob/master/README.md",
+      "link": "http://mattp94.github.io/FlatRacing/",
+      "readme": "https://github.com/mattp94/FlatRacing/blob/master/README.md",
       "icon": "flatracing.svg",
       "team": "Div&Puib",
       "technologies": ["JAVA (with JavaScript verison)"],
@@ -217,14 +217,14 @@
         "link": "https://github.com/DivLoic/notebook/blob/master/__SCALA/test.ipynb"},
       "credits": {
         "ref": "the ipyhton list with more kernels",
-        "link": "https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages"
+        "link": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels"
       }
     },
     "demo_7": {
       "title": "Optionals in Swift 2.0",
       "description": "Example of optionals in swift",
       "type": "code",
-      "date": "2016-04-",
+      "date": "2016-04-04",
       "source": "iosmove.html",
       "tools": ["Swift", "iOS", "Xcode"],
       "seeAlso": {
