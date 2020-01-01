@@ -1,0 +1,27 @@
+name: Web Site Publication
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Checkout Submodules
+        uses: textbook/git-checkout-submodule-action@2.0.0
+
+      - name: Build Site
+        uses: chabad360/hugo-actions@master
+
+      - name: Deploy Github Pages
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.LMD_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./public
