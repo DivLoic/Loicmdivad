@@ -1,0 +1,48 @@
+@media screen and (min-width: 64em ) {
+    img#mugshot {
+        float: left;
+        width: 15rem;
+        margin-right: 1rem;
+        border-radius: 100%;
+        display: inline-block;
+    }
+}
+
+@media screen and  (min-width: 42em) and (max-width: 64em)  {
+    img#mugshot {
+        float: none;
+        width: 15rem;
+        border-radius: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 42em) {
+    img#mugshot {
+        float: none;
+        width: 12rem;
+        border-radius: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-content ul p {
+        text-align: center;
+    }
+    .main-content li i {
+        display: block;
+        margin: auto;
+        border-radius: 100%;
+        padding-bottom: 1rem;
+    }
+}
+
+.main-content ul {
+    padding-left: 0rem;
+}
+.main-content li i {
+    margin-right: 0.3rem;
+}

@@ -1,0 +1,20 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+<ul class="hg-page-list">
+    {{ $pages := .Pages }}
+    {{ range $i, $pages := .Pages.ByPublishDate.Reverse }}
+    {{ if $i }}<hr/>{{ end }}
+    <li>
+        {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
+        <div class="post-date">{{ .PublishDate.Format $dateFormat }}</div>
+        <div>
+            <a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a>
+        </div>
+        <br/>
+        <div class="content-preview">
+            {{ .Summary }}
+        </div>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

@@ -1,0 +1,34 @@
+{{ define "header" }}
+{{ partialCached "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>{{ .Title }}</h1>
+    	{{- if .Content }}
+		<div class="content">
+			{{ .Content }}
+		</div>
+		{{- end }}
+
+		<div>
+			<ul class="hg-page-list tag-list">
+				{{- range .Pages }}
+				<li class="tag-list-element">
+                    {{ $lang := cond (hasPrefix .Title "fr-") "fr" "" }}
+                    {{ $lang := cond (hasPrefix .Title "en-") "en" $lang }}
+					<a href="{{.Permalink}}" class="tag-link {{ $lang }}">
+						<span>{{.Title}}</span>
+					</a>
+				</li>
+				{{- end }}
+			</ul>
+		</div>
+        <!-- {{- range .Data.Pages.GroupByDate "2006" }}
+		{{- end }} -->
+	</main>
+{{ end }}
+
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}

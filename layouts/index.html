@@ -1,0 +1,19 @@
+{{ define "main" }}
+<ul class="hg-page-list">
+    {{ $pages := .Pages }}
+    {{ range $i, $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{ if $i }}<hr/>{{ end }}
+    <li>
+        {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
+        <div>{{ .PublishDate.Format $dateFormat }}</div>
+        <div>
+            <a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a>
+        </div>
+        <br/>
+        <div class="content-preview">
+            {{ .Summary }}
+        </div>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

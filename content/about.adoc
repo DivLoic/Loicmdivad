@@ -1,0 +1,33 @@
+---
+title: "About"
+date: 2019-12-11T00:32:07+01:00
+draft: false
+author: "Loïc DIVAD"
+extra_css: ["css/about.css"]
+---
+
+++++
+<img src="/images/about.jpeg" id="mugshot" alt="Loïc M. DIVAD Mugshot"/>
+++++
+
+== Bio
+
+Loic is a French🇫🇷🍷🧀 software engineer working at https://medium.com/xebia-france[Publicis Sapient Engineering]
+and living in Paris. Graduated from https://www.isep.fr/[ISEP],
+he now works in Data Engineering as https://www.scala-lang.org/[Scala] developer.
+He considers knowledge sharing as an essential part of the developer role.
+So training and blogging are part of his job, as well.
+Co-founder of https://dataxday.fr[DataXDay] he was previously organiser.
+He is part of the https://www.confluent.io/nominate/[Confluent Community Catalyst] first class, and
+has been member of the 2020's Kafka Summit https://kafka-summit.org/program-committee/[Program Committee].
+
+== Speaker Experience
+Kafka Summit, DEVOXX France, Xebicon, Paris Container Day, Confluent Streaming Event,
+Kafka Meetups, Google Cloud Meetups, _Le mois de cloud_ Meetups, _Le mois de la Data_ Meetups +
+... and more at https://speakerdeck.com/loicdivad[https://speakerdeck.com/loicdivad]
+
+== Contact
+- +++ <i class="fab fa-linkedin"></i>+++
+https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/[https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/]
+- +++ <i class="fab fa-twitter"></i>+++  https://twitter.com/LoicMDivad[https://twitter.com/LoicMDivad/]
+- +++ <i class="fab fa-github"></i>+++  https://github.com/DivLoic[https://github.com/DivLoic]
