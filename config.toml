@@ -5,10 +5,7 @@ title = "Loïc M. Divad"
 theme = "cayman-hugo-theme"
 summarylength = 50
 # Google analytics
-# googleAnalytics = "UA-123456789-1"
-
-# Disqus comments
-# disqusShortname = "yourdiscussshortname"
+googleAnalytics = "UA-155287871-1"
 
 # Syntax highlighting
 pygmentsCodefences = true
@@ -37,7 +34,7 @@ pygmentsStyle = "manni"
   #dateformNumTime = "2006-01-02 15:04 MST"
 
   project_name = "Loïc M. DIVAD"
-  project_tagline = "Event Streams and Monads in the Clouds 👨🏾‍💻🍹"
+  project_tagline = "Event Streams and Monads in the Clouds"
   mainSections = "posts"
 
   justifyContent = true
