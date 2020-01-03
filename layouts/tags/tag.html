@@ -2,7 +2,7 @@
 {{ $lang := cond (hasPrefix .Title "fr-") "fr" "" }}
 {{ $lang := cond (hasPrefix .Title "en-") "en" $lang }}
 <h1 class="{{ $lang }}">#{{ .Title }}</h1>
-<ul>
+<ul class="hg-page-list">
     {{ $pages := .Pages }}
     {{ range $i, $pages := .Pages.ByPublishDate.Reverse }}
     {{ if $i }}<hr/>{{ end }}
