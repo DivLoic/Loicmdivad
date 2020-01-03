@@ -202,7 +202,6 @@ a {
     margin-top: 0; }
   .main-content blockquote {
     padding: 0 1rem;
-    margin-left: 0;
     color: #819198;
     border-left: 0.3rem solid #dce6f0; }
     .main-content blockquote > :first-child {
@@ -277,6 +276,16 @@ p#socials {
     p#socials a:hover {
       color: #d8753a;
       text-decoration: none; }
+
+@media screen and (max-width: 42em) {
+  span.tg-icon:before {
+    content: "\A";
+    white-space: pre; } }
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  span.tg-icon:before {
+    content: "\A";
+    white-space: pre; } }
 
 section.main-content li {
   list-style: none; }
