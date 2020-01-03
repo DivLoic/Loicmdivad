@@ -298,7 +298,7 @@ a {
 
   blockquote {
     padding: 0 1rem;
-    margin-left: 0;
+    //margin-left: 0;
     color: $blockquote-text-color;
     border-left: 0.3rem solid $border-color;
 
@@ -406,6 +406,13 @@ p#socials{
       text-decoration: none;
     }
   }
+}
+
+@mixin tagline-icon-breakline { content: "\A"; white-space: pre; }
+
+span.tg-icon:before {
+  @include small { @include tagline-icon-breakline }
+  @include medium { @include tagline-icon-breakline }
 }
 
 // Main customisation
