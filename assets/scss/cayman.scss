@@ -448,16 +448,29 @@ a.post-link {
 }
 
 // Tags customisation
-a.tag-link span:before {
-  content: "#";
-};
+//a.tag-link span:before {
+//  content: "#";
+//};
 
-a.tag-link.fr span:after {
-  content: " 🇫🇷";
+a.tag-link i {
+  margin-left: 1rem;
+  color: $body-text-color;
+
+  &:before {
+    padding: 0.2rem;
+    border-radius: 100%;
+    background-color: #fff;
+
+  }
+
 }
 
-a.tag-link.en span:after {
-  content: " 🇬🇧";
+a.tag-link.fr span:before {
+  content: "🇫🇷";
+}
+
+a.tag-link.en span:before {
+  content: "🇬🇧";
 }
 
 ul.tag-list {
@@ -468,17 +481,26 @@ ul.tag-list {
 }
 
 li.tag-list-element {
+  font-size: 1rem;
   display: inline-block;
-  margin: 0px 0.3rem 1rem;
 
-  border-radius: 0.3rem;
-  background-color: #be533b;
+  margin: 0 0.3rem 1rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+
+  border-radius: 1.5em;
+  background-color: $body-text-color;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+
+  font-family: fa5-proxima-nova, "Helvetica Neue", Helvetica, Arial, "Open Sans", sans-serif;
 
   &:hover {
     cursor: pointer;
     text-decoration: none;
     background-color: #d8753a;
+
+    a.tag-link i{
+      color: #d8753a;
+    }
   }
 
   a {
@@ -488,7 +510,7 @@ li.tag-list-element {
     }
   }
 
-  @include large {
+/*  @include large {
     padding: 0.3rem 0.75rem;
     font-size: 1rem;
   }
@@ -501,5 +523,5 @@ li.tag-list-element {
   @include small {
     padding: 0.2rem 0.2rem;
     font-size: 0.75rem;
-  }
+  }*/
 }

@@ -19,6 +19,7 @@
                     {{ $lang := cond (hasPrefix .Title "en-") "en" $lang }}
 					<a href="{{.Permalink}}" class="tag-link {{ $lang }}">
 						<span>{{.Title}}</span>
+                        <i class="fab fa-slack-hash"></i>
 					</a>
 				</li>
 				{{- end }}
