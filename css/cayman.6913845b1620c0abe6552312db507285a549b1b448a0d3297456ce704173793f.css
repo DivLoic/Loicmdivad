@@ -58,6 +58,9 @@ a {
 .inner-page-header {
   z-index: -1;
   opacity: 50%;
+  -moz-opacity: 0.5;
+  -webkit-opacity: 0.5;
+  filter: alpha(opacity=50);
   background-size: 1600px;
   background-repeat: no-repeat;
   background-image: url("/images/banner.jpg");
@@ -98,7 +101,10 @@ a {
 .project-tagline {
   margin-bottom: 2rem;
   font-weight: normal;
-  opacity: 0.7; }
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  -webkit-opacity: 0.8;
+  filter: alpha(opacity=80); }
   @media screen and (min-width: 64em) {
     .project-tagline {
       font-size: 1.25rem; } }
@@ -291,7 +297,7 @@ section.main-content li {
   list-style: none; }
 
 .main-content ul.hg-page-list {
-  padding-inline-start: 0px; }
+  padding-inline-start: 0; }
 
 .main-content img {
   border-radius: 0.5rem; }
@@ -308,43 +314,35 @@ a.post-link {
     color: #d8753a;
     text-decoration: none; }
 
-a.tag-link span:before {
-  content: "#"; }
-
-a.tag-link.fr span:after {
-  content: " 🇫🇷"; }
-
-a.tag-link.en span:after {
-  content: " 🇬🇧"; }
-
 ul.tag-list {
   display: block;
   text-align: center;
-  padding-inline-start: 0px; }
-
-li.tag-list-element {
-  display: inline-block;
-  margin: 0px 0.3rem 1rem;
-  border-radius: 0.3rem;
-  background-color: #be533b;
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
-  li.tag-list-element:hover {
-    cursor: pointer;
-    text-decoration: none;
-    background-color: #d8753a; }
-  li.tag-list-element a {
-    color: #eaeaea; }
-    li.tag-list-element a:hover {
-      text-decoration: none; }
-  @media screen and (min-width: 64em) {
-    li.tag-list-element {
-      padding: 0.3rem 0.75rem;
-      font-size: 1rem; } }
-  @media screen and (min-width: 42em) and (max-width: 64em) {
-    li.tag-list-element {
-      padding: 0.25rem 0.50rem;
-      font-size: 0.90rem; } }
-  @media screen and (max-width: 42em) {
-    li.tag-list-element {
-      padding: 0.2rem 0.2rem;
-      font-size: 0.75rem; } }
+  padding-inline-start: 0; }
+  ul.tag-list li.tag-list-element {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0 0.3rem 1rem;
+    padding: 0.15rem 0.2rem 0.15rem 0.5rem;
+    border-radius: 1.5em;
+    background-color: #606c71;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
+    ul.tag-list li.tag-list-element a.tag-link {
+      color: #eaeaea; }
+      ul.tag-list li.tag-list-element a.tag-link i {
+        margin-left: 1rem;
+        color: #606c71;
+        background-color: #fff;
+        padding: 0.2rem;
+        border-radius: 100%; }
+      ul.tag-list li.tag-list-element a.tag-link.en span:before {
+        content: "🇬🇧"; }
+      ul.tag-list li.tag-list-element a.tag-link.fr span:before {
+        content: "🇫🇷"; }
+    ul.tag-list li.tag-list-element:hover {
+      cursor: pointer;
+      text-decoration: none;
+      background-color: #d8753a; }
+      ul.tag-list li.tag-list-element:hover a.tag-link {
+        text-decoration: none; }
+        ul.tag-list li.tag-list-element:hover a.tag-link i {
+          color: #d8753a; }
