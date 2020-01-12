@@ -12,7 +12,8 @@ The abstract:
 The slides:
 {{< speakerdeck id=e50c5340a2254583a676d84f15ffe7b6 slide=0 >}}  
   
-_Apache Kudu: the new big data antelope_ was my first XKE (Xebia Knowledge Exchange) and firts technical talk ever!
-Again, Thank you ❤️ [Publicis Sapient Engineering](https://medium.com/xebia-france) (formerly Xebia France).  
+The souvenir:   
+![Begining of the talk in Paris, 156 Boulevard Haussmann](/images/talks/00_apache_kudu.jpg)
 
-![](/images/talks/00_apache_kudu.jpg)
+_Apache Kudu: the new big data antelope_ was both my very first XKE (Xebia Knowledge Exchange) and first technical talk!
+Again, Thank you ❤️ [Publicis Sapient Engineering](https://medium.com/xebia-france) (formerly Xebia France).  
