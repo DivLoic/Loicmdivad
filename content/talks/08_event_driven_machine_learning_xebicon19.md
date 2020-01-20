@@ -11,3 +11,6 @@ The abstract (in French 🧀🍷🇫🇷):
 
 The slides:
 {{< speakerdeck id=16dec8879fe9463d8b74b634e1864b0e slide=0 >}}
+
+The video (in French 🧀🍷🇫🇷):
+{{< youtube id="g646cjDvg84" >}}
