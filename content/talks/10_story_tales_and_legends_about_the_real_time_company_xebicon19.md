@@ -9,3 +9,6 @@ The abstract in French (originally: _Contes et légendes autour de l'entreprise 
 
 The slides:
 {{< speakerdeck id=ee2350ce455e4540be5a21ad82a4d1e8 slide=0 >}}
+
+The video (in French 🧀🍷🇫🇷)
+{{< youtube id=vFHTrgrxsWU >}}
