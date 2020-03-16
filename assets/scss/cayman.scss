@@ -425,11 +425,7 @@ span.tg-icon:before {
 
 // Main customisation
 section.main-content {
-  div.post-content {
-    - div {
-      margin-bottom: 1rem;
-    }
-    li {
+  div.post-content li {
       list-style: disc;
     }
   }
