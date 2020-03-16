@@ -25,6 +25,8 @@ $hr-border-color: {{ $.Site.Params.hr_border_color | default "#eff0f1" }} !defau
 
 $header-img: '/images/{{ $.Site.Params.header_img }}';
 
+$background-color: #fefffe;
+
 @mixin large {
   @media screen and (min-width: #{$large-breakpoint}) {
     @content;
@@ -54,7 +56,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: $body-text-color;
-  background-color: #eaeaea;
+  background-color: $background-color;
 }
 
 a {
@@ -422,8 +424,19 @@ span.tg-icon:before {
 }
 
 // Main customisation
-section.main-content li {
-  list-style: none;
+section.main-content {
+  div.post-content {
+    - div {
+      margin-bottom: 1rem;
+    }
+    li {
+      list-style: disc;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
 }
 
 .main-content{
