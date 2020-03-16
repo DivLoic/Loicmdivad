@@ -9,7 +9,7 @@ googleAnalytics = "UA-155287871-1"
 
 # Syntax highlighting
 pygmentsCodefences = true
-pygmentsStyle = "manni"
+pygmentsStyle = "tango"
 
 [taxonomies]
   tag = "tags"
@@ -56,11 +56,11 @@ pygmentsStyle = "manni"
   blockquote_text_color = "#819198"
 
   # Code colors
-  code_background_color = "#f3f6fa"
+  code_background_color = "#edecea"
   code_text_color = "#be533b"
 
   # Border colors
-  border_color = "#dce6f0"
+  border_color = "#edecea"
   table_border_color = "#c4c5c4"
   hr_border_color = "#eff0f1"
 
