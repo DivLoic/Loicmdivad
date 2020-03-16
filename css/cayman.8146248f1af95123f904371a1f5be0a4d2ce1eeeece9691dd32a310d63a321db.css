@@ -9,7 +9,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #606c71;
-  background-color: #eaeaea; }
+  background-color: #fefffe; }
 
 a {
   color: #d8753a;
@@ -45,7 +45,6 @@ a {
     .btn {
       padding: 0.75rem;
       font-size: 0.9rem; } }
-
 .outer-page-header {
   z-index: 1;
   color: #fff;
@@ -97,7 +96,6 @@ a {
   @media screen and (max-width: 42em) {
     .project-name {
       font-size: 1.75rem; } }
-
 .project-tagline {
   margin-bottom: 2rem;
   font-weight: normal;
@@ -114,7 +112,6 @@ a {
   @media screen and (max-width: 42em) {
     .project-tagline {
       font-size: 1rem; } }
-
 .main-content {
   word-wrap: break-word; }
   .main-content :first-child {
@@ -154,7 +151,7 @@ a {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 0.9em;
     color: #be533b;
-    background-color: #f3f6fa;
+    background-color: #edecea;
     border-radius: 0.3rem; }
   .main-content pre {
     padding: 0.8rem;
@@ -163,8 +160,8 @@ a {
     font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
     color: #be533b;
     word-wrap: normal;
-    background-color: #f3f6fa;
-    border: solid 1px #dce6f0;
+    background-color: #edecea;
+    border: solid 1px #edecea;
     border-radius: 0.3rem; }
     .main-content pre > code {
       padding: 0;
@@ -209,7 +206,7 @@ a {
   .main-content blockquote {
     padding: 0 1rem;
     color: #819198;
-    border-left: 0.3rem solid #dce6f0; }
+    border-left: 0.3rem solid #edecea; }
     .main-content blockquote > :first-child {
       margin-top: 0; }
     .main-content blockquote > :last-child {
@@ -258,7 +255,6 @@ a {
   @media screen and (max-width: 42em) {
     .site-footer {
       font-size: 0.8rem; } }
-
 .site-footer-owner {
   display: block;
   font-weight: bold; }
@@ -292,6 +288,9 @@ p#socials {
   span.tg-icon:before {
     content: "\A";
     white-space: pre; } }
+
+section.main-content div.post-content li {
+  list-style: disc; }
 
 section.main-content li {
   list-style: none; }
