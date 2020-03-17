@@ -2,6 +2,7 @@
 title: "Hello, World"
 date: 1970-01-01T18:00:00+01:00
 draft: false
+extra_css: ["css/post.css"]
 ---
 
 Hello, again...
