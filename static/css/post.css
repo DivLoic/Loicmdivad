@@ -1,48 +1,19 @@
+/* Tag list adjustment for posts */
 ul.tag-list {
     margin: 0;
     display: inline;
-    text-align: center;
+    text-align: left;
     padding-inline-start: 0;
 }
-li.tag-list-element {
+ul.tag-list li.tag-list-element {
+    margin: 0;
     font-size: 0.8rem;
+    border-radius: 2em;
     display: inline-block;
-
-    margin: 0 ;
-    padding: 0.15rem 0.2rem 0.15rem 0.5rem;
-
-    border-radius: 1.5em;
-    /**background-color: $ body-text-color;**/
-    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
-
-a.tag-link {
-    color: #eaeaea;
-}
-a.tag-link i {
-    margin-left: 1rem;
-    /*color: $body-text-color;*/
-    background-color: #fff;
-    padding: 0.2rem;
-    border-radius: 100%;
-}
-
-a.tag-link i.en span:before {
-     content: "🇬🇧";
- }
-a.tag-link i.fr span:before {
-     content: "🇫🇷";
-}
-
-a.tag-link i:hover {
-    cursor: pointer;
-    text-decoration: none;
-    background-color: #d8753a;
-}
-
-a.tag-link i{
-    color: #d8753a;
-    text-decoration: none;
-
+ul.tag-list li.tag-list-element a.tag-link i {
+    margin-left: 0.5rem;
+    padding-left: 0.28rem;
+    padding-right: 0.28rem;
 }

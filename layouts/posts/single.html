@@ -10,7 +10,8 @@
       <li class="tag-list-element">
           {{ $lang := cond (hasPrefix . "fr-") "fr" "" }}
           {{ $lang := cond (hasPrefix . "en-") "en" $lang }}
-          <a href="{{(. | urlize)}}" class="tag-link {{ $lang }}">
+          {{ $hrefLink := print ("tags/" | absLangURL) (. | urlize) "/" }}
+          <a href="{{$hrefLink}}" class="tag-link {{ $lang }}">
               <span>{{.}}</span>
               <i class="fab fa-slack-hash"></i>
           </a>
