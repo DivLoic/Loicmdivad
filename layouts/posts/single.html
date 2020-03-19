@@ -5,6 +5,19 @@
     <i><strong>Publish date: </strong>{{ .PublishDate.Format $dateFormat }}</i>
       {{ $tags := slice }}
       {{ with .Params.tags }}
+      <ul class="hg-page-list tag-list">
+      {{ range . }}
+      <li class="tag-list-element">
+          {{ $lang := cond (hasPrefix . "fr-") "fr" "" }}
+          {{ $lang := cond (hasPrefix . "en-") "en" $lang }}
+          {{ $hrefLink := print ("tags/" | absLangURL) (. | urlize) "/" }}
+          <a href="{{$hrefLink}}" class="tag-link {{ $lang }}">
+              <span>{{.}}</span>
+              <i class="fab fa-slack-hash"></i>
+          </a>
+      </li>
+      {{ end }}
+      </ul>
       <br/><br/>
       {{ delimit $tags ", " }}
       {{ end }}
