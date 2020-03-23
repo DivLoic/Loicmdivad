@@ -2,6 +2,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="Loïc M. DIVAD, Event Streams and Monads in the Cloud">
+    {{ $thumbnail := (cond (ne (.Param "thumbnail") nil) (.Param "thumbnail" | printf "posts/%s") ("thumbnail.png")) }}
+    <meta property="og:image" content="https://blog.loicmdivad.com/images/{{ $thumbnail }}">
+    <meta property="og:description" content="Loic DIVAD personal blog">
+    <meta property="og:url" content="https://blog.loicmdivad.com/">
     {{ hugo.Generator }}
     <link rel="stylesheet" href="{{ "css/normalize.css" | absURL }}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>

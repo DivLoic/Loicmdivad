@@ -3,8 +3,9 @@ ul.tag-list {
     margin: 0;
     display: inline;
     text-align: left;
-    padding-inline-start: 0;
+    padding-inline-start: 0.25rem;
 }
+
 ul.tag-list li.tag-list-element {
     margin: 0;
     font-size: 0.8rem;
