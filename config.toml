@@ -34,7 +34,7 @@ pygmentsStyle = "tango"
   #dateformNumTime = "2006-01-02 15:04 MST"
 
   project_name = "Loïc M. DIVAD"
-  project_tagline = "Event Streams and Monads in the Clouds"
+  project_tagline = "Event Streams and Monads in the Cloud"
   mainSections = "posts"
 
   justifyContent = true
