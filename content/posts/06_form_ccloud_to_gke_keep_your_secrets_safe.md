@@ -1,10 +1,11 @@
 ---
-title: "From Confluent Cloud to GKE: Keep your secrets safe!"
-date: 2020-03-24T09:44:50+01:00
+title: "Use Confluent Cloud secrets in GKE"
+date: 2020-04-09T09:00:00+01:00
 draft: false
 author: "Loïc DIVAD"
 extra_css: ["css/post.css"]
 tags: ["tooling", "cloud"]
+thumbnail: thumbnail006.png
 ---
 
 On your journey to build event stream and real-time applications you have probably heard about [Confluent Cloud](https://www.confluent.io/confluent-cloud/):
