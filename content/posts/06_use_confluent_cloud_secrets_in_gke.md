@@ -69,7 +69,7 @@ $ ccloud service-account create "BlogPostAccount" --description "This is a demo 
 
 Finally, it's time to deploy our client application capable to produce in and consume from Kafka topics. But at this point, our Confluent Cloud interface might be asking us for new API keys:
 
-![foo](/images/posts/06/cluster_settings.png)
+![Empty api-key list from confluent.cloud](/images/posts/06/cluster_settings.png)
 
 Let's create the API keys we need to provide to our application in order to connect to both the Kafka cluster and the Schema Registry cluster
 
@@ -89,7 +89,7 @@ ccloud api-key create --service-account 54876 --resource lsrc-przmk # registry c
 
 Now we have the API Keys needed to run a Kafka Client application on behalf of the service account `BlogPostAccount`. All we have to do is share these keys.
 
-![foo](/images/posts/06/confluent_api_keys_ui.png)
+![Our first api-key is now listed in the interface](/images/posts/06/confluent_api_keys_ui.png)
 
 ### Application deployment and topics provisioning and
 
@@ -99,7 +99,7 @@ In order to easily deploy our Kafka Clients in a GKE cluster, we can store our C
 
 Quite handy, isn't it? How to use it? It can be included in a CI process to be part of our deployment phase. we just need to declare the Confluent API Keys as environment variables. For instance, [Github Action](https://github.com/features/actions) has the concept of secrets. 
 
-![foo](/images/posts/06/github_actions_secrets.png)
+![Github.com secrets page](/images/posts/06/github_actions_secrets.png)
 
 In the Github Action workflow, we may need to install tools such as `kubctl`, `gcloud` or additional SDKs.
 
@@ -126,11 +126,11 @@ Then we run the script by passing our secrets as environment variables.
 
 In the end of the workflow execution, a new config of type "secret" appears in the GKE interface.
 
-![foo](/images/posts/06/gke_config_map_secrets_1.png)
+![Google Kubernetes Engine config maps page](/images/posts/06/gke_config_map_secrets_1.png)
 
 All the entries are secured and can be safely access thought `spec.containers.env`.
 
-![foo](/images/posts/06/gke_config_map_secrets_2.png)
+![Google Kubernetes Engine secrets page](/images/posts/06/gke_config_map_secrets_2.png)
 
 We create the Kafka topics with the following commands:
 
