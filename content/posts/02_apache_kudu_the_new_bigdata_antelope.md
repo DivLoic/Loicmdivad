@@ -1,0 +1,19 @@
+---
+title: "Repost 🔁: Apache Kudu, the New Bigdata Antelope"
+date: 2019-12-15T18:00:01+01:00
+draft: false
+author: "Loïc DIVAD"
+extra_css: ["css/post.css"]
+tags: ["data-eng", "repost", "fr-link"]
+thumbnail: "thumbnail002.png"
+---
+
+Software Engineers frequently engage them self into new learning paths. We keep learning skills related to our field such as programming languages; libraries or even how new data systems work. This idea is one of the 4 company values of @PubSapientEng, they named it: Sharing Knowledge. Why *"sharing"*? Beside the idea to keep up with tech, it's a good way to extends your skills and get new perspectives on the job you do every day. When structuring what you have learnt, enough to share it (e.g. a blog post, a tech conferences, podcast), you will consolidate your new skills and confront your understanding. This is manly why, in early 2017, I've started to dig in how [Apache Kudu](https://kudu.apache.org/) works. At that time I was focuses on NoSQL technologies, Hadoop platforms and huge batch ingestions.
+
+{{< repost 
+    lnik="https://blog.engineering.publicissapient.fr/2017/04/10/apache-kudu-la-nouvelle-antilope-des-architectures-big-data/" 
+    title="Apache Kudu: la nouvelle antilope des architectures Big Data" >}}
+    
+At the same time I was preparing my very first technical talk. Can you guess the title of the presentation?? [Apache Kudu: the new big data antelope](https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/). Recycling is also an important rule in this *Sharing Knowledge* thing. Not every one consume content the same way, but by switch format for the same subject you will talk to a bigger audience . 
+
+For consulting company, this is essential. ... because you 
