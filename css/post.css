@@ -1,9 +1,8 @@
 /* Tag list adjustment for posts */
 ul.tag-list {
-    margin: 0;
     display: inline;
     text-align: left;
-    padding-inline-start: 0.25rem;
+    margin: 0 0 0 0.5rem;
 }
 
 ul.tag-list li.tag-list-element {
@@ -11,12 +10,6 @@ ul.tag-list li.tag-list-element {
     font-size: 0.8rem;
     border-radius: 2em;
     display: inline-block;
-}
-
-ul.tag-list li.tag-list-element a.tag-link i {
-    margin-left: 0.5rem;
-    padding-left: 0.28rem;
-    padding-right: 0.28rem;
 }
 
 /*repost links */

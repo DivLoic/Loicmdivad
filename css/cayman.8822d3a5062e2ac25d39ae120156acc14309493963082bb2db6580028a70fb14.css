@@ -313,11 +313,11 @@ a.post-link {
     color: #d8753a;
     text-decoration: none; }
 
-ul.tag-list {
+.tag-list {
   display: block;
   text-align: center;
   padding-inline-start: 0; }
-  ul.tag-list li.tag-list-element {
+  .tag-list .tag-list-element {
     font-size: 1rem;
     display: inline-block;
     margin: 0 0.3rem 1rem;
@@ -325,23 +325,19 @@ ul.tag-list {
     border-radius: 1.5em;
     background-color: #606c71;
     transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
-    ul.tag-list li.tag-list-element a.tag-link {
-      color: #eaeaea; }
-      ul.tag-list li.tag-list-element a.tag-link i {
-        margin-left: 1rem;
-        color: #606c71;
-        background-color: #fff;
-        padding: 0.2rem;
-        border-radius: 100%; }
-      ul.tag-list li.tag-list-element a.tag-link.en span:before {
+    .tag-list .tag-list-element a.tag-link {
+      color: #ffffff; }
+      .tag-list .tag-list-element a.tag-link .fa-layers .fa-tag {
+        color: #606c71; }
+      .tag-list .tag-list-element a.tag-link.en span.tag-name:before {
         content: "🇬🇧"; }
-      ul.tag-list li.tag-list-element a.tag-link.fr span:before {
+      .tag-list .tag-list-element a.tag-link.fr span.tag-name:before {
         content: "🇫🇷"; }
-    ul.tag-list li.tag-list-element:hover {
+    .tag-list .tag-list-element:hover {
       cursor: pointer;
       text-decoration: none;
       background-color: #d8753a; }
-      ul.tag-list li.tag-list-element:hover a.tag-link {
+      .tag-list .tag-list-element:hover a.tag-link {
         text-decoration: none; }
-        ul.tag-list li.tag-list-element:hover a.tag-link i {
+        .tag-list .tag-list-element:hover a.tag-link .fa-layers .fa-tag {
           color: #d8753a; }
