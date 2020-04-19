@@ -14,8 +14,11 @@
           {{ $lang := cond (hasPrefix . "en-") "en" $lang }}
           {{ $hrefLink := print ("tags/" | absLangURL) (. | urlize) "/" }}
           <a href="{{$hrefLink}}" class="tag-link {{ $lang }}">
-              <span>{{.}}</span>
-              <i class="fab fa-slack-hash"></i>
+              <span class="tag-name">{{.}}</span>
+              <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3"></i>
+              </span>
           </a>
       </li>
       {{ end }}

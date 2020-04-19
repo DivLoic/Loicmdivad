@@ -462,12 +462,12 @@ a.post-link {
 }
 
 // Tags customisation
-ul.tag-list {
+.tag-list {
   display: block;
   text-align: center;
   padding-inline-start: 0;
 
-  li.tag-list-element {
+  .tag-list-element {
     font-size: 1rem;
     display: inline-block;
 
@@ -479,18 +479,16 @@ ul.tag-list {
     transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 
     a.tag-link {
-      color: #eaeaea;
-      i {
-        margin-left: 1rem;
-        color: $body-text-color;
-        background-color: #fff;
-        padding: 0.2rem;
-        border-radius: 100%;
+      color: #ffffff;
+
+      .fa-layers .fa-tag {
+        color: $body-text-color;;
       }
-      &.en span:before {
+
+      &.en span.tag-name:before {
         content: "🇬🇧";
       }
-      &.fr span:before {
+      &.fr span.tag-name:before {
         content: "🇫🇷";
       }
     }
@@ -501,8 +499,10 @@ ul.tag-list {
       background-color: #d8753a;
 
       a.tag-link {
-        i { color: #d8753a; }
         text-decoration: none;
+        .fa-layers .fa-tag {
+            color: #d8753a;
+        }
       }
     }
   }
