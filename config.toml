@@ -29,6 +29,7 @@ pygmentsStyle = "tango"
 
 [params]
   extra_css = ["css/fontawesome.css"]
+  extra_js = ["js/fontawesome.js"]
   #dateform = "Jan 2, 2006"
   #dateformshort = "2006-01-02"
   #dateformNumTime = "2006-01-02 15:04 MST"
