@@ -6,10 +6,16 @@ ul.tag-list {
 }
 
 ul.tag-list li.tag-list-element {
-    margin: 0;
+    margin: 0 0.05rem;
     font-size: 0.8rem;
     border-radius: 2em;
     display: inline-block;
+}
+
+ul.tag-list li.tag-list-element a.tag-link i {
+    margin-left: 0.5rem;
+    padding-left: 0.28rem;
+    padding-right: 0.28rem;
 }
 
 /*repost links */
@@ -17,28 +23,23 @@ div.repost {
     border-radius: 10px;
     background-color: #f8f8fa;
 }
-
 div.repost p {
     display: inline-block
 }
-
 span.repost-logo {
-    padding: 4px 5px;
-    margin-right: 1em;
-    margin-left: 0.5em;
-    border-radius: 100%;
-    background-color: #a9a9a9;
+    padding: 5px 5px;
+    margin: 0 1em;
 }
-
 div.repost p a {
     color: #606c71;
     margin-right: 0.5em;
 }
-
+span.repost-logo .fa-link {
+    color: #606c71;
+}
+span.repost-logo .fa-link {
+    color: #f8f8fa
+}
 div.repost p a:hover {
     text-decoration: underline;
-}
-
-span.repost-logo i.fa {
-    color: #f8f8fa
 }
