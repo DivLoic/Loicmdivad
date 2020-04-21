@@ -1,2 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>en-link on Loïc M. Divad</title><link>https://blog.loicmdivad.com/tags/en-link/</link><description>Recent content in en-link on Loïc M. Divad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 01 Oct 2019 09:00:00 -0800</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/en-link/index.xml" rel="self" type="application/rss+xml"/><item><title>Kafka Streams Poison Pills (Kafka Summit SF'19)</title><link>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</link><pubDate>Tue, 01 Oct 2019 09:00:00 -0800</pubDate><guid>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</guid><description>The abstract:
-Apache Kafka&amp;rsquo;s Streams API lets us process messages from different topics with very low latency. Messages may have different formats, schemas and may even be serialised in different ways. What happens when an undesirable message comes in the flow? When an error occurs, real-time applications can&amp;rsquo;t always wait for manual recovery and need to handle such failures.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>en-link on Loïc M. Divad</title>
+    <link>https://blog.loicmdivad.com/tags/en-link/</link>
+    <description>Recent content in en-link on Loïc M. Divad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Oct 2019 09:00:00 -0800</lastBuildDate>
+    
+	<atom:link href="https://blog.loicmdivad.com/tags/en-link/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kafka Streams Poison Pills (Kafka Summit SF&#39;19)</title>
+      <link>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</link>
+      <pubDate>Tue, 01 Oct 2019 09:00:00 -0800</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</guid>
+      <description>The abstract:
+ Apache Kafka&amp;rsquo;s Streams API lets us process messages from different topics with very low latency. Messages may have different formats, schemas and may even be serialised in different ways. What happens when an undesirable message comes in the flow? When an error occurs, real-time applications can&amp;rsquo;t always wait for manual recovery and need to handle such failures.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Loïc M. Divad</title><link>https://blog.loicmdivad.com/posts/</link><description>Recent content in Posts on Loïc M. Divad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 09 Apr 2020 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Use Confluent Cloud secrets in GKE</title><link>https://blog.loicmdivad.com/posts/2020/04/use-confluent-cloud-secrets-in-gke/</link><pubDate>Thu, 09 Apr 2020 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/posts/2020/04/use-confluent-cloud-secrets-in-gke/</guid><description>On your journey to build event stream and real-time applications you have probably heard about Confluent Cloud:
-[&amp;hellip;] a fully managed, cloud-native event streaming platform powered by Apache Kafka.
-The team behind this service is putting a lot of efforts to provide a smooth and complete experience in working with Apache Kafka in the cloud.</description></item><item><title>Kafka topic creation with Scala and Gradle</title><link>https://blog.loicmdivad.com/posts/2020/03/kafka-topic-creation-with-scala-and-gradle/</link><pubDate>Sun, 15 Mar 2020 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/posts/2020/03/kafka-topic-creation-with-scala-and-gradle/</guid><description>If you develop a piece of software dealing with data systems, you are probably facing a few prerequisites. For example, you may need a file system to be mounted or a database table to be created. The same applies to event stream applications using Apache Kafka® as an event log. They need topics, schemas and ACLs to be created first, in order to run correctly.</description></item><item><title>Hello, World</title><link>https://blog.loicmdivad.com/posts/1970/01/hello-world/</link><pubDate>Thu, 01 Jan 1970 18:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/posts/1970/01/hello-world/</guid><description>Hello, again&amp;hellip; I&amp;rsquo;ve decided to relaunch this site. People always insist on the importance of having a kind of portfolio, blog or website. It is true, especially for developers. So here is mine! It’s not totally new. I’ve revamped my previous attempt to create a personal page by migrating to Hugo.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Loïc M. Divad</title>
+    <link>https://blog.loicmdivad.com/posts/</link>
+    <description>Recent content in Posts on Loïc M. Divad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Apr 2020 09:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://blog.loicmdivad.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Use Confluent Cloud secrets in GKE</title>
+      <link>https://blog.loicmdivad.com/posts/2020/04/use-confluent-cloud-secrets-in-gke/</link>
+      <pubDate>Thu, 09 Apr 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/posts/2020/04/use-confluent-cloud-secrets-in-gke/</guid>
+      <description>On your journey to build event stream and real-time applications you have probably heard about Confluent Cloud:
+ [&amp;hellip;] a fully managed, cloud-native event streaming platform powered by Apache Kafka.
+ The team behind this service is putting a lot of efforts to provide a smooth and complete experience in working with Apache Kafka in the cloud.</description>
+    </item>
+    
+    <item>
+      <title>Kafka topic creation with Scala and Gradle</title>
+      <link>https://blog.loicmdivad.com/posts/2020/03/kafka-topic-creation-with-scala-and-gradle/</link>
+      <pubDate>Sun, 15 Mar 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/posts/2020/03/kafka-topic-creation-with-scala-and-gradle/</guid>
+      <description>If you develop a piece of software dealing with data systems, you are probably facing a few prerequisites. For example, you may need a file system to be mounted or a database table to be created. The same applies to event stream applications using Apache Kafka® as an event log. They need topics, schemas and ACLs to be created first, in order to run correctly.</description>
+    </item>
+    
+    <item>
+      <title>Hello, World</title>
+      <link>https://blog.loicmdivad.com/posts/1970/01/hello-world/</link>
+      <pubDate>Thu, 01 Jan 1970 18:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/posts/1970/01/hello-world/</guid>
+      <description>Hello, again&amp;hellip; I&amp;rsquo;ve decided to relaunch this site. People always insist on the importance of having a kind of portfolio, blog or website. It is true, especially for developers. So here is mine! It’s not totally new. I’ve revamped my previous attempt to create a personal page by migrating to Hugo.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ml on Loïc M. Divad</title><link>https://blog.loicmdivad.com/tags/ml/</link><description>Recent content in ml on Loïc M. Divad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 28 Nov 2019 09:00:01 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/ml/index.xml" rel="self" type="application/rss+xml"/><item><title>Event Driven Machine Learning (Xebicon'19)</title><link>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</link><pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-Le serving de modèle de Machine Learning pour la prédiction en temps réel présente des défis tant en Data Engineering qu&amp;rsquo;en Data Science. Comment construire un pipeline moderne qui permet de réaliser des prédictions en continu ? Dans le cas d’un exercice supervisé, comment allier tracing et tracking des performances ?</description></item><item><title>The Machine Learning Platform and Continuous Deployment</title><link>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</link><pubDate>Thu, 30 Nov 2017 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-De plus en plus d’initiatives Data Science sont rendues possibles grâce à la mise en place de DataLakes. Les modèles de Machine Learning inclus dans ces projets sont, comme toute application, sujets à évolutions. Le suivi de ces évolutions peut-il être automatisé ? Les standards de déploiement pour ces applications sont-ils toujours de rigueur ?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ml on Loïc M. Divad</title>
+    <link>https://blog.loicmdivad.com/tags/ml/</link>
+    <description>Recent content in ml on Loïc M. Divad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Nov 2019 09:00:01 +0100</lastBuildDate>
+    
+	<atom:link href="https://blog.loicmdivad.com/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Event Driven Machine Learning (Xebicon&#39;19)</title>
+      <link>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</link>
+      <pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ Le serving de modèle de Machine Learning pour la prédiction en temps réel présente des défis tant en Data Engineering qu&amp;rsquo;en Data Science. Comment construire un pipeline moderne qui permet de réaliser des prédictions en continu ? Dans le cas d’un exercice supervisé, comment allier tracing et tracking des performances ?</description>
+    </item>
+    
+    <item>
+      <title>The Machine Learning Platform and Continuous Deployment</title>
+      <link>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</link>
+      <pubDate>Thu, 30 Nov 2017 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ De plus en plus d’initiatives Data Science sont rendues possibles grâce à la mise en place de DataLakes. Les modèles de Machine Learning inclus dans ces projets sont, comme toute application, sujets à évolutions. Le suivi de ces évolutions peut-il être automatisé ? Les standards de déploiement pour ces applications sont-ils toujours de rigueur ?</description>
+    </item>
+    
+  </channel>
+</rss>

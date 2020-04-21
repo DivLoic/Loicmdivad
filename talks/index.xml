@@ -1,12 +1,125 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Talks on Loïc M. Divad</title><link>https://blog.loicmdivad.com/talks/</link><description>Recent content in Talks on Loïc M. Divad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 28 Nov 2019 09:00:01 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/talks/index.xml" rel="self" type="application/rss+xml"/><item><title>Event Driven Machine Learning (Xebicon'19)</title><link>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</link><pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-Le serving de modèle de Machine Learning pour la prédiction en temps réel présente des défis tant en Data Engineering qu&amp;rsquo;en Data Science. Comment construire un pipeline moderne qui permet de réaliser des prédictions en continu ? Dans le cas d’un exercice supervisé, comment allier tracing et tracking des performances ?</description></item><item><title>Story Tales and Legends about the Real Time Company (Xebicon'19)</title><link>https://blog.loicmdivad.com/talks/story-tales-and-legends-about-the-real-time-company-xebicon19/</link><pubDate>Thu, 28 Nov 2019 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/story-tales-and-legends-about-the-real-time-company-xebicon19/</guid><description>The abstract in French (originally: Contes et légendes autour de l&amp;rsquo;entreprise temps réel 🧀🍷🇫🇷):
-La vie de votre business est faite d’une suite d'événements. Une jolie maxime qui ne colle pas avec la réalité de la plupart des systèmes d’information. Les usages poussent de plus en plus vers un traitement en temps réel de l’information.</description></item><item><title>Real Time App Use Case from PMU</title><link>https://blog.loicmdivad.com/talks/real-time-app-use-case-from-pmu/</link><pubDate>Thu, 14 Nov 2019 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/real-time-app-use-case-from-pmu/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-Au PMU, certaines applications Events Stream adressent des sujets atypiques qui nous poussent à réfléchir sur la façon d’interagir en temps réel avec nos parieurs. Ces parieurs sont exclusivement anonymes et accessibles durant un laps de temps très restreint. Ainsi pour les atteindre au travers de campagnes marketing, nous ne disposons que d’une fenêtre de 200 ms.</description></item><item><title>Kafka Streams Poison Pills (Kafka Summit SF'19)</title><link>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</link><pubDate>Tue, 01 Oct 2019 09:00:00 -0800</pubDate><guid>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</guid><description>The abstract:
-Apache Kafka&amp;rsquo;s Streams API lets us process messages from different topics with very low latency. Messages may have different formats, schemas and may even be serialised in different ways. What happens when an undesirable message comes in the flow? When an error occurs, real-time applications can&amp;rsquo;t always wait for manual recovery and need to handle such failures.</description></item><item><title>Kafka Streams On k8s: The Difficulties</title><link>https://blog.loicmdivad.com/talks/kafka-streams-on-k8s-the-difficulties/</link><pubDate>Tue, 04 Jun 2019 09:00:00 +0200</pubDate><guid>https://blog.loicmdivad.com/talks/kafka-streams-on-k8s-the-difficulties/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-L’ Auto Scaling c’est l’argument phare d’un bon nombre de technologies en Data Engineering. Parmi les outils du moment, on retrouve Kafka-Streams. Avec sa forte intégration au bus de message Apache Kafka, il est pensé pour être un framework distribué capable de passer à l’échelle.</description></item><item><title>Kafka Streams Poison Pills (DEVOXX France'19)</title><link>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-devoxx-france19/</link><pubDate>Thu, 18 Apr 2019 09:00:00 +0200</pubDate><guid>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-devoxx-france19/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-Kafka-Streams, la librairie de traitement de données en temps réel de Apache Kafka permet de traiter une grande quantité de messages avec de très faibles latences. Les messages peuvent avoir des formats différents, des schémas différents et même être sérialisés de manières différentes. Alors que se passe-t-il quand un message indésirable se retrouve dans un flux ?</description></item><item><title>Scale in and out, with Kstreams and k8s</title><link>https://blog.loicmdivad.com/talks/scale-in-and-out-with-kstreams-and-k8s/</link><pubDate>Tue, 12 Feb 2019 19:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/scale-in-and-out-with-kstreams-and-k8s/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-L’ Auto Scaling c’est l’argument phare d’un bon nombre de technologies en Data Engineering. Parmi les outils du moment, on retrouve Kafka Streams. Avec sa forte intégration au bus de message Apache Kafka, il est pensé pour être un framework distribué capable de passer à l’échelle.</description></item><item><title>Scale in / Scale out with Kafka Streams and Kubernetes</title><link>https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/</link><pubDate>Tue, 20 Nov 2018 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/</guid><description>The abstract:
-Apache Kafka’s Streams API lets us process messages from different topics with very low latency. Messages may have different formats, schemas and may even be serialised in different ways. What happens when an undesirable message comes in the flow? When an error occurs, real-time applications can’t always wait for manual recovery and need to handle such failures.</description></item><item><title>Processor API: the dark side of Kafka Streams</title><link>https://blog.loicmdivad.com/talks/processor-api-the-dark-side-of-kafka-streams/</link><pubDate>Mon, 12 Mar 2018 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/processor-api-the-dark-side-of-kafka-streams/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-Complexe et fastidieuse, la Processor API est souvent mise de côté. C’est dommage, surtout quand on apprend que les plus grandes fonctionnalités de Kafka Streams s’y cachent. Notamment les stateful operations et interactives queries. Malgré cela c’est Stream DSL, l’API haut niveau, qui a su séduire les développeurs.</description></item><item><title>The Machine Learning Platform and Continuous Deployment</title><link>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</link><pubDate>Thu, 30 Nov 2017 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</guid><description>The abstract (in French 🧀🍷🇫🇷):
-De plus en plus d’initiatives Data Science sont rendues possibles grâce à la mise en place de DataLakes. Les modèles de Machine Learning inclus dans ces projets sont, comme toute application, sujets à évolutions. Le suivi de ces évolutions peut-il être automatisé ? Les standards de déploiement pour ces applications sont-ils toujours de rigueur ?</description></item><item><title>Apache Kudu: the new big data antelope</title><link>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</link><pubDate>Mon, 10 Apr 2017 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</guid><description>The abstract:
-Apache Hadoop and it&amp;rsquo;s distributed file system are probably the most representative to tools in the Big Data Area. They have democratised distributed workloads on large datasets for hundreds of companies already, just in Paris. But these workloads are append-only batches. However, life in companies can&amp;rsquo;t be only described by fast scan systems.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talks on Loïc M. Divad</title>
+    <link>https://blog.loicmdivad.com/talks/</link>
+    <description>Recent content in Talks on Loïc M. Divad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Nov 2019 09:00:01 +0100</lastBuildDate>
+    
+	<atom:link href="https://blog.loicmdivad.com/talks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Event Driven Machine Learning (Xebicon&#39;19)</title>
+      <link>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</link>
+      <pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ Le serving de modèle de Machine Learning pour la prédiction en temps réel présente des défis tant en Data Engineering qu&amp;rsquo;en Data Science. Comment construire un pipeline moderne qui permet de réaliser des prédictions en continu ? Dans le cas d’un exercice supervisé, comment allier tracing et tracking des performances ?</description>
+    </item>
+    
+    <item>
+      <title>Story Tales and Legends about the Real Time Company (Xebicon&#39;19)</title>
+      <link>https://blog.loicmdivad.com/talks/story-tales-and-legends-about-the-real-time-company-xebicon19/</link>
+      <pubDate>Thu, 28 Nov 2019 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/story-tales-and-legends-about-the-real-time-company-xebicon19/</guid>
+      <description>The abstract in French (originally: Contes et légendes autour de l&amp;rsquo;entreprise temps réel 🧀🍷🇫🇷):
+ La vie de votre business est faite d’une suite d&#39;événements. Une jolie maxime qui ne colle pas avec la réalité de la plupart des systèmes d’information. Les usages poussent de plus en plus vers un traitement en temps réel de l’information.</description>
+    </item>
+    
+    <item>
+      <title>Real Time App Use Case from PMU</title>
+      <link>https://blog.loicmdivad.com/talks/real-time-app-use-case-from-pmu/</link>
+      <pubDate>Thu, 14 Nov 2019 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/real-time-app-use-case-from-pmu/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ Au PMU, certaines applications Events Stream adressent des sujets atypiques qui nous poussent à réfléchir sur la façon d’interagir en temps réel avec nos parieurs. Ces parieurs sont exclusivement anonymes et accessibles durant un laps de temps très restreint. Ainsi pour les atteindre au travers de campagnes marketing, nous ne disposons que d’une fenêtre de 200 ms.</description>
+    </item>
+    
+    <item>
+      <title>Kafka Streams Poison Pills (Kafka Summit SF&#39;19)</title>
+      <link>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</link>
+      <pubDate>Tue, 01 Oct 2019 09:00:00 -0800</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-kafka-summit-sf19/</guid>
+      <description>The abstract:
+ Apache Kafka&amp;rsquo;s Streams API lets us process messages from different topics with very low latency. Messages may have different formats, schemas and may even be serialised in different ways. What happens when an undesirable message comes in the flow? When an error occurs, real-time applications can&amp;rsquo;t always wait for manual recovery and need to handle such failures.</description>
+    </item>
+    
+    <item>
+      <title>Kafka Streams On k8s: The Difficulties</title>
+      <link>https://blog.loicmdivad.com/talks/kafka-streams-on-k8s-the-difficulties/</link>
+      <pubDate>Tue, 04 Jun 2019 09:00:00 +0200</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/kafka-streams-on-k8s-the-difficulties/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ L’ Auto Scaling c’est l’argument phare d’un bon nombre de technologies en Data Engineering. Parmi les outils du moment, on retrouve Kafka-Streams. Avec sa forte intégration au bus de message Apache Kafka, il est pensé pour être un framework distribué capable de passer à l’échelle.</description>
+    </item>
+    
+    <item>
+      <title>Kafka Streams Poison Pills (DEVOXX France&#39;19)</title>
+      <link>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-devoxx-france19/</link>
+      <pubDate>Thu, 18 Apr 2019 09:00:00 +0200</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/kafka-streams-poison-pills-devoxx-france19/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ Kafka-Streams, la librairie de traitement de données en temps réel de Apache Kafka permet de traiter une grande quantité de messages avec de très faibles latences. Les messages peuvent avoir des formats différents, des schémas différents et même être sérialisés de manières différentes. Alors que se passe-t-il quand un message indésirable se retrouve dans un flux ?</description>
+    </item>
+    
+    <item>
+      <title>Scale in and out, with Kstreams and k8s</title>
+      <link>https://blog.loicmdivad.com/talks/scale-in-and-out-with-kstreams-and-k8s/</link>
+      <pubDate>Tue, 12 Feb 2019 19:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/scale-in-and-out-with-kstreams-and-k8s/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ L’ Auto Scaling c’est l’argument phare d’un bon nombre de technologies en Data Engineering. Parmi les outils du moment, on retrouve Kafka Streams. Avec sa forte intégration au bus de message Apache Kafka, il est pensé pour être un framework distribué capable de passer à l’échelle.</description>
+    </item>
+    
+    <item>
+      <title>Scale in / Scale out with Kafka Streams and Kubernetes</title>
+      <link>https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/</link>
+      <pubDate>Tue, 20 Nov 2018 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/</guid>
+      <description>The abstract:
+ Apache Kafka’s Streams API lets us process messages from different topics with very low latency. Messages may have different formats, schemas and may even be serialised in different ways. What happens when an undesirable message comes in the flow? When an error occurs, real-time applications can’t always wait for manual recovery and need to handle such failures.</description>
+    </item>
+    
+    <item>
+      <title>Processor API: the dark side of Kafka Streams</title>
+      <link>https://blog.loicmdivad.com/talks/processor-api-the-dark-side-of-kafka-streams/</link>
+      <pubDate>Mon, 12 Mar 2018 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/processor-api-the-dark-side-of-kafka-streams/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ Complexe et fastidieuse, la Processor API est souvent mise de côté. C’est dommage, surtout quand on apprend que les plus grandes fonctionnalités de Kafka Streams s’y cachent. Notamment les stateful operations et interactives queries. Malgré cela c’est Stream DSL, l’API haut niveau, qui a su séduire les développeurs.</description>
+    </item>
+    
+    <item>
+      <title>The Machine Learning Platform and Continuous Deployment</title>
+      <link>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</link>
+      <pubDate>Thu, 30 Nov 2017 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/the-machine-learning-platform-and-continuous-deployment/</guid>
+      <description>The abstract (in French 🧀🍷🇫🇷):
+ De plus en plus d’initiatives Data Science sont rendues possibles grâce à la mise en place de DataLakes. Les modèles de Machine Learning inclus dans ces projets sont, comme toute application, sujets à évolutions. Le suivi de ces évolutions peut-il être automatisé ? Les standards de déploiement pour ces applications sont-ils toujours de rigueur ?</description>
+    </item>
+    
+    <item>
+      <title>Apache Kudu: the new big data antelope</title>
+      <link>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</link>
+      <pubDate>Mon, 10 Apr 2017 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</guid>
+      <description>The abstract:
+ Apache Hadoop and it&amp;rsquo;s distributed file system are probably the most representative to tools in the Big Data Area. They have democratised distributed workloads on large datasets for hundreds of companies already, just in Paris. But these workloads are append-only batches. However, life in companies can&amp;rsquo;t be only described by fast scan systems.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,2 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>distributed on Loïc M. Divad</title><link>https://blog.loicmdivad.com/tags/distributed/</link><description>Recent content in distributed on Loïc M. Divad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 Apr 2017 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/distributed/index.xml" rel="self" type="application/rss+xml"/><item><title>Apache Kudu: the new big data antelope</title><link>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</link><pubDate>Mon, 10 Apr 2017 09:00:00 +0100</pubDate><guid>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</guid><description>The abstract:
-Apache Hadoop and it&amp;rsquo;s distributed file system are probably the most representative to tools in the Big Data Area. They have democratised distributed workloads on large datasets for hundreds of companies already, just in Paris. But these workloads are append-only batches. However, life in companies can&amp;rsquo;t be only described by fast scan systems.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>distributed on Loïc M. Divad</title>
+    <link>https://blog.loicmdivad.com/tags/distributed/</link>
+    <description>Recent content in distributed on Loïc M. Divad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Apr 2017 09:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://blog.loicmdivad.com/tags/distributed/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Apache Kudu: the new big data antelope</title>
+      <link>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</link>
+      <pubDate>Mon, 10 Apr 2017 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</guid>
+      <description>The abstract:
+ Apache Hadoop and it&amp;rsquo;s distributed file system are probably the most representative to tools in the Big Data Area. They have democratised distributed workloads on large datasets for hundreds of companies already, just in Paris. But these workloads are append-only batches. However, life in companies can&amp;rsquo;t be only described by fast scan systems.</description>
+    </item>
+    
+  </channel>
+</rss>
