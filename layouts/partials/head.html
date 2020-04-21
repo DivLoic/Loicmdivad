@@ -12,6 +12,9 @@
     <meta name="twitter:creator" content="@LoicMDivad">
     {{ hugo.Generator }}
     <link rel="stylesheet" href="{{ "css/normalize.css" | absURL }}">
+    {{ if eq hugo.Environment "DEV" }}
+    <link rel="stylesheet" href="/css/github.css">
+    {{ end }}
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     {{ $caymanScss := "scss/cayman.scss" }}
     {{ $options := (dict "targetPath" "css/cayman.css") }}

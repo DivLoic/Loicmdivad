@@ -18,6 +18,8 @@ jobs:
 
       - name: Build Site
         uses: chabad360/hugo-actions@master
+        with:
+          args: -e PROD
 
       - name: Deploy Github Pages
         uses: peaceiris/actions-gh-pages@v2

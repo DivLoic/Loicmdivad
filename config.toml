@@ -28,11 +28,8 @@ pygmentsStyle = "tango"
   latexDashes = true
 
 [params]
-  extra_css = ["css/fontawesome.css"]
+  extra_css = ["css/fontawesome.css"] # + css/github.css (dev)
   extra_js = ["js/fontawesome.js"]
-  #dateform = "Jan 2, 2006"
-  #dateformshort = "2006-01-02"
-  #dateformNumTime = "2006-01-02 15:04 MST"
 
   project_name = "Loïc M. DIVAD"
   project_tagline = "Event Streams and Monads in the Cloud"
