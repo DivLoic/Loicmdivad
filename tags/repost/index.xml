@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>repost on Loïc M. Divad</title>
+    <link>https://blog.loicmdivad.com/tags/repost/</link>
+    <description>Recent content in repost on Loïc M. Divad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Apr 2017 09:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://blog.loicmdivad.com/tags/repost/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Repost 🔁: Apache Kudu, the New Bigdata Antelope</title>
+      <link>https://blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/</link>
+      <pubDate>Mon, 10 Apr 2017 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/</guid>
+      <description>Software Engineers frequently engage themself into new learning paths. We keep learning skills related to our field such as programming languages; libraries or even how new data systems work. This idea is one of the 4 company values of @PubSapientEng, and they named it: Sharing Knowledge. Why &amp;ldquo;sharing&amp;rdquo;? Besides the idea to keep up with tech, it&amp;rsquo;s a good way to extends your skills and get new perspectives on the job you do every day.</description>
+    </item>
+    
+  </channel>
+</rss>

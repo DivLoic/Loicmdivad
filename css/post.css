@@ -1,45 +1,95 @@
 /* Tag list adjustment for posts */
-ul.tag-list {
+.tag-list {
     display: inline;
     text-align: left;
+}
+
+.post-info .tag-list {
     margin: 0 0 0 0.5rem;
 }
 
-ul.tag-list li.tag-list-element {
+.tag-list {
+    margin: 0;
+}
+
+.tag-list .tag-list-element {
     margin: 0 0.05rem;
     font-size: 0.8rem;
     border-radius: 2em;
     display: inline-block;
 }
 
-ul.tag-list li.tag-list-element a.tag-link i {
+.tag-list .tag-list-element a.tag-link i {
     margin-left: 0.5rem;
     padding-left: 0.28rem;
     padding-right: 0.28rem;
 }
 
-/*repost links */
-div.repost {
+/* */
+.ld-repost, .ld-info {
     border-radius: 10px;
+}
+
+.ld-repost-icon, .ld-info-icon, .ld-repost-text, .ld-info-text {
+    padding-top: 0.5em;
+    margin-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+    padding-left: 0.5em;
+    margin-left: 0.5em;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.ld-info-icon, .ld-info-text,
+.ld-repost-icon, .ld-repost-text {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.ld-repost-text, .ld-info-text {
+    width: 85%;
+}
+
+/*repost links */
+.ld-repost {
     background-color: #f8f8fa;
 }
-div.repost p {
-    display: inline-block
-}
-span.repost-logo {
-    padding: 5px 5px;
-    margin: 0 1em;
-}
-div.repost p a {
+
+.ld-repost div a {
     color: #606c71;
     margin-right: 0.5em;
 }
-span.repost-logo .fa-link {
+
+.ld-repost-icon {
+    text-align: center;
+    vertical-align: middle;
+}
+.ld-repost-icon .fa-circle {
     color: #606c71;
 }
-span.repost-logo .fa-link {
+
+.ld-repost-icon .fa-link {
     color: #f8f8fa
 }
-div.repost p a:hover {
+
+.ld-repost div a:hover {
     text-decoration: underline;
+}
+
+/* ld-info */
+.ld-info {
+    color: #606c71;
+    background-color: #DFECFF;
+}
+
+.ld-info-icon {
+    color: #0052CC;
+}
+
+@media screen and (max-width: 42em) {
+    .ld-repost-icon, .ld-info-icon, .ld-repost-text, .ld-info-text {
+        padding: 0.3em;
+        margin: 0.3em;
+    }
 }

@@ -133,12 +133,17 @@
   </url>
   
   <url>
-    <loc>https://blog.loicmdivad.com/tags/data/</loc>
+    <loc>https://blog.loicmdivad.com/tags/distsys/</loc>
     <lastmod>2017-04-10T09:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.loicmdivad.com/tags/distributed/</loc>
+    <loc>https://blog.loicmdivad.com/tags/repost/</loc>
+    <lastmod>2017-04-10T09:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/</loc>
     <lastmod>2017-04-10T09:00:00+01:00</lastmod>
   </url>
   
