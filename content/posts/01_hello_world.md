@@ -21,8 +21,7 @@ Hugo is a powerful and famous static site generator. I've been using other types
 
 The primary objective of this site is to publish short notes. 
 Little blog posts that address very simple subjects. 
-It also aims to gather links to longer posts published on other blogs (e.g., 
-[blog.xebia.fr](https://blog.xebia.fr/author/ldivad/), [medium.com/xebia-france](https://medium.com/xebia-france)).
+It also aims to gather links to longer posts published on other blogs (e.g. [blog.xebia.fr](https://blog.xebia.fr/author/ldivad/), [medium.com/xebia-france](https://medium.com/xebia-france)).
 There is also a page dedicated to [talks](/talks/) I gave. 
 Finally, to do exactly like everyone else I’ve got my 
 self a place to brag 👉 [about](/about/). Now you may wonder:

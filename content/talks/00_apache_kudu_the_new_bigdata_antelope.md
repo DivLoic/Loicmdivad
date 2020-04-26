@@ -3,7 +3,7 @@ title: "Apache Kudu: the new big data antelope"
 date: 2017-04-10T09:00:00+01:00
 draft: false
 author: "Loïc DIVAD"
-tags: [ "data", "distributed" ]
+tags: [ "data-eng" ]
 ---
 
 The abstract:
