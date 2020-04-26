@@ -1,7 +1,7 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ with .Params.thumbnail }} <img src="/images/posts/{{ . }}" alt="Post thumbnail"> {{ end }}
-  <div>
+  <div class="post-info">
     {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
     <i><strong>Publish date: </strong>{{ .PublishDate.Format $dateFormat }}</i>
 
