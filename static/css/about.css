@@ -1,5 +1,5 @@
 @media screen and (min-width: 64em ) {
-    img#mugshot {
+    div#card, img#mugshot, img#ld-logo {
         float: left;
         width: 15rem;
         margin-right: 1rem;
@@ -9,7 +9,7 @@
 }
 
 @media screen and  (min-width: 42em) and (max-width: 64em)  {
-    img#mugshot {
+    div#card, img#mugshot, img#ld-logo {
         float: none;
         width: 15rem;
         border-radius: 100%;
@@ -20,7 +20,7 @@
 }
 
 @media screen and (max-width: 42em) {
-    img#mugshot {
+    div#card, img#mugshot, img#ld-logo {
         float: none;
         width: 12rem;
         border-radius: 100%;
