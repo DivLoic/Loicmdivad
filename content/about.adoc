@@ -37,13 +37,15 @@ Kafka Meetups, Google Cloud Meetups, _Le mois de cloud_ Meetups, _Le mois de la 
 == I'm also on +++ <a class="insta" href="https://www.instagram.com/loicmdivad/">IG<i class="fab fa-instagram"></i></a> +++
 
 ++++
-
+<div class="insta" style="z-index: 0;">
 {{< instagram BoKLXE9AqgJ hidecaption >}}
-
+</div>
+<div class="insta" style="z-index: 1;">
 {{< instagram B7wI3D0opf0 hidecaption >}}
-
+</div>
+<div class="insta" style="z-index: 2;">
 {{< instagram B3bzCVbodeu hidecaption >}}
-
+</div>
 ++++
 
 == Contact
