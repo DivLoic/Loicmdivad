@@ -15,6 +15,7 @@ a {
   color: #d8753a;
   text-decoration: none; }
   a:hover {
+    cursor: pointer;
     text-decoration: underline; }
 
 .btn {
