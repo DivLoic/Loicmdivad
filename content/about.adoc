@@ -34,6 +34,20 @@ Kafka Summit, DEVOXX France, Xebicon, Paris Container Day, Confluent Streaming E
 Kafka Meetups, Google Cloud Meetups, _Le mois de cloud_ Meetups, _Le mois de la Data_ Meetups +
 ... and more at https://speakerdeck.com/loicdivad[https://speakerdeck.com/loicdivad]
 
+== I'm also on +++ <a class="insta" href="https://www.instagram.com/loicmdivad/">IG<i class="fab fa-instagram"></i></a> +++
+
+++++
+<div class="insta" style="z-index: 0;">
+{{< instagram BoKLXE9AqgJ hidecaption >}}
+</div>
+<div class="insta" style="z-index: 1;">
+{{< instagram B7wI3D0opf0 hidecaption >}}
+</div>
+<div class="insta" style="z-index: 2;">
+{{< instagram B3bzCVbodeu hidecaption >}}
+</div>
+++++
+
 == Contact
 - +++ <i class="fab fa-linkedin"></i>+++
 https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/[https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/]
