@@ -6,9 +6,6 @@
         border-radius: 100%;
         display: inline-block;
     }
-    div.insta {
-        max-width: 30%;
-    }
 }
 
 @media screen and  (min-width: 42em) and (max-width: 64em)  {
@@ -19,9 +16,6 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-    }
-    div.insta {
-        max-width: 25%;
     }
 }
 
@@ -44,9 +38,6 @@
         border-radius: 100%;
         padding-bottom: 1rem;
     }
-    div.insta {
-        max-width: 15%;
-    }
 }
 
 .main-content ul {
@@ -61,7 +52,22 @@ a.insta:hover {
     color: #733c3c;
     text-decoration: none;
 }
+div.insta-paragraph {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+div.insta-paragraph :first-child {
+    align-self: start;
+}
+div.insta-paragraph :nth-child(2) {
+    align-self: center;
+}
+div.insta-paragraph :last-child {
+    align-self: end;
+}
 div.insta {
-    position: relative;
+    max-width: 32%;
+    margin: auto;
     display: inline-block;
 }

@@ -37,14 +37,22 @@ Kafka Meetups, Google Cloud Meetups, _Le mois de cloud_ Meetups, _Le mois de la 
 == I'm also on +++ <a class="insta" href="https://www.instagram.com/loicmdivad/">IG<i class="fab fa-instagram"></i></a> +++
 
 ++++
-<div class="insta" style="z-index: 0;">
-{{< instagram BoKLXE9AqgJ hidecaption >}}
-</div>
-<div class="insta" style="z-index: 1;">
-{{< instagram B7wI3D0opf0 hidecaption >}}
-</div>
-<div class="insta" style="z-index: 2;">
-{{< instagram B3bzCVbodeu hidecaption >}}
+<div class="paragraph insta-paragraph">
+    <div class="insta">
+        <a href="https://www.instagram.com/p/BoKLXE9AqgJ/" target="_blank">
+            <img src="/images/about_insta1.png" alt="La Javelle - Guinguette effervescente"/>
+        </a>
+    </div>
+    <div class="insta">
+        <a href="https://www.instagram.com/p/B7wI3D0opf0/" target="_blank">
+            <img src="/images/about_insta2.png" alt="Palais Brongniart (Xebicon 2019)"/>
+        </a>
+    </div>
+    <div class="insta">
+        <a href="https://www.instagram.com/p/B3bzCVbodeu/" target="_blank">
+            <img src="/images/about_insta3.png" alt="Golden Gate Bridge, San Francisco"/>
+        </a>
+    </div>
 </div>
 ++++
 
