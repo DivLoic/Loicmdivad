@@ -16,3 +16,6 @@ The slides:
 The video (in French 🧀🍷🇫🇷):
 {{< youtube id="9AYGhsXeEwY" >}}
 
+Shout out to the [@PubSapEng](https://twitter.com/PubSapientEng) folks 💖!
+
+![Lolo on stage at Xebia France](/images/talks/02_processor_api.jpg)    
