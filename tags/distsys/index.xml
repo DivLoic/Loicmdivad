@@ -6,11 +6,7 @@
     <description>Recent content in distsys on Loïc M. Divad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Apr 2017 09:00:00 +0100</lastBuildDate>
-    
-	<atom:link href="https://blog.loicmdivad.com/tags/distsys/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 10 Apr 2017 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/distsys/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apache Kudu: the new big data antelope</title>
       <link>https://blog.loicmdivad.com/talks/apache-kudu-the-new-big-data-antelope/</link>

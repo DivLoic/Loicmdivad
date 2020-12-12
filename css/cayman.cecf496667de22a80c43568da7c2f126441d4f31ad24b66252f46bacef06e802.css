@@ -61,7 +61,7 @@ a {
   -moz-opacity: 0.5;
   -webkit-opacity: 0.5;
   filter: alpha(opacity=50);
-  background-size: 1600px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-image: url("/images/banner.jpg");
   position: absolute;

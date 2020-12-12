@@ -6,11 +6,7 @@
     <description>Recent content in tooling on Loïc M. Divad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Apr 2020 09:00:00 +0100</lastBuildDate>
-    
-	<atom:link href="https://blog.loicmdivad.com/tags/tooling/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 09 Apr 2020 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/tooling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use Confluent Cloud secrets in GKE</title>
       <link>https://blog.loicmdivad.com/posts/2020/04/use-confluent-cloud-secrets-in-gke/</link>
