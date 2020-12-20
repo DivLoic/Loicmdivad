@@ -5,7 +5,7 @@ draft: false
 author: "Loïc DIVAD"  
 tags: ["tooling"]
 extra_css: ["css/post.css"]
-thumbnail: "thumbnail001.png"
+thumbnail: "thumbnail005.png"
 ---  
 If you develop a piece of software dealing with data systems, you are probably facing a few prerequisites. For example, you may need a file system to be mounted or a database table to be created. The same applies to event stream applications using [**Apache Kafka**](http://kafka.apache.org/)® as an event log. They need **topics**, **schemas** and **ACLs** to be created first, in order to run correctly. However, these tasks aren't the application's responsibility. It would be terrible to include these creation tasks as part of our main class or program entry-point. Does that mean we have to learn something new; setup a creation interface or move to the Kafka shell scripts 🤔?
 
