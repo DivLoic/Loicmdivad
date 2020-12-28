@@ -1,5 +1,5 @@
 ---
-title: "Repost 🔁: Apache Kudu, the New Bigdata Antelope"
+title: "Repost 🔃 Apache Kudu: the New Bigdata Antelope"
 date: 2017-04-10T09:00:00+01:00
 draft: false
 author: "Loïc DIVAD"
