@@ -38,6 +38,15 @@
     </item>
     
     <item>
+      <title>Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes</title>
+      <link>https://blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/</link>
+      <pubDate>Mon, 15 Apr 2019 18:00:02 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/</guid>
+      <description>There are many reasons for working on community contributions such as a blog post, a demo, or a talk. Sometimes, you produce those contributions to share something that you&amp;rsquo;ve learned at work. But sometimes, the contribution itself can be a way to learn and experiment something new. I was in the second case when I worked on the article Kafka Streams: a road to Autoscaling via Kubernetes.</description>
+    </item>
+    
+    <item>
       <title>Scale in / Scale out with Kafka Streams and Kubernetes</title>
       <link>https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/</link>
       <pubDate>Tue, 20 Nov 2018 09:00:00 +0100</pubDate>
@@ -68,7 +77,7 @@
     </item>
     
     <item>
-      <title>Repost 🔁: Apache Kudu, the New Bigdata Antelope</title>
+      <title>Repost 🔃 Apache Kudu: the New Bigdata Antelope</title>
       <link>https://blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/</link>
       <pubDate>Mon, 10 Apr 2017 09:00:00 +0100</pubDate>
       

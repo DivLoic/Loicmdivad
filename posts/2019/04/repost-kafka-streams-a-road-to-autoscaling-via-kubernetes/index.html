@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/">
+    <meta property="og:url" content="https://blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/">
     <meta property="og:description" content="Loic DIVAD's blog">
-    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail002.png">
+    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail004.png">
     <meta property="og:title" content="Loïc M. DIVAD, Event Streams and Monads in the Cloud">
     <meta name="twitter:site" content="@LoicMDivad">
     <meta name="twitter:creator" content="@LoicMDivad">
@@ -28,7 +28,7 @@
     
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/fontawesome.css">
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
-    <title>Repost 🔃 Apache Kudu: the New Bigdata Antelope | Loïc M. Divad</title>
+    <title>Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes | Loïc M. Divad</title>
 </head>
 
   <body>
@@ -84,11 +84,11 @@
 
     <section class="main-content">
       
-  <h1>Repost 🔃 Apache Kudu: the New Bigdata Antelope</h1>
-   <img src="/images/posts/thumbnail002.png" alt="Post thumbnail"> 
+  <h1>Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes</h1>
+   <img src="/images/posts/thumbnail004.png" alt="Post thumbnail"> 
   <div class="post-info">
     
-    <i><strong>Publish date: </strong>Apr 10, 2017</i>
+    <i><strong>Publish date: </strong>Apr 15, 2019</i>
 
       
       
@@ -100,6 +100,45 @@
           
           <a href="https://blog.loicmdivad.com/tags/repost/" class="tag-link ">
               <span class="tag-name">repost</span>
+              <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+              </span>
+          </a>
+      </li>
+      
+      <li class="tag-list-element">
+          
+          
+          
+          <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
+              <span class="tag-name">streams</span>
+              <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+              </span>
+          </a>
+      </li>
+      
+      <li class="tag-list-element">
+          
+          
+          
+          <a href="https://blog.loicmdivad.com/tags/kafka/" class="tag-link ">
+              <span class="tag-name">kafka</span>
+              <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+              </span>
+          </a>
+      </li>
+      
+      <li class="tag-list-element">
+          
+          
+          
+          <a href="https://blog.loicmdivad.com/tags/cloud/" class="tag-link ">
+              <span class="tag-name">cloud</span>
               <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
                   <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
@@ -124,8 +163,8 @@
           
           
           
-          <a href="https://blog.loicmdivad.com/tags/distsys/" class="tag-link ">
-              <span class="tag-name">distsys</span>
+          <a href="https://blog.loicmdivad.com/tags/en-link/" class="tag-link en">
+              <span class="tag-name">en-link</span>
               <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
                   <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
@@ -139,7 +178,7 @@
       
   </div>
 
-  <div class="post-content"><p>Software Engineers frequently engage themself into new learning paths. We keep learning skills related to our field such as programming languages; libraries or even how new data systems work. This idea is one of the 4 company values of <a href="https://twitter.com/PubSapientEng">@PubSapientEng</a>, and they named it: Sharing Knowledge. Why &ldquo;sharing&rdquo;? Besides the idea to keep up with tech, it&rsquo;s a good way to extends your skills and get new perspectives on the job you do every day. When structuring what you have learnt, enough to share it (e.g. a blog post, a tech conferences, podcast), you will consolidate your new skills and confront your understanding to others. This is mainly why, in early 2017, I&rsquo;ve started to dig in what is <a href="https://kudu.apache.org/">Apache Kudu</a>. At that time, I was focused on NoSQL technologies, Hadoop platforms and huge batch ingestions.</p>
+  <div class="post-content"><p>There are many reasons for working on community contributions such as a blog post, a demo, or a talk. Sometimes, you produce those contributions to share something that you&rsquo;ve learned at work. But sometimes, the contribution itself can be a way to learn and experiment something new. I was in the second case when I worked on the article Kafka Streams: a road to Autoscaling via Kubernetes.</p>
 <div class="ld-repost">
     <div style="display: block"></div>
     <div class="ld-repost-icon fa-1x">
@@ -149,16 +188,14 @@
         </span>
     </div>
     <div class="ld-repost-text">
-        <a href="https://blog.engineering.publicissapient.fr/2017/04/10/apache-kudu-la-nouvelle-antilope-des-architectures-big-data/" target="_blank"> Apache Kudu: la nouvelle antilope des architectures Big Data</a>
+        <a href="https://medium.com/xebia-france/kafka-streams-a-road-to-autoscaling-via-kubernetes-417f2597439" target="_blank"> Kafka Streams: a road to autoscaling via Kubernetes</a>
     </div>
 </div>
-<p>At the same time, I was preparing my very first technical talk. Can you guess the title of the presentation?? Exactly: <a href="/talks/apache-kudu-the-new-big-data-antelope/">Apache Kudu: the new big data antelope</a>. Recycling is also an essential rule in this Sharing Knowledge thing. Not everyone consumes content the same way, but by switching format for the same subject, you will talk to a bigger audience and develop more skills.</p>
-<p>For consulting companies, it is essential. It solves two significant problems:</p>
-<ul>
-<li>They need extra motivation to keep their teams learning</li>
-<li>They need the people outside to know they exist and they are interested in cool stuff</li>
-</ul>
-<p>That&rsquo;s why Sharing Knowledge is a win-win.</p>
+<p>At that time, I was working for a consulting company, and my client was running one of it&rsquo;s first real-time project on Apache Kafka®. We were developing a Kafka Streams application meant to be deployed on three virtual machines to process data from ~12 partitions. We were satisfied with how these instances handled the normal workload. However, in some situations, we wished we could be more flexible and easily add more deployments. Issues like crashes; restarts; upgrades led to significant increases in the record lag. Meanwhile, our colleagues were all converted to the same sect: Kubernetes. So I started to ask my self: &ldquo;can we address this particular problem with Kubernetes&rdquo;. And that&rsquo;s how I&rsquo;ve started to explore Kubernetes custom metrics API.</p>
+<p>Basically the demo: <a href="https://github.com/DivLoic/xke-kingof-scaling">xke-kingof-scaling</a> brings a random data generator, a Kafka Streams application and a minimal infra (declared with Terraform) to recreate the use case and highlight the issue I was trying to address. The project was running on <a href="https://cloud.google.com">GCP</a>, and the Kafka cluster used was on <a href="https://www.confluent.io/confluent-cloud/">Confluent Cloud</a>. The first deadline for this hack project was actually a presentation. I had to present the talk <a href="https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/">Scale in / Scale out with Kafka Streams and Kubernetes</a> 🎞 🇫🇷 at <a href="https://2018.xebicon.fr/">the 2018 Edition of Xebicon</a>.</p>
+<p><img src="/images/posts/04/lolo_on_stage.jpg" alt="Loic DIVAD at Xebicon 2018"></p>
+<p>Then came the two blog posts, the first in <a href="https://blog.engineering.publicissapient.fr/2019/05/03/kafka-streams-une-voie-vers-lautoscaling-avec-kubernetes/">French</a> and the second in <a href="https://medium.com/xebia-france/kafka-streams-a-road-to-autoscaling-via-kubernetes-417f2597439">English</a>. The first draft was simply the transcript of the talk, which was really useful.</p>
+<p>Doing this demo (and the corresponding blog post) brought me a lot. Not only because I&rsquo;ve learned a lot, but also because I&rsquo;ve been stuck halfway on my demonstration and had to figure out how to get things to work. At the time, the two pieces of software I was dealing with, a Kafka Steams application and the Kube custom metrics API, didn&rsquo;t have a trivial integration. But it had a different dynamic to the story. And now that I can take a step back from it, I think it was one of the funniest demos I&rsquo;ve created.</p>
 <div class="ld-info">
     <div style="display: block"></div>
     <div class="ld-info-icon">

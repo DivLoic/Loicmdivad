@@ -108,6 +108,16 @@
   </url>
   
   <url>
+    <loc>https://blog.loicmdivad.com/tags/repost/</loc>
+    <lastmod>2019-04-15T18:00:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/</loc>
+    <lastmod>2019-04-15T18:00:02+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.loicmdivad.com/talks/scale-in-and-out-with-kstreams-and-k8s/</loc>
     <lastmod>2019-02-12T19:00:00+01:00</lastmod>
   </url>
@@ -134,11 +144,6 @@
   
   <url>
     <loc>https://blog.loicmdivad.com/tags/distsys/</loc>
-    <lastmod>2017-04-10T09:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.loicmdivad.com/tags/repost/</loc>
     <lastmod>2017-04-10T09:00:00+01:00</lastmod>
   </url>
   
