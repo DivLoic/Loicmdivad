@@ -52,10 +52,12 @@ a.insta:hover {
     color: #733c3c;
     text-decoration: none;
 }
-div.insta-paragraph {
+div.insta-paragraph,
+div.company-paragraph {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    padding-bottom: 16px;
 }
 div.insta-paragraph :first-child {
     align-self: start;
@@ -66,8 +68,14 @@ div.insta-paragraph :nth-child(2) {
 div.insta-paragraph :last-child {
     align-self: end;
 }
-div.insta {
+div.insta, div.company {
     max-width: 32%;
     margin: auto;
     display: inline-block;
+}
+div.company {
+    text-align: center;
+}
+div.company-paragraph div.company img{
+    border-radius: 100%;
 }
