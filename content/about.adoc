@@ -34,19 +34,18 @@ https://kafka-summit.org/program-committee/[Kafka Summit 2020 Program Committee]
 ++++
 <div class="paragraph company-paragraph">
     <div class="company">
-        <a href="https://careers.publicissapient.com" target="_blank">
-                <img src="/images/about/companylogo1.png" alt=""/>
-        </a>
-        <span>Xebia France - 2016/2020</span>
+        <figure>
+            <img src="/images/about/companylogo1.png" alt="Xebia France - 2016/2020">
+            <figcaption><a href="/images/about/companylogo1.png">Xebia France <br> 2016/2020</a></figcaption>
+        </figure>
     </div>
     <div class="company">
-        <a href="https://www.spotifyjobs.com" target="_blank">
-            <img src="/images/about/companylogo2.png" alt=""/>
-        </a>
-        <span>Spotify - 2020/...</span>
+        <figure>
+            <img src="/images/about/companylogo2.png" alt="Xebia France - 2016/2020">
+            <figcaption><a href="https://www.spotifyjobs.com">Spotify  <br> 2020/...</a></figcaption>
+        </figure>
     </div>
 </div>
-
 ++++
 
 == Speaker Experience
