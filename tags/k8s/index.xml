@@ -13,7 +13,7 @@
       <pubDate>Tue, 04 Jun 2019 09:00:00 +0200</pubDate>
       
       <guid>https://blog.loicmdivad.com/talks/kafka-streams-on-k8s-the-difficulties/</guid>
-      <description>The abstract (in French 🧀🍷🇫🇷):
+      <description>The abstract (in French 🇫🇷):
  L’ Auto Scaling c’est l’argument phare d’un bon nombre de technologies en Data Engineering. Parmi les outils du moment, on retrouve Kafka-Streams. Avec sa forte intégration au bus de message Apache Kafka, il est pensé pour être un framework distribué capable de passer à l’échelle.</description>
     </item>
     
