@@ -15,6 +15,6 @@ Related medium blog post:
 The slides:
 {{< speakerdeck id=3e60eeaf159e42bdba878c6a70aebc6b slide=0 >}}
 
-The video (in French 🧀🍷🇫🇷):
+The video (in French 🇫🇷):
 {{< youtube id="gf1PJ7SJ55s" t="4500">}}
 
