@@ -55,9 +55,9 @@ Meetups ... and more at https://speakerdeck.com/loicdivad[https://speakerdeck.co
 
 == Photography 📸
 I've been trying to understand how a camera works lately. A small part of that journey is on
-https://unsplash.com/@loicmdivad[my unsplash page]:
+https://unsplash.com/@loicmdivad[my unsplash page].
 
-== Cocking 🥘
+// == Cocking 🥘
 
 == I'm also on +++ <a class="insta" href="https://www.instagram.com/loicmdivad/">IG<i class="fab fa-instagram"></i></a> +++
 
@@ -82,7 +82,16 @@ https://unsplash.com/@loicmdivad[my unsplash page]:
 ++++
 
 == Contact
-- +++ <i class="fab fa-linkedin"></i>+++
-https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/[https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/]
-- +++ <i class="fab fa-twitter"></i>+++  https://twitter.com/LoicMDivad[https://twitter.com/LoicMDivad/]
-- +++ <i class="fab fa-github"></i>+++  https://github.com/DivLoic[https://github.com/DivLoic]
+++++
+<div class="paragraph socials-paragraph">
+    <a class="social twitter" href="https://twitter.com/LoicMDivad" target="_blank">
+        <i class="fab fa-2x fa-twitter"></i>
+    </a>
+    <a class="social github" href="https://github.com/DivLoic" target="_blank">
+        <i class="fab fa-2x fa-github"></i>
+    </a>
+    <a class="social linkedin" href="https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/" target="_blank">
+        <i class="fab fa-2x fa-linkedin"></i>
+    </a>
+</div>
+++++
