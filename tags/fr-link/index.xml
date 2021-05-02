@@ -6,7 +6,17 @@
     <description>Recent content in fr-link on Loïc M. Divad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Nov 2019 09:00:01 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/fr-link/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jun 2020 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/fr-link/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EDML: the Confluent Webinar edition</title>
+      <link>https://blog.loicmdivad.com/talks/edml-the-confluent-webinar-edition/</link>
+      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/talks/edml-the-confluent-webinar-edition/</guid>
+      <description>The abstract in French 🇫🇷:
+ Le serving de modèle de Machine Learning pour la prédiction en temps réel présente des défis tant en Data Engineering qu&amp;rsquo;en Data Science. Comment construire un pipeline moderne qui permet de réaliser des prédictions en continu ? Dans le cas d&amp;rsquo;un exercice supervisé, comment allier tracing et tracking des performances ?</description>
+    </item>
+    
     <item>
       <title>Event Driven Machine Learning (Xebicon&#39;19)</title>
       <link>https://blog.loicmdivad.com/talks/event-driven-machine-learning-xebicon19/</link>

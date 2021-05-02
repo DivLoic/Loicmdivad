@@ -6,13 +6,49 @@
     <description>Recent content in Tags on Loïc M. Divad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Apr 2020 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jun 2020 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>cloud</title>
       <link>https://blog.loicmdivad.com/tags/cloud/</link>
-      <pubDate>Thu, 09 Apr 2020 09:00:00 +0100</pubDate>
+      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
       
       <guid>https://blog.loicmdivad.com/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fr-link</title>
+      <link>https://blog.loicmdivad.com/tags/fr-link/</link>
+      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/tags/fr-link/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kafka</title>
+      <link>https://blog.loicmdivad.com/tags/kafka/</link>
+      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ml</title>
+      <link>https://blog.loicmdivad.com/tags/ml/</link>
+      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>streams</title>
+      <link>https://blog.loicmdivad.com/tags/streams/</link>
+      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/tags/streams/</guid>
       <description></description>
     </item>
     
@@ -22,42 +58,6 @@
       <pubDate>Thu, 09 Apr 2020 09:00:00 +0100</pubDate>
       
       <guid>https://blog.loicmdivad.com/tags/tooling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fr-link</title>
-      <link>https://blog.loicmdivad.com/tags/fr-link/</link>
-      <pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate>
-      
-      <guid>https://blog.loicmdivad.com/tags/fr-link/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kafka</title>
-      <link>https://blog.loicmdivad.com/tags/kafka/</link>
-      <pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate>
-      
-      <guid>https://blog.loicmdivad.com/tags/kafka/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ml</title>
-      <link>https://blog.loicmdivad.com/tags/ml/</link>
-      <pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate>
-      
-      <guid>https://blog.loicmdivad.com/tags/ml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>streams</title>
-      <link>https://blog.loicmdivad.com/tags/streams/</link>
-      <pubDate>Thu, 28 Nov 2019 09:00:01 +0100</pubDate>
-      
-      <guid>https://blog.loicmdivad.com/tags/streams/</guid>
       <description></description>
     </item>
     
