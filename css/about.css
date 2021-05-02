@@ -1,9 +1,7 @@
 @media screen and (min-width: 64em ) {
     div#card, img#mugshot, img#ld-logo {
         float: left;
-        width: 15rem;
         margin-right: 1rem;
-        border-radius: 100%;
         display: inline-block;
     }
 }
@@ -11,8 +9,6 @@
 @media screen and  (min-width: 42em) and (max-width: 64em)  {
     div#card, img#mugshot, img#ld-logo {
         float: none;
-        width: 15rem;
-        border-radius: 100%;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -25,8 +21,6 @@
 @media screen and (max-width: 42em) {
     div#card, img#mugshot, img#ld-logo {
         float: none;
-        width: 12rem;
-        border-radius: 100%;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -41,9 +35,17 @@
         border-radius: 100%;
         padding-bottom: 1rem;
     }
+    div.company {
+        min-width: 42%;
+    }
     div.company figcaption {
        display: none;
     }
+}
+
+div#card, img#mugshot, img#ld-logo {
+    width: 15rem;
+    border-radius: 100%;
 }
 
 .main-content ul {
@@ -60,7 +62,7 @@ a.insta:hover {
 }
 div.insta-paragraph,
 div.company-paragraph,
-div.socials-paragraph{
+div.socials-paragraph {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -75,16 +77,15 @@ div.insta-paragraph :nth-child(2) {
 div.insta-paragraph :last-child {
     align-self: end;
 }
-div.insta, div.company a.social{
+div.insta, div.company, a.social{
     max-width: 32%;
     margin: auto;
     display: inline-block;
-}
-div.company {
     text-align: center;
 }
+
 div.company-paragraph div.company img{
-    border-radius: 100%;
+    border-radius: 20%;
 }
 
 a.social {
