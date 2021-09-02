@@ -3,11 +3,13 @@ title: "Cooking"
 date: 2021-05-02T18:14:37+02:00
 draft: true
 ---
-# Cooking
+= Cooking
 
 We all like food.
 All the best memories I have in my life have same patterned. Me with friends/family, facing a half
-full plate and raising my glass the smallest and most ridicullus thing you could imagine.
+full plate and raising my glass the smallest, and most ridiculous thing you could imagine.
+
+== Experimentation
 
 ++++
 <iframe
