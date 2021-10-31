@@ -39,7 +39,7 @@ entry called subject. This subject is then exposed and provides consistency at a
 - This contract enforces the structure of future messages
 - This contract informs on the way to read existing messages
 
-![Basic Schema Management Scenario](/images/posts/07/basic_schema_senario.png)
+![Basic Schema Management Scenario](../../static/images/posts/07/basic_schema_senario.png)
 
 The Confluent Schema Registry has been around for a while and readers might be more familiar with
 it. On the opposite, organise a project around this recent Pub/Sub feature might be less obvious.
@@ -54,7 +54,7 @@ to [GA in June](https://cloud.google.com/pubsub/docs/release-notes#June_30_2021)
 declare an AVRO or Protobuf schema as a cloud resource. You can then point at that resource when
 creating a topic. Let's see what happens next.
 
-![Topic creation with a schema](/images/posts/07/topic_creation.png)
+![Topic creation with a schema](../../static/images/posts/07/topic_creation.png)
 
 ## Use case example: The Dumpling App
 
@@ -64,9 +64,9 @@ add an item, the app publishes an event to add a line to your order. Once you cl
 app sends the second type of event to prepare your order. It's basically similar to the
 Self-Ordering kiosk of your favourite fast food.
 
-![Dumpling App screnshot](/images/posts/07/dumpling_app_screen_shot.png)
+![Dumpling App screnshot](../../static/images/posts/07/dumpling_app_screen_shot.png)
 
-![Fancy image of a tablet next to a dumpling](/images/posts/07/self_ordering_kiosk.jpg)
+![Fancy image of a tablet next to a dumpling](../../static/images/posts/07/self_ordering_kiosk.jpg)
 
 {{< shoutout name="Febrian Zakaria"
 picture="https://unsplash.com/@febrianzakaria?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
@@ -82,7 +82,7 @@ composed of a [Svelte](https://svelte.dev) web app, and a Spring Boot web servic
 Engine. The service produces events in a Pub/Sub topic. From here, a Dataflow job continuously
 processes the events.
 
-![Application Architecture](/images/posts/07/application_architecture.png)
+![Application Architecture](../../static/images/posts/07/application_architecture.png)
 
 ### Infrastructure
 
@@ -202,7 +202,8 @@ series of events, in the console, by consuming them back via
 a [debugging tool](https://github.com/DivLoic/blog-loicmdivad-com/tree/main/blog_007/dumpling-cli)
 created for the presentation.
 
-{{< youtube id="WMCgi3e28B4" autoplay="true" rel="0" controls="0" >}}
+{{< youtube id="WMCgi3e28B4" autoplay="true" rel="0" controls="0" >}}   
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/WMCgi3e28B4/0.jpg)](http://www.youtube.com/watch?v=WMCgi3e28B4)
 
 That concludes the chapter on the application. We have listed a few things that one could put in
 place to organise around the idea of event schema. Now let's try to capture the impact of the usage
@@ -217,14 +218,15 @@ a completely different schema. And yet, they try to publish messages on the same
 dangerous for consumers who assume that this topic contains an order event and try to decode it. By
 nature, most of the applications based on events are continuous and long-running processes. They can
 not suffer from crashes due to an invalid type of message. Otherwise, while these applications are
-down, some lag will starts to build up.
+down, some lag will start to build up.
 
 Here is a short video showing the behaviour of the application when clicking on the new button. When
 the server tries to publish the messages from the checkbox, it fails with an Exception??? And return
 a 500 error code. Hopefully, the team handle that response correctly. They display a warning and
 toggle off the extra sauce option.
 
-{{< youtube id="ugKy5ZbzF3E" autoplay="true" rel="0" controls="0" >}}
+{{< youtube id="ugKy5ZbzF3E" autoplay="true" rel="0" controls="0" >}}   
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/ugKy5ZbzF3E/0.jpg)](http://www.youtube.com/watch?v=ugKy5ZbzF3E)
 
 In the future, the sauce team will want to fix this problem. It turns out Cloud Pub/Sub provides an
 API to check a message against an existing Pus/Sub Message Schema. By giving the body of the message
@@ -238,7 +240,7 @@ gcloud pubsub schemas validate-message \
         --schema-name=dumpling-commands
 ```
 
-![Schema Validation via gcloud command line](/images/posts/07/schema_validation.png)
+![Schema Validation via gcloud command line](../../static/images/posts/07/schema_validation.png)
 
 One can perform the same verification with the user interface cloud console.
 
@@ -321,7 +323,7 @@ See the entire
 file: [Main.java](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor/src/main/java/fr/ldivad/dumpling/Main.java)
 .
 
-![Screen Shot of the Dataflow Job and the result](/images/posts/07/shopping-cart-state-in-datastore2.png)
+![Screen Shot of the Dataflow Job and the result](../../static/images/posts/07/shopping-cart-state-in-datastore2.png)
 
 This is an oversimplified example. But still, it is concrete enough to start imagining how we could
 build materialised views in this context. Those views would contribute to a read model similar to
