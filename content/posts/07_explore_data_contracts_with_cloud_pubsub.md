@@ -1,6 +1,8 @@
 ---
-title: "Explore data contracts with Cloud Pub/Sub"
-date: 2021-10-31T22:21:00+02:00 draft: true author: "Loïc DIVAD"
+title: "Explore data contracts with Cloud Pub/Sub"    
+date: 2021-10-31T22:21:00+02:00   
+draft: true   
+author: "Loïc DIVAD"    
 extra_css: ["css/post.css"]
 ---
 
