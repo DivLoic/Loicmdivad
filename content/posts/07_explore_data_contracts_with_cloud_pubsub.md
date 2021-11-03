@@ -1,8 +1,6 @@
 ---
 title: "Explore data contracts with Cloud Pub/Sub"
-date: 2021-10-31T22:21:00+02:00 
-draft: true 
-author: "Loïc DIVAD"
+date: 2021-10-31T22:21:00+02:00 draft: true author: "Loïc DIVAD"
 extra_css: ["css/post.css"]
 ---
 
@@ -63,18 +61,22 @@ that at each table has a small device providing an interface to order food. Each
 add an item, the app publishes an event to add a line to your order. Once you click on order, the
 app sends the second type of event to prepare your order. It's basically similar to the
 Self-Ordering kiosk of your favourite fast food.
+The [dumpling-app](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/) is a preview
+what this application could look like by using Pub/Sub Message Schema.
 
-![Dumpling App screnshot](../../static/images/posts/07/dumpling_app_screen_shot.png)
+![Dumpling App screenshot](../../static/images/posts/07/dumpling_app_screen_shot.png)
 
 ![Fancy image of a tablet next to a dumpling](../../static/images/posts/07/self_ordering_kiosk.jpg)
 
 {{< shoutout name="Febrian Zakaria"
 picture="https://unsplash.com/@febrianzakaria?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-profile="https://unsplash.com/s/photos/dumpling?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >}};
+profile="https://unsplash.com/s/photos/dumpling?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >
+}};
 
 {{< shoutout name="Marta Filipczyk"
 picture="https://unsplash.com/@martafilipczyk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-profile="https://unsplash.com/s/photos/tablet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >}}
+profile="https://unsplash.com/s/photos/tablet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >
+}}
 
 The application
 is ([dumpling-app-service](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/))
@@ -276,6 +278,7 @@ is a quick implementation of that idea. It is a maven plugin that the processing
 fetch the schema.
 
 ```xml
+
 <plugin>
     <groupId>fr.ldivad.dumpling</groupId>
     <artifactId>pubsub-schema-maven-plugin</artifactId>
