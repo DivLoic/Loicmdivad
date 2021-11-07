@@ -12,7 +12,7 @@
     <meta property="og:title" content="Loïc M. DIVAD, Event Streams and Monads in the Cloud">
     <meta name="twitter:site" content="@LoicMDivad">
     <meta name="twitter:creator" content="@LoicMDivad">
-    <meta name="generator" content="Hugo 0.82.1" />
+    <meta name="generator" content="Hugo 0.89.1" />
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/normalize.css">
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -27,6 +27,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/fontawesome.css">
+    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/chromastyles.css">
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
     <title>Use Confluent Cloud secrets in GKE | Loïc M. Divad</title>
 </head>
@@ -133,13 +134,13 @@
 <p>The team behind this service is putting a lot of efforts to provide a smooth and complete experience in working with Apache Kafka in the cloud. Theses efforts include security of courses. This short post gives an overview of the programmatic access to a cluster and shares a quick script I use sometimes to deploy pet projects on <a href="https://cloud.google.com/kubernetes-engine">Google Kubernetes Engine</a> (aka, GKE). The post also takes advantage of the command line tool <a href="https://docs.confluent.io/current/cloud/cli/install.html">ccloud</a>. I use my personal standard account in this post.</p>
 <h3 id="cluster-settings-and-api-keys-creation">Cluster settings and API Keys creation</h3>
 <p>Suppose we are starting in a new environment.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud environment create BLOG
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud environment create BLOG
 <span style="color:#8f5902;font-style:italic"># +------------------+--------+</span>
 <span style="color:#8f5902;font-style:italic"># | Environment Name | BLOG   |</span>
 <span style="color:#8f5902;font-style:italic"># | Id               | t35556 |</span>
 <span style="color:#8f5902;font-style:italic"># +------------------+--------+</span>
 </code></pre></div><p>In this environment we create a new Kafka cluster.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud environment use t35556
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud environment use t35556
 $ ccloud kafka cluster create blog-cluster --cloud gcp --region europe-west1
 <span style="color:#8f5902;font-style:italic"># +-------------+------------------------------------------------------------+</span>
 <span style="color:#8f5902;font-style:italic"># | Id          | lkc-gnv0n                                                  |</span>
@@ -154,14 +155,14 @@ $ ccloud kafka cluster create blog-cluster --cloud gcp --region europe-west1
 <span style="color:#8f5902;font-style:italic"># | ApiEndpoint | https://pkac-42392.europe-west1.gcp.confluent.cloud        |</span>
 <span style="color:#8f5902;font-style:italic"># +-------------+------------------------------------------------------------+</span>
 </code></pre></div><p>And in this same environment we enable the Schema Registry.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud kafka cluster use lkc-gnv0n
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud kafka cluster use lkc-gnv0n
 $ ccloud schema-registry cluster <span style="color:#204a87">enable</span> --cloud gcp --geo eu
 <span style="color:#8f5902;font-style:italic"># +----------+-----------------------------------------------------+</span>
 <span style="color:#8f5902;font-style:italic"># | Id       | lsrc-przmk                                          |</span>
 <span style="color:#8f5902;font-style:italic"># | Endpoint | https://psrc-l7opw.europe-west3.gcp.confluent.cloud |</span>
 <span style="color:#8f5902;font-style:italic"># +----------+-----------------------------------------------------+</span>
 </code></pre></div><p>In real life we would probably use a service account to run your application.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud service-account create <span style="color:#4e9a06">&#34;BlogPostAccount&#34;</span> --description <span style="color:#4e9a06">&#34;This is a demo service account&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud service-account create <span style="color:#4e9a06">&#34;BlogPostAccount&#34;</span> --description <span style="color:#4e9a06">&#34;This is a demo service account&#34;</span>
 <span style="color:#8f5902;font-style:italic"># +-------------+--------------------------------+</span>
 <span style="color:#8f5902;font-style:italic"># | Id          |                          54876 |</span>
 <span style="color:#8f5902;font-style:italic"># | Name        | BlogPostAccount                |</span>
@@ -170,7 +171,7 @@ $ ccloud schema-registry cluster <span style="color:#204a87">enable</span> --clo
 </code></pre></div><p>Finally, it&rsquo;s time to deploy our client application capable to produce in and consume from Kafka topics. But at this point, our Confluent Cloud interface might be asking us for new API keys:</p>
 <p><img src="/images/posts/06/cluster_settings.png" alt="Empty api-key list from confluent.cloud"></p>
 <p>Let&rsquo;s create the API keys we need to provide to our application in order to connect to both the Kafka cluster and the Schema Registry cluster</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ccloud api-key create --service-account 54876 --resource lkc-gnv0n # kafka cluster id
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ccloud api-key create --service-account 54876 --resource lkc-gnv0n # kafka cluster id
 # +---------+------------------------------------------------------------------+
 # | API Key | 3UEZQJQVCOLLP7MN                                                 |
 # | Secret  | Xk9UuVSD6uZDXW6p+Y8g652OIrgCWtQ4+jlp4pVqOl06KIpvgNxJLoEdvxCsa91z |
@@ -190,13 +191,13 @@ ccloud api-key create --service-account 54876 --resource lsrc-przmk # registry c
 <p>Quite handy, isn&rsquo;t it? How to use it? It can be included in a CI process to be part of our deployment phase. we just need to declare the Confluent API Keys as environment variables. For instance, <a href="https://github.com/features/actions">Github Action</a> has the concept of secrets.</p>
 <p><img src="/images/posts/06/github_actions_secrets.png" alt="Github.com secrets page"></p>
 <p>In the Github Action workflow, we may need to install tools such as <code>kubctl</code>, <code>gcloud</code> or additional SDKs.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">jobs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">jobs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">main</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">steps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Setup gcloud environment</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">uses</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">GoogleCloudPlatform/github-actions@0.1.2</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>Then we run the script by passing our secrets as environment variables.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#204a87;font-weight:bold">run</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">.ccloud-secrets.sh</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#204a87;font-weight:bold">run</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">.ccloud-secrets.sh</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">env</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">API_KEY</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${{ secrets.API_KEY }}</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">SECRET_KEY</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${{ secrets.SECRET_KEY }}</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -209,13 +210,13 @@ ccloud api-key create --service-account 54876 --resource lsrc-przmk # registry c
 <p>All the entries are secured and can be safely access thought <code>spec.containers.env</code>.</p>
 <p><img src="/images/posts/06/gke_config_map_secrets_2.png" alt="Google Kubernetes Engine secrets page"></p>
 <p>We create the Kafka topics with the following commands:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud kafka topic create BLOG-TOPIC
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ccloud kafka topic create BLOG-TOPIC
 $ ccloud kafka acl create --allow <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --service-account <span style="color:#0000cf;font-weight:bold">54876</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --operation WRITE <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --topic BLOG-TOPIC
 </code></pre></div><p>Any write attempt without the access key result in a <code>TopicAuthorizationException</code>.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">DEBUG [Producer clientId=producer-1] Exception occurred during message send:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">DEBUG [Producer clientId=producer-1] Exception occurred during message send:
 ERROR org.apache.kafka.common.errors.TopicAuthorizationException: Not authorized to access topics: [BLOG-TOPIC]
 WARN Error while fetching metadata with correlation id 22 : {BLOG-TOPIC=TOPIC_AUTHORIZATION_FAILED}
 ERROR Topic authorization failed for topics [BLOG-TOPIC]

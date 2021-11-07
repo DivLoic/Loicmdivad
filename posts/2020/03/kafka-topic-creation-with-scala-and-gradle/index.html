@@ -12,7 +12,7 @@
     <meta property="og:title" content="Loïc M. DIVAD, Event Streams and Monads in the Cloud">
     <meta name="twitter:site" content="@LoicMDivad">
     <meta name="twitter:creator" content="@LoicMDivad">
-    <meta name="generator" content="Hugo 0.82.1" />
+    <meta name="generator" content="Hugo 0.89.1" />
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/normalize.css">
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -27,6 +27,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/fontawesome.css">
+    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/chromastyles.css">
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
     <title>Kafka topic creation with Scala and Gradle | Loïc M. Divad</title>
 </head>
@@ -117,7 +118,7 @@
 <p>This short post introduces the <code>KafkaAdminClient</code> class and gives an example of a creation task in Scala. All the code will be in Scala 2.13.1; the post is based on the version 2.4.0 of Kafka and 5.4.0 of the <a href="https://www.confluent.io/product/confluent-platform/">Confluent Platform</a>. (tldr: <a href="https://github.com/DivLoic/topic-creation-task">https://github.com/DivLoic/topic-creation-task</a>)</p>
 <h3 id="the-newtopic-class-our-topic-specification">The <code>NewTopic</code> class, our topic specification</h3>
 <p>First of all, we have to define the needed topics. In a separate class, we create <code>NewTopic</code> instances. This class is a member of <code>org.apache.kafka.clients.admin</code> and stand for the topics we want to create.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.apache.kafka.clients.admin.NewTopic</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.apache.kafka.clients.admin.NewTopic</span>
 
 <span style="color:#204a87;font-weight:bold">object</span> <span style="color:#000">TopicCreation</span> <span style="color:#204a87;font-weight:bold">extends</span> <span style="color:#000">App</span> <span style="color:#ce5c00;font-weight:bold">{</span>  
 
@@ -174,23 +175,23 @@
 <li>etc &hellip;</li>
 </ul>
 <p>While its constructor requires a lot of information, it&rsquo;s parent interface, <code>Admin</code>, has a nice creation method. We create our client instance with the factory method <code>Admin#creatClient</code>.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.apache.kafka.clients.admin.Admin</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.apache.kafka.clients.admin.Admin</span>
 <span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">client</span> <span style="color:#204a87;font-weight:bold">=</span> <span style="color:#000">Admin</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">create</span><span style="color:#ce5c00;font-weight:bold">(???</span> <span style="color:#8f5902;font-style:italic">/*util.Map[String, AnyRef](... some.kafka.config, value)*/</span><span style="color:#ce5c00;font-weight:bold">)</span>
 </code></pre></div><p><em>Note</em>: <code>Admin</code> has been introduced in (<a href="https://issues.apache.org/jira/browse/KAFKA-8454">2.4.0</a>) for more flexibility.</p>
 <p>It only takes either a Properties or a Map filled with Kafka configs. Among all the possible configs, <code>bootstrap.servers</code> is the only one required to create our topics. We are now ready to create as many topics as our application required.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">results</span><span style="color:#204a87;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">util.Map&lt;String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">KafkaFuture</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Void</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#204a87;font-weight:bold">=</span> 
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">results</span><span style="color:#204a87;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">util.Map&lt;String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">KafkaFuture</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Void</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#204a87;font-weight:bold">=</span> 
     <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">createTopics</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">newTopics</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">asJava</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">()</span>
 </code></pre></div><p>The admin client will return a <code>CreateTopicsResult</code> wrapping a Future for each topic creation request. By calling <code>CreateTopicsResult#values</code> we get a map linking together a topic name and the Future result of the creation. It also has the method <code>CreateTopicsResult#all</code> which blocks until we receive all the topic creation response. Now let&rsquo;s see how we can wrap this code into something we actually execute.</p>
 <h3 id="gradle-execution-run-the-all-thing">Gradle execution, run the all thing</h3>
 <p>Let&rsquo;s assume our app uses an external configuration. Personally, I’m familiar with the <a href="https://github.com/lightbend/config">Typesafe Config</a> library and the <a href="https://en.wikipedia.org/wiki/HOCON">HOCON</a> format it supports. It would give something like this:</p>
-<pre><code class="language-hocon" data-lang="hocon">topics = [
+<pre tabindex="0"><code class="language-hocon" data-lang="hocon">topics = [
     { name = &quot;ACCOUNT-TOPIC&quot;, partitions = 1, replication-factor = 1 }
     { name = &quot;CLICK-TOPIC&quot;, partitions = 1, replication-factor = 1}
     { name = &quot;OUTPUT-TOPIC&quot;, partitions = 1, replication-factor = 1}
 ]
 </code></pre><p>See the complete <em><a href="https://github.com/DivLoic/topic-creation-task/blob/master/src/main/resources/application.conf">application.conf</a></em> file example.</p>
 <p>Then inside our topic creation entry point, all we have to do is call the method <code>AdminClient#createTopic</code>  and pass our <code>NewTopic</code> list as a parameter. We then and loop over the response to confirm each creation.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">config</span><span style="color:#204a87;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">ExampleConfig</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">???</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">config</span><span style="color:#204a87;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">ExampleConfig</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">???</span>
 
 <span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">client</span><span style="color:#204a87;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">Admin</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Admin</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">create</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">kafkaConfig</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">toMap</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">asJava</span><span style="color:#ce5c00;font-weight:bold">)</span>
 
@@ -207,7 +208,7 @@
 <span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div><p>See the complete <em><a href="https://github.com/DivLoic/topic-creation-task/blob/master/src/main/scala/io/ldivad/blog/example/TopicCreation.scala">TopicCreation.scala</a></em> file example.</p>
 <p>This java entry point can be used by our build tool, this way we will include topics creation in the “<em>deploy stage of our application</em>”. We create a new Gradle task and link it to other tasks as following:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">topicCreation</span> <span style="color:#204a87;font-weight:bold">by</span> <span style="color:#000">tasks</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">register</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">JavaExec</span><span style="color:#000;font-weight:bold">&gt;(</span><span style="color:#4e9a06">&#34;topicCreation&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">topicCreation</span> <span style="color:#204a87;font-weight:bold">by</span> <span style="color:#000">tasks</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">register</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">JavaExec</span><span style="color:#000;font-weight:bold">&gt;(</span><span style="color:#4e9a06">&#34;topicCreation&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
     <span style="color:#000">main</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;io.ldivad.blog.example.TopicCreation&#34;</span>
     <span style="color:#000">classpath</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000">sourceSets</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;main&#34;</span><span style="color:#000;font-weight:bold">].</span><span style="color:#000">runtimeClasspath</span>
 <span style="color:#000;font-weight:bold">}</span>
