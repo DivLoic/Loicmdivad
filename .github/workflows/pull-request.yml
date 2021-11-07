@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Checkout Submodules
-        uses: textbook/git-checkout-submodule-action@2.0.0
+        uses: textbook/git-checkout-submodule-action@2.1.1
 
       - name: Build Site
         uses: chabad360/hugo-actions@master
