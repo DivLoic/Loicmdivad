@@ -12,9 +12,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
-
-      - name: Checkout Submodules
-        uses: textbook/git-checkout-submodule-action@2.1.1
+        with:
+          submodules: recursive
 
       - name: Build Site
         uses: chabad360/hugo-actions@master
