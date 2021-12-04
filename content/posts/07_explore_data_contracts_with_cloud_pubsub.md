@@ -1,7 +1,7 @@
 ---
 title: "Explore data contracts with Cloud Pub/Sub"    
-date: 2021-10-31T22:21:00+02:00   
-draft: true   
+date: 2021-12-05T09:00:00+02:00   
+draft: false   
 author: "Loïc DIVAD"    
 extra_css: ["css/post.css"]
 ---
@@ -26,10 +26,10 @@ relatively recent feature, so let's take it for a spin in that article.
 Event oriented architectures are powerful. They provide advanced audit capability, replayability and
 flexibility. But to enjoy all those features, the different applications have to interact safely
 with each other. Similarly to how a team would create API specifications (with a WSDL when using
-SOAP) there is a need to declare the shape of events flowing in a stream. The name and the type of
+SOAP), there is a need to declare the shape of events flowing in a stream. The name and the type of
 the different fields usually completely describe the structure of the events. It is commonly called
-event schema. This post will refer to the association of schema and materialized stream of events (
-i.e. topic, message queue ...) as a data contract.
+event schema. This post will refer to the association of schema and materialised stream of events (
+i.e. topic, message queue) as a data contract.
 
 One tool managing this type of data contract is
 the [Confluent Schema Registry](https://docs.confluent.io/platform/current/schema-registry/index.html)
@@ -37,13 +37,13 @@ the [Confluent Schema Registry](https://docs.confluent.io/platform/current/schem
 entry called subject. This subject is then exposed and provides consistency at a message level.
 
 - This contract enforces the structure of future messages
-- This contract informs on the way to read existing messages
+- This contract informs how to read existing messages
 
-![Basic Schema Management Scenario](../../static/images/posts/07/basic_schema_senario.png)
+![Basic Schema Management Scenario](/images/posts/07/basic_schema_senario.png)
 
-The Confluent Schema Registry has been around for a while and readers might be more familiar with
-it. On the opposite, organise a project around this recent Pub/Sub feature might be less obvious.
-This post tries to highlight the practices and techniques one can think of when working with Message
+The Confluent Schema Registry has been around for a while, and readers might be more familiar with
+it. On the opposite, organising a project around this recent Pub/Sub feature might be less obvious.
+This highlights the practices and techniques one can think of when working with Message
 Schemas. So let’s explore data contracts with Cloud Pub/Sub!
 
 ## Pub/Sub Message Schemas
@@ -54,39 +54,37 @@ to [GA in June](https://cloud.google.com/pubsub/docs/release-notes#June_30_2021)
 declare an AVRO or Protobuf schema as a cloud resource. You can then point at that resource when
 creating a topic. Let's see what happens next.
 
-![Topic creation with a schema](../../static/images/posts/07/topic_creation.png)
+![Topic creation with a schema](/images/posts/07/topic_creation.png)
 
 ## Use case example: The Dumpling App
 
 Let be the Dumpling Store, a small fictional restaurant that serves dumplings. Let's also imagine
-that at each table has a small device providing an interface to order food. Each time you click on
+that each table has a small device providing an interface to order food. Each time you click on
 add an item, the app publishes an event to add a line to your order. Once you click on order, the
 app sends the second type of event to prepare your order. It's basically similar to the
 Self-Ordering kiosk of your favourite fast food.
 The [dumpling-app](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/) is a preview
-what this application could look like by using Pub/Sub Message Schema.
+of what this application could look like using Pub/Sub Message Schema.
 
-![Dumpling App screenshot](../../static/images/posts/07/dumpling_app_screen_shot.png)
+![Dumpling App screenshot](/images/posts/07/dumpling_app_screen_shot.png)
 
-![Fancy image of a tablet next to a dumpling](../../static/images/posts/07/self_ordering_kiosk.jpg)
+![Fancy image of a tablet next to a dumpling](/images/posts/07/self_ordering_kiosk.jpg)
 
 {{< shoutout name="Febrian Zakaria"
 picture="https://unsplash.com/@febrianzakaria?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-profile="https://unsplash.com/s/photos/dumpling?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >
-}};
+profile="https://unsplash.com/s/photos/dumpling?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >}};
 
 {{< shoutout name="Marta Filipczyk"
 picture="https://unsplash.com/@martafilipczyk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-profile="https://unsplash.com/s/photos/tablet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >
-}}
+profile="https://unsplash.com/s/photos/tablet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" >}}
 
 The application
 is ([dumpling-app-service](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/))
-composed of a [Svelte](https://svelte.dev) web app, and a Spring Boot web service running in App
+composed of a [Svelte](https://svelte.dev) web app and a Spring Boot web service running in App
 Engine. The service produces events in a Pub/Sub topic. From here, a Dataflow job continuously
 processes the events.
 
-![Application Architecture](../../static/images/posts/07/application_architecture.png)
+![Application Architecture](/images/posts/07/application_architecture.png)
 
 ### Infrastructure
 
@@ -100,7 +98,7 @@ allows the declaration of schemas.
 resource "google_pubsub_schema" "commands" {
   name = "dumpling-commands"
   type = "PROTOCOL_BUFFER"
-  definition = file("${path.module}/../../src/main/proto/command.proto")
+  definition = file("${path.module}//src/main/proto/command.proto")
 }
 ```
 
@@ -120,8 +118,8 @@ An interesting aspect of this setup is that we define schemas only once. Both Te
 generation load the same file. Terraform does it with the `file()`
 function ([line 10](https://github.com/DivLoic/blog-loicmdivad-com/blob/a65d0fa932670995e71d1a0364ffbe4560c1c37f/blog_007/dumpling-app-service/terraform/pubsub/schemas.tf#L10))
 and the code generation (with the Protobuf Maven
-Plugin ([line 143](https://github.com/DivLoic/blog-loicmdivad-com/blob/a65d0fa932670995e71d1a0364ffbe4560c1c37f/blog_007/dumpling-app-service/pom.xml#L143))
-. Next, the different Pub/Sub topics depend on and reference the schemas.
+Plugin ([line 143](https://github.com/DivLoic/blog-loicmdivad-com/blob/a65d0fa932670995e71d1a0364ffbe4560c1c37f/blog_007/dumpling-app-service/pom.xml#L143)).
+Next, the different Pub/Sub topics depend on and reference the schemas.
 
 ```hcl {linenos=table,hl_lines=[5],linenostart=12}
 resource "google_pubsub_topic" "commands" {
@@ -168,7 +166,7 @@ message Command {
 The message ordering key is the `user_id`. Every event carries an `event_time` set by the front-end
 app and a type of Operation to specify if the item should be added or removed from the user cart.
 The application set some attributes such as env, version, source. But in addition to those
-attributes the client library adds two technical attributes relate to the message schema
+attributes, the client library adds two technical attributes relate to the message schema
 
 |Attributes                  | Value example           |
 |----------------------------|-------------------------|
@@ -178,9 +176,9 @@ attributes the client library adds two technical attributes relate to the messag
 ### Service and interface
 
 The HTTP API is just a typical Spring Boot module. One special thing about it is that it does not
-present any entities or model package filled with POJO. Instead, the application only uses the
-result of the Protobuf code generation as the data model. The `command.proto` file from the previous
-paraph gives a `Command.java` class. The Spring Boot module applies automatic conversion of Protobuf
+present any entities or model package filled with POJO. Instead, the application only uses the 
+Protobuf generated code as the data model. The `command.proto` file from the previous
+paragraph gives a `Command.java` class. The Spring Boot module automatically converts Protobuf
 to JSON to interact with the front-end.
 
 ```java {linenos=table,hl_lines=[6],linenostart=17}
@@ -196,7 +194,7 @@ ProtobufJsonFormatHttpMessageConverter protobufHttpMessageConverter() {
 
 Finally, the single-page web app is a Svelte module. The Spring Boot module considers
 the [Svelte output as a resources directory](https://github.com/DivLoic/blog-loicmdivad-com/blob/8da6aa1752cf97bda2e5c7e1492a78aecc5dbeb9/blog_007/dumpling-app-service/pom.xml#L99)
-. The page is not pretty, but don't be mean at the Dumpling team, "they" are not great at front-end
+. The page is not pretty, but don't be mean to the Dumpling team, "they" are not great at front-end
 development.
 
 > Every time I write Javascript, a kid loses a balloon -- _Loïc DIVAD_
@@ -207,7 +205,6 @@ a [debugging tool](https://github.com/DivLoic/blog-loicmdivad-com/tree/main/blog
 created for the presentation.
 
 {{< youtube id="WMCgi3e28B4" autoplay="true" rel="0" controls="0" >}}   
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/WMCgi3e28B4/0.jpg)](http://www.youtube.com/watch?v=WMCgi3e28B4)
 
 That concludes the chapter on the application. We have listed a few things that one could put in
 place to organise around the idea of event schema. Now let's try to capture the impact of the usage
@@ -224,13 +221,12 @@ nature, most of the applications based on events are continuous and long-running
 not suffer from crashes due to an invalid type of message. Otherwise, while these applications are
 down, some lag will start to build up.
 
-Here is a short video showing the behaviour of the application when clicking on the new button. When
+Here is a short video showing the application's behaviour when clicking on the new button. When
 the server tries to publish the messages from the checkbox, it fails with an Exception??? And return
-a 500 error code. Hopefully, the team handle that response correctly. They display a warning and
+a 500 error code. Hopefully, the team will handle that response correctly. They display a warning and
 toggle off the extra sauce option.
 
 {{< youtube id="ugKy5ZbzF3E" autoplay="true" rel="0" controls="0" >}}   
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/ugKy5ZbzF3E/0.jpg)](http://www.youtube.com/watch?v=ugKy5ZbzF3E)
 
 In the future, the sauce team will want to fix this problem. It turns out Cloud Pub/Sub provides an
 API to check a message against an existing Pus/Sub Message Schema. By giving the body of the message
@@ -244,16 +240,15 @@ gcloud pubsub schemas validate-message \
         --schema-name=dumpling-commands
 ```
 
-![Schema Validation via gcloud command line](../../static/images/posts/07/schema_validation.png)
+![Schema Validation via gcloud command line](/images/posts/07/schema_validation.png)
 
 One can perform the same verification with the user interface cloud console.
 
 ## Message Consumption
 
-Now let's move to another aspect of working with schema: Message consumption. Let's imagine a third
+Now, let's move to another aspect of working with schema: Message consumption. Let's imagine a third
 team that would build another type of application, this time, a stream processing app. Using
-Dataflow, they are gathering all user interaction events to compute their shopping cart in
-real-time.
+Dataflow, they gather all user interaction events to compute their shopping cart in real-time.
 The [dumpling-app-processor](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor)
 is a simplistic module representing this idea. The very first step is to consume and deserialise the
 input records.
@@ -271,7 +266,7 @@ too. How to share it?
 The service team produces that data, and at the moment, owns the corresponding schema. The
 processing team should definitely not copy the schema into its module. Instead, we can think of a
 plugin to resolve the schema dependency before running the code generation. Tools such
-as [protoman](https://github.com/spotify/protoman) exist, but they mostly come with their own
+as [Protoman](https://github.com/spotify/protoman) exist, but they mostly come with their own
 registry. In our example, we want to integrate the Google Cloud API as a source of thought for the
 schema.
 
@@ -306,7 +301,7 @@ fetch the schema.
 After reading the commands, the Dataflow job maps them in key-value pairs. The job groups the pairs
 by key over a large time window. A trigger is a setup so that quickly after a state update, the job
 will emit the new state of the shopping cart. Finally, this example writes in Datastore (which is
-just an arbitrary choice to get simple feedback for the job)
+just an arbitrary choice to get simple feedback for the job).
 
 ```java {linenos=table}    
 pipeline
@@ -321,14 +316,13 @@ pipeline
     .apply("Format user cart for Datastore", ParDo.of(new CartEntityMapper()))
 
     .apply("Write Datastore cart state", writeInDatastore);
-
 ```
 
 See the entire
 file: [Main.java](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor/src/main/java/fr/ldivad/dumpling/Main.java)
 .
 
-![Screen Shot of the Dataflow Job and the result](../../static/images/posts/07/shopping-cart-state-in-datastore2.png)
+![Screen Shot of the Dataflow Job and the result](/images/posts/07/shopping-cart-state-in-datastore2.png)
 
 This is an oversimplified example. But still, it is concrete enough to start imagining how we could
 build materialised views in this context. Those views would contribute to a read model similar to
@@ -341,9 +335,9 @@ contract protects the application against its own failure by enforcing the type 
 topic. And it helps the other application to decode those messages. However, in the particular case
 of the Pub/Sub Message Schemas feature, the advantages fall short. The feature is really new (about
 a year at the publication of this post), and there are still a few options missing. The biggest
-being schema evolution. At the moment, topics can not have new schemas. And if a used schema is
-deleted, the publications for that topic will simply fail. But when thinking about it makes sense
-for the early beginning of this feature. Because adopting schema is not easy. And establishing
+is schema evolution. At the moment, topics can not have new schemas. And if a used schema is
+deleted, the publications for that topic will simply fail. But when thinking about it , it makes 
+sense for the early beginning of this feature. Because adopting schema is not easy. And establishing
 compatibility levels is also quite tricky. Having a zero compatibility level policy is a way to put
 a lower entry barrier on schema management. Similarly, the support for Pub/Sub Lite, the support for
 complex types or imports in Protobufs schema, feel like options that should be present but are
