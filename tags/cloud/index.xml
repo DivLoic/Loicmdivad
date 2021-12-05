@@ -6,7 +6,16 @@
     <description>Recent content in cloud on Loïc M. Divad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jun 2020 09:00:00 +0100</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Dec 2021 09:00:00 +0200</lastBuildDate><atom:link href="https://blog.loicmdivad.com/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Explore data contracts with Cloud Pub/Sub</title>
+      <link>https://blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pub/sub/</link>
+      <pubDate>Sun, 05 Dec 2021 09:00:00 +0200</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pub/sub/</guid>
+      <description>This article aims to discuss data contracts in the context of event processing applications. We will follow a short example: The Dumpling App! The post also looks at that concept through specific technologies. Pub/Sub message schemas is a relatively recent feature, so let&amp;rsquo;s take it for a spin in that article.</description>
+    </item>
+    
     <item>
       <title>EDML: the Confluent Webinar edition</title>
       <link>https://blog.loicmdivad.com/talks/edml-the-confluent-webinar-edition/</link>
