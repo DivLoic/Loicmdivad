@@ -1,5 +1,6 @@
 ---
 title: "Explore data contracts with Cloud Pub/Sub"    
+slug: "explore-data-contracts-with-cloud-pubsub"
 date: 2021-12-05T09:00:00+02:00   
 draft: false   
 author: "Loïc DIVAD"    
