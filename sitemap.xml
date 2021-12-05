@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pub/sub/</loc>
+    <lastmod>2021-12-05T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.loicmdivad.com/</loc>
+    <lastmod>2021-12-05T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.loicmdivad.com/posts/</loc>
+    <lastmod>2021-12-05T09:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://blog.loicmdivad.com/tags/cloud/</loc>
     <lastmod>2020-06-01T09:00:00+01:00</lastmod>
   </url><url>
@@ -12,9 +21,6 @@
     <lastmod>2020-06-01T09:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.loicmdivad.com/tags/kafka/</loc>
-    <lastmod>2020-06-01T09:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.loicmdivad.com/</loc>
     <lastmod>2020-06-01T09:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.loicmdivad.com/tags/ml/</loc>
@@ -28,9 +34,6 @@
   </url><url>
     <loc>https://blog.loicmdivad.com/talks/</loc>
     <lastmod>2020-06-01T09:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.loicmdivad.com/posts/</loc>
-    <lastmod>2020-04-09T09:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.loicmdivad.com/tags/tooling/</loc>
     <lastmod>2020-04-09T09:00:00+01:00</lastmod>
