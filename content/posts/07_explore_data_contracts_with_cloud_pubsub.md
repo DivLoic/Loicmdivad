@@ -4,6 +4,8 @@ date: 2021-12-05T09:00:00+02:00
 draft: false   
 author: "Loïc DIVAD"    
 extra_css: ["css/post.css"]
+tags: ["cloud", "streams"]
+thumbnail: thumbnail007.jpg
 ---
 
 This article aims to discuss data contracts in the context of event processing applications. We will

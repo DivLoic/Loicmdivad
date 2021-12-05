@@ -4,7 +4,7 @@ date: 2019-04-15T18:00:02+01:00
 draft: false
 tags: ["repost", "streams", "kafka", "cloud", "fr-link", "en-link"]
 extra_css: ["css/post.css"]
-thumbnail: "thumbnail004.png"
+post_banner: "post_banner004.png"
 ---
 There are many reasons for working on community contributions such as a blog post, a demo, or a talk. Sometimes, you produce those contributions to share something that you've learned at work. But sometimes, the contribution itself can be a way to learn and experiment something new. I was in the second case when I worked on the article Kafka Streams: a road to Autoscaling via Kubernetes.
 
