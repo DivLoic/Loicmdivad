@@ -1,0 +1,30 @@
+<div class="post-info">
+    {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
+    <i><strong>Publication: </strong>{{ .context.PublishDate.Format $dateFormat }}</i>
+
+    {{ $tags := slice }}
+    {{ with .context.Params.tags }}
+    <ul class="hg-page-list tag-list">
+        {{ range . }}
+        <li class="tag-list-element">
+            {{ $lang := cond (hasPrefix . "fr-") "fr" "" }}
+            {{ $lang := cond (hasPrefix . "en-") "en" $lang }}
+            {{ $hrefLink := print ("tags/" | absLangURL) (. | urlize) "/" }}
+            <a href="{{$hrefLink}}" class="tag-link {{ $lang }}">
+                <span class="tag-name">{{.}}</span>
+                <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+              </span>
+            </a>
+        </li>
+        {{ end }}
+        <li class="tag-list-clap">
+            <applause-button multiclap="true" color="#d8753a"/>
+        </li>
+    </ul>
+
+    <br/><br/>
+    {{ delimit $tags ", " }}
+    {{ end }}
+</div>
