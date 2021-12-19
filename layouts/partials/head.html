@@ -1,15 +1,16 @@
 <head>
+    {{ $og_image := (cond (ne (.Param "thumbnail") nil) (.Param "thumbnail") (.Param "post_banner") ) }}
+    {{ $og_desc := (cond (ne (.Param "title") nil) (.Param "title" | printf ": %s") (", Event Streams and Monads in the Cloud") ) }}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {{ $og_image := (cond (ne (.Param "thumbnail") nil) (.Param "thumbnail") (.Param "post_banner") ) }}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:description" content="Loic DIVAD's blog">
     {{ if ne $og_image nil }}
     <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/{{ $og_image }}">
     {{ end }}
-    <meta property="og:title" content="Loïc M. DIVAD, Event Streams and Monads in the Cloud">
+    <meta property="og:title" content="Loïc M. DIVAD{{ $og_desc }}">
     <meta name="twitter:site" content="@LoicMDivad">
     <meta name="twitter:creator" content="@LoicMDivad">
     {{ hugo.Generator }}
