@@ -19,6 +19,7 @@ jobs:
         uses: chabad360/hugo-actions@master
         with:
           args: -e PROD
+          hugoVersion: 0.90.1
 
       - name: Deploy Github Pages
         uses: peaceiris/actions-gh-pages@v2
