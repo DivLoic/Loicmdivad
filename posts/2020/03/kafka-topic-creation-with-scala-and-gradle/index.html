@@ -22,7 +22,7 @@
     
     
     
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/cayman.cecf496667de22a80c43568da7c2f126441d4f31ad24b66252f46bacef06e802.css">
+    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/cayman.5a2fe776a06cfb260a3f11eb50e3352d87c5538d3859b25383a418afa66dd095.css">
     
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -31,6 +31,7 @@
     
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/fontawesome.css">
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/chromastyles.css">
+    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/applause-button.css">
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
     <title>Kafka topic creation with Scala and Gradle | Loïc M. Divad</title>
 </head>
@@ -90,32 +91,37 @@
       
   <h1>Kafka topic creation with Scala and Gradle</h1>
    <img src="/images/posts/post_banner005.png" alt="Post banner"> 
+
   <div class="post-info">
     
-    <i><strong>Publish date: </strong>Mar 15, 2020</i>
+    <i><strong>Publication: </strong>Mar 15, 2020</i>
 
-      
-      
-      <ul class="hg-page-list tag-list">
-      
-      <li class="tag-list-element">
-          
-          
-          
-          <a href="https://blog.loicmdivad.com/tags/tooling/" class="tag-link ">
-              <span class="tag-name">tooling</span>
-              <span class="fa-layers fa-fw">
+    
+    
+    <ul class="hg-page-list tag-list">
+        
+        <li class="tag-list-element">
+            
+            
+            
+            <a href="https://blog.loicmdivad.com/tags/tooling/" class="tag-link ">
+                <span class="tag-name">tooling</span>
+                <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
                   <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
               </span>
-          </a>
-      </li>
-      
-      </ul>
-      <br/><br/>
-      
-      
-  </div>
+            </a>
+        </li>
+        
+        <li class="tag-list-clap">
+            <applause-button multiclap="true" color="#d8753a"/>
+        </li>
+    </ul>
+
+    <br/><br/>
+    
+    
+</div>
 
   <div class="post-content"><p>If you develop a piece of software dealing with data systems, you are probably facing a few prerequisites. For example, you may need a file system to be mounted or a database table to be created. The same applies to event stream applications using <a href="http://kafka.apache.org/"><strong>Apache Kafka</strong></a>® as an event log. They need <strong>topics</strong>, <strong>schemas</strong> and <strong>ACLs</strong> to be created first, in order to run correctly. However, these tasks aren&rsquo;t the application&rsquo;s responsibility. It would be terrible to include these creation tasks as part of our main class or program entry-point. Does that mean we have to learn something new; setup a creation interface or move to the Kafka shell scripts 🤔?</p>
 <p>This short post introduces the <code>KafkaAdminClient</code> class and gives an example of a creation task in Scala. All the code will be in Scala 2.13.1; the post is based on the version 2.4.0 of Kafka and 5.4.0 of the <a href="https://www.confluent.io/product/confluent-platform/">Confluent Platform</a>. (tldr: <a href="https://github.com/DivLoic/topic-creation-task">https://github.com/DivLoic/topic-creation-task</a>)</p>
@@ -234,6 +240,37 @@
 <li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-117%3A+Add+a+public+AdminClient+API+for+Kafka+admin+operations">KIP-117: Add a public AdminClient API for Kafka admin operations</a></li>
 </ul>
 </div>
+  <div class="post-info">
+    
+    <i><strong>Publication: </strong>Mar 15, 2020</i>
+
+    
+    
+    <ul class="hg-page-list tag-list">
+        
+        <li class="tag-list-element">
+            
+            
+            
+            <a href="https://blog.loicmdivad.com/tags/tooling/" class="tag-link ">
+                <span class="tag-name">tooling</span>
+                <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+              </span>
+            </a>
+        </li>
+        
+        <li class="tag-list-clap">
+            <applause-button multiclap="true" color="#d8753a"/>
+        </li>
+    </ul>
+
+    <br/><br/>
+    
+    
+</div>
+
   
 
 
@@ -257,5 +294,5 @@
 
     gtag('config', 'UA-155287871-1');
   </script>
-<script src="https://blog.loicmdivad.com/js/fontawesome.js"></script>
+<script src="https://blog.loicmdivad.com/js/fontawesome.js"></script><script src="https://blog.loicmdivad.com/js/applause-button.js"></script>
 </html>

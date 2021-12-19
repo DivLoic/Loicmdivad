@@ -342,3 +342,16 @@ a.post-link {
         text-decoration: none; }
         .tag-list .tag-list-element:hover a.tag-link .fa-layers .fa-tag {
           color: #d8753a; }
+  .tag-list .tag-list-clap {
+    font-size: 1rem;
+    display: inline-block; }
+    .tag-list .tag-list-clap applause-button {
+      width: 2rem;
+      height: 2rem;
+      top: 0.7rem; }
+      .tag-list .tag-list-clap applause-button div.count-container {
+        width: auto;
+        height: 100%;
+        top: 0.3rem;
+        font-size: 1rem;
+        margin-left: 2.3rem; }
