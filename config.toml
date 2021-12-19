@@ -18,7 +18,7 @@ pygmentsStyle = "tango"
   name = "Loïc DIVAD"
 
 [permalinks]
-  posts = "/:section/:year/:month/:title/"
+  posts = "/:section/:year/:month/:slug/"
   talks = "/:section/:title/"
 
 [blackfriday]
