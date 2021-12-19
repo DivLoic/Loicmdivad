@@ -485,7 +485,6 @@ a.post-link {
       .fa-layers .fa-tag {
         color: $body-text-color;;
       }
-
       &.en span.tag-name:before {
         content: "🇬🇧";
       }
@@ -502,8 +501,28 @@ a.post-link {
       a.tag-link {
         text-decoration: none;
         .fa-layers .fa-tag {
-            color: #d8753a;
+          color: #d8753a;
         }
+      }
+    }
+  }
+// clap customisation
+
+  .tag-list-clap {
+    font-size: 1rem;
+    display: inline-block;
+
+    applause-button {
+      width: 2rem;
+      height: 2rem;
+      top: 0.7rem;
+
+      div.count-container {
+        width: auto;
+        height: 100%;
+        top: 0.3rem;
+        font-size: 1rem;
+        margin-left: 2.3rem;
       }
     }
   }

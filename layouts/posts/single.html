@@ -1,33 +1,9 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ with .Params.post_banner }} <img src="/images/posts/{{ . }}" alt="Post banner"> {{ end }}
-  <div class="post-info">
-    {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
-    <i><strong>Publish date: </strong>{{ .PublishDate.Format $dateFormat }}</i>
 
-      {{ $tags := slice }}
-      {{ with .Params.tags }}
-      <ul class="hg-page-list tag-list">
-      {{ range . }}
-      <li class="tag-list-element">
-          {{ $lang := cond (hasPrefix . "fr-") "fr" "" }}
-          {{ $lang := cond (hasPrefix . "en-") "en" $lang }}
-          {{ $hrefLink := print ("tags/" | absLangURL) (. | urlize) "/" }}
-          <a href="{{$hrefLink}}" class="tag-link {{ $lang }}">
-              <span class="tag-name">{{.}}</span>
-              <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-          </a>
-      </li>
-      {{ end }}
-      </ul>
-      <br/><br/>
-      {{ delimit $tags ", " }}
-      {{ end }}
-  </div>
-
+  {{ partial "post-info.html" (dict "context" .)}}
   <div class="post-content">{{ .Content }}</div>
+  {{ partial "post-info.html" (dict "context" .)}}
   {{ partial "disqus.html" . }}
 {{ end }}

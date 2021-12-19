@@ -28,8 +28,9 @@ pygmentsStyle = "tango"
   latexDashes = true
 
 [params]
-  extra_css = ["css/fontawesome.css", "css/chromastyles.css"] # + css/github.css (dev)
-  extra_js = ["js/fontawesome.js"]
+  # + css/github.css (dev)
+  extra_css = ["css/fontawesome.css", "css/chromastyles.css", "css/applause-button.css"]
+  extra_js = ["js/fontawesome.js", "js/applause-button.js"]
 
   project_name = "Loïc M. DIVAD"
   project_tagline = "Event Streams and Monads in the Cloud"
