@@ -1,4 +1,6 @@
 <div class="post-info">
+    {{ $httpBlogUrl := (replace .context.Page.Permalink "http://" "") }}
+    {{ $httpsBlogUrl := (replace $httpBlogUrl "https://" "") }}
     {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
     <i><strong>Publication: </strong>{{ .context.PublishDate.Format $dateFormat }}</i>
 
@@ -10,7 +12,7 @@
             {{ $lang := cond (hasPrefix . "fr-") "fr" "" }}
             {{ $lang := cond (hasPrefix . "en-") "en" $lang }}
             {{ $hrefLink := print ("tags/" | absLangURL) (. | urlize) "/" }}
-            <a href="{{$hrefLink}}" class="tag-link {{ $lang }}">
+            <a href="{{ $hrefLink }}" class="tag-link {{ $lang }}">
                 <span class="tag-name">{{.}}</span>
                 <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
@@ -20,7 +22,7 @@
         </li>
         {{ end }}
         <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a"/>
+            <applause-button multiclap="true" color="#d8753a" url="{{ $httpsBlogUrl | urlize }}"/>
         </li>
     </ul>
 
