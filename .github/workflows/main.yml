@@ -3,7 +3,7 @@ name: Web Site Publication
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-deploy:
