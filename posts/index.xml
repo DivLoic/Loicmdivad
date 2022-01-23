@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Repost 🔃 Kafka Streams, co-partitioning requirements illustrated</title>
+      <link>https://blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/</link>
+      <pubDate>Sat, 20 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/</guid>
+      <description>Back in 2020, I wrote an article about data exchange between Kafka Streams instances. I was not working with Kafka Stream at a specific time. But my head was full of many ideas I wanted to put on paper after using the Kafka Streams library for quite a while. The way joins happen was one of those ideas.</description>
+    </item>
+    
+    <item>
       <title>Use Confluent Cloud secrets in GKE</title>
       <link>https://blog.loicmdivad.com/posts/2020/04/use-confluent-cloud-secrets-in-gke/</link>
       <pubDate>Thu, 09 Apr 2020 09:00:00 +0100</pubDate>

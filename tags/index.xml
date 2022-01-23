@@ -26,20 +26,38 @@
     </item>
     
     <item>
-      <title>fr-link</title>
-      <link>https://blog.loicmdivad.com/tags/fr-link/</link>
-      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      <title>en-link</title>
+      <link>https://blog.loicmdivad.com/tags/en-link/</link>
+      <pubDate>Sat, 20 Jun 2020 09:00:00 +0100</pubDate>
       
-      <guid>https://blog.loicmdivad.com/tags/fr-link/</guid>
+      <guid>https://blog.loicmdivad.com/tags/en-link/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kafka</title>
       <link>https://blog.loicmdivad.com/tags/kafka/</link>
-      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      <pubDate>Sat, 20 Jun 2020 09:00:00 +0100</pubDate>
       
       <guid>https://blog.loicmdivad.com/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>repost</title>
+      <link>https://blog.loicmdivad.com/tags/repost/</link>
+      <pubDate>Sat, 20 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/tags/repost/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fr-link</title>
+      <link>https://blog.loicmdivad.com/tags/fr-link/</link>
+      <pubDate>Mon, 01 Jun 2020 09:00:00 +0100</pubDate>
+      
+      <guid>https://blog.loicmdivad.com/tags/fr-link/</guid>
       <description></description>
     </item>
     
@@ -62,29 +80,11 @@
     </item>
     
     <item>
-      <title>en-link</title>
-      <link>https://blog.loicmdivad.com/tags/en-link/</link>
-      <pubDate>Tue, 01 Oct 2019 09:00:00 -0800</pubDate>
-      
-      <guid>https://blog.loicmdivad.com/tags/en-link/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>k8s</title>
       <link>https://blog.loicmdivad.com/tags/k8s/</link>
       <pubDate>Tue, 04 Jun 2019 09:00:00 +0200</pubDate>
       
       <guid>https://blog.loicmdivad.com/tags/k8s/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>repost</title>
-      <link>https://blog.loicmdivad.com/tags/repost/</link>
-      <pubDate>Mon, 15 Apr 2019 18:00:02 +0100</pubDate>
-      
-      <guid>https://blog.loicmdivad.com/tags/repost/</guid>
       <description></description>
     </item>
     

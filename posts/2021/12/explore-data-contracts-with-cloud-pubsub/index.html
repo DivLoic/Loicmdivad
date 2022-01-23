@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pubsub/">
     <meta property="og:description" content="Loic DIVAD's blog">
     
-    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail007.jpg">
+    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail008.jpg">
     
     <meta property="og:title" content="Loïc M. DIVAD: Explore data contracts with Cloud Pub/Sub">
     <meta name="twitter:site" content="@LoicMDivad">
@@ -172,7 +172,7 @@ entry called subject. This subject is then exposed and provides consistency at a
 <li>This contract enforces the structure of future messages</li>
 <li>This contract informs how to read existing messages</li>
 </ul>
-<p><img src="/images/posts/07/basic_schema_senario.png" alt="Basic Schema Management Scenario"></p>
+<p><img src="/images/posts/08/basic_schema_senario.png" alt="Basic Schema Management Scenario"></p>
 <p>The Confluent Schema Registry has been around for a while, and readers might be more familiar with
 it. On the opposite, organising a project around this recent Pub/Sub feature might be less obvious.
 This highlights the practices and techniques one can think of when working with Message
@@ -183,7 +183,7 @@ in <a href="https://cloud.google.com/pubsub/docs/release-notes#March_01_2021">Ma
 to <a href="https://cloud.google.com/pubsub/docs/release-notes#June_30_2021">GA in June</a>. It lets you
 declare an AVRO or Protobuf schema as a cloud resource. You can then point at that resource when
 creating a topic. Let&rsquo;s see what happens next.</p>
-<p><img src="/images/posts/07/topic_creation.png" alt="Topic creation with a schema"></p>
+<p><img src="/images/posts/08/topic_creation.png" alt="Topic creation with a schema"></p>
 <h2 id="use-case-example-the-dumpling-app">Use case example: The Dumpling App</h2>
 <p>Let be the Dumpling Store, a small fictional restaurant that serves dumplings. Let&rsquo;s also imagine
 that each table has a small device providing an interface to order food. Each time you click on
@@ -192,8 +192,8 @@ app sends the second type of event to prepare your order. It&rsquo;s basically s
 Self-Ordering kiosk of your favourite fast food.
 The <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/">dumpling-app</a> is a preview
 of what this application could look like using Pub/Sub Message Schema.</p>
-<p><img src="/images/posts/07/dumpling_app_screen_shot.png" alt="Dumpling App screenshot"></p>
-<p><img src="/images/posts/07/self_ordering_kiosk.jpg" alt="Fancy image of a tablet next to a dumpling"></p>
+<p><img src="/images/posts/08/dumpling_app_screen_shot.png" alt="Dumpling App screenshot"></p>
+<p><img src="/images/posts/08/self_ordering_kiosk.jpg" alt="Fancy image of a tablet next to a dumpling"></p>
 <p><small>
     <i>
         Photo by <a href="https://unsplash.com/@febrianzakaria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Febrian Zakaria</a>
@@ -211,7 +211,7 @@ is (<a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/d
 composed of a <a href="https://svelte.dev">Svelte</a> web app and a Spring Boot web service running in App
 Engine. The service produces events in a Pub/Sub topic. From here, a Dataflow job continuously
 processes the events.</p>
-<p><img src="/images/posts/07/application_architecture.png" alt="Application Architecture"></p>
+<p><img src="/images/posts/08/application_architecture.png" alt="Application Architecture"></p>
 <h3 id="infrastructure">Infrastructure</h3>
 <p>The team building and running the application might also be responsible for the cloud resources.
 That’s why at the root of the project, a terraform directory contains the different infrastructure
@@ -388,7 +388,7 @@ contracts.</p>
 </span><span style="color:#4e9a06"></span>        --message-encoding<span style="color:#ce5c00;font-weight:bold">=</span>BINARY <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>        --message<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>cat ./test.json<span style="color:#204a87;font-weight:bold">)</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>        --schema-name<span style="color:#ce5c00;font-weight:bold">=</span>dumpling-commands
-</code></pre></div><p><img src="/images/posts/07/schema_validation.png" alt="Schema Validation via gcloud command line"></p>
+</code></pre></div><p><img src="/images/posts/08/schema_validation.png" alt="Schema Validation via gcloud command line"></p>
 <p>One can perform the same verification with the user interface cloud console.</p>
 <h2 id="message-consumption">Message Consumption</h2>
 <p>Now, let&rsquo;s move to another aspect of working with schema: Message consumption. Let&rsquo;s imagine a third
@@ -480,7 +480,7 @@ just an arbitrary choice to get simple feedback for the job).</p>
 </div><p>See the entire
 file: <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor/src/main/java/fr/ldivad/dumpling/Main.java">Main.java</a>
 .</p>
-<p><img src="/images/posts/07/shopping-cart-state-in-datastore2.png" alt="Screen Shot of the Dataflow Job and the result"></p>
+<p><img src="/images/posts/08/shopping-cart-state-in-datastore2.png" alt="Screen Shot of the Dataflow Job and the result"></p>
 <p>This is an oversimplified example. But still, it is concrete enough to start imagining how we could
 build materialised views in this context. Those views would contribute to a read model similar to
 the one we rely on when using CQRS or other event-sourcing patterns.</p>

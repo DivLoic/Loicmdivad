@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/">
+    <meta property="og:url" content="https://blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/">
     <meta property="og:description" content="Loic DIVAD's blog">
     
-    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/post_banner002.png">
+    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail007.jpg">
     
-    <meta property="og:title" content="Loïc M. DIVAD: Repost 🔃 Apache Kudu: the New Bigdata Antelope">
+    <meta property="og:title" content="Loïc M. DIVAD: Repost 🔃 Kafka Streams, co-partitioning requirements illustrated">
     <meta name="twitter:site" content="@LoicMDivad">
     <meta name="twitter:creator" content="@LoicMDivad">
     <meta name="generator" content="Hugo 0.90.1" />
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/chromastyles.css">
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/applause-button.css">
     <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
-    <title>Repost 🔃 Apache Kudu: the New Bigdata Antelope | Loïc M. Divad</title>
+    <title>Repost 🔃 Kafka Streams, co-partitioning requirements illustrated | Loïc M. Divad</title>
 </head>
 
   <body>
@@ -89,14 +89,14 @@
 
     <section class="main-content">
       
-  <h1>Repost 🔃 Apache Kudu: the New Bigdata Antelope</h1>
-   <img src="/images/posts/post_banner002.png" alt="Post banner"> 
+  <h1>Repost 🔃 Kafka Streams, co-partitioning requirements illustrated</h1>
+   <img src="/images/posts/post_banner007.png" alt="Post banner"> 
 
   <div class="post-info">
     
     
     
-    <i><strong>Publication: </strong>Apr 10, 2017</i>
+    <i><strong>Publication: </strong>Jun 20, 2020</i>
 
     
     
@@ -119,8 +119,8 @@
             
             
             
-            <a href="https://blog.loicmdivad.com/tags/fr-link/" class="tag-link fr">
-                <span class="tag-name">fr-link</span>
+            <a href="https://blog.loicmdivad.com/tags/kafka/" class="tag-link ">
+                <span class="tag-name">kafka</span>
                 <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
                   <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
@@ -132,8 +132,21 @@
             
             
             
-            <a href="https://blog.loicmdivad.com/tags/distsys/" class="tag-link ">
-                <span class="tag-name">distsys</span>
+            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
+                <span class="tag-name">streams</span>
+                <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+              </span>
+            </a>
+        </li>
+        
+        <li class="tag-list-element">
+            
+            
+            
+            <a href="https://blog.loicmdivad.com/tags/en-link/" class="tag-link en">
+                <span class="tag-name">en-link</span>
                 <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
                   <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
@@ -142,7 +155,7 @@
         </li>
         
         <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/"/>
+            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/"/>
         </li>
     </ul>
 
@@ -151,7 +164,7 @@
     
 </div>
 
-  <div class="post-content"><p>Software Engineers frequently engage themself into new learning paths. We keep learning skills related to our field such as programming languages; libraries or even how new data systems work. This idea is one of the 4 company values of <a href="https://twitter.com/PubSapientEng">@PubSapientEng</a>, and they named it: Sharing Knowledge. Why &ldquo;sharing&rdquo;? Besides the idea to keep up with tech, it&rsquo;s a good way to extends your skills and get new perspectives on the job you do every day. When structuring what you have learnt, enough to share it (e.g. a blog post, a tech conferences, podcast), you will consolidate your new skills and confront your understanding to others. This is mainly why, in early 2017, I&rsquo;ve started to dig in what is <a href="https://kudu.apache.org/">Apache Kudu</a>. At that time, I was focused on NoSQL technologies, Hadoop platforms and huge batch ingestions.</p>
+  <div class="post-content"><p>Back in 2020, I wrote an article about data exchange between Kafka Streams instances. I was not working with Kafka Stream at a specific time. But my head was full of many ideas I wanted to put on paper after using the Kafka Streams library for quite a while. The way joins happen was one of those ideas.</p>
 <div class="ld-repost">
     <div style="display: block"></div>
     <div class="ld-repost-icon fa-1x">
@@ -161,16 +174,10 @@
         </span>
     </div>
     <div class="ld-repost-text">
-        <a href="https://blog.engineering.publicissapient.fr/2017/04/10/apache-kudu-la-nouvelle-antilope-des-architectures-big-data/" target="_blank"> Apache Kudu: la nouvelle antilope des architectures Big Data</a>
+        <a href="https://medium.com/xebia-france/kafka-streams-co-partitioning-requirements-illustrated-2033f686b19c" target="_blank"> Kafka Streams, co-partitioning requirements illustrated</a>
     </div>
 </div>
-<p>At the same time, I was preparing my very first technical talk. Can you guess the title of the presentation?? Exactly: <a href="/talks/apache-kudu-the-new-big-data-antelope/">Apache Kudu: the new big data antelope</a>. Recycling is also an essential rule in this Sharing Knowledge thing. Not everyone consumes content the same way, but by switching format for the same subject, you will talk to a bigger audience and develop more skills.</p>
-<p>For consulting companies, it is essential. It solves two significant problems:</p>
-<ul>
-<li>They need extra motivation to keep their teams learning</li>
-<li>They need the people outside to know they exist and they are interested in cool stuff</li>
-</ul>
-<p>That&rsquo;s why Sharing Knowledge is a win-win.</p>
+<p>Like many people, when I started to work with this stream processing library, I had prior experiences with Apache Spark and other data processing frameworks. <em>Shuffling</em> was quite an important concept for stateful operations such as <em>grouping</em>, <em>joining</em> or <em>windowing</em>. The idea was not easy to grasp, and you had to avoid it as much as possible. So when I had to switch mental model to use Kafka Streams, thinking about <em>Repartitioning</em> instead of <em>Shuffling</em> felt way more intuitive. So I tried to use my knowledge of Apache Kafka to describe it by creating a demo and a colourful blog post.</p>
 <div class="ld-info">
     <div style="display: block"></div>
     <div class="ld-info-icon">
@@ -223,7 +230,7 @@
     
     
     
-    <i><strong>Publication: </strong>Apr 10, 2017</i>
+    <i><strong>Publication: </strong>Jun 20, 2020</i>
 
     
     
@@ -246,8 +253,8 @@
             
             
             
-            <a href="https://blog.loicmdivad.com/tags/fr-link/" class="tag-link fr">
-                <span class="tag-name">fr-link</span>
+            <a href="https://blog.loicmdivad.com/tags/kafka/" class="tag-link ">
+                <span class="tag-name">kafka</span>
                 <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
                   <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
@@ -259,8 +266,21 @@
             
             
             
-            <a href="https://blog.loicmdivad.com/tags/distsys/" class="tag-link ">
-                <span class="tag-name">distsys</span>
+            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
+                <span class="tag-name">streams</span>
+                <span class="fa-layers fa-fw">
+                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
+                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+              </span>
+            </a>
+        </li>
+        
+        <li class="tag-list-element">
+            
+            
+            
+            <a href="https://blog.loicmdivad.com/tags/en-link/" class="tag-link en">
+                <span class="tag-name">en-link</span>
                 <span class="fa-layers fa-fw">
                   <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
                   <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
@@ -269,7 +289,7 @@
         </li>
         
         <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2017/04/repost-apache-kudu-the-new-bigdata-antelope/"/>
+            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/"/>
         </li>
     </ul>
 
