@@ -6,7 +6,7 @@ draft: false
 author: "Loïc DIVAD"    
 extra_css: ["css/post.css"]
 tags: ["cloud", "streams"]
-thumbnail: thumbnail007.jpg
+thumbnail: thumbnail008.jpg
 ---
 
 This article aims to discuss data contracts in the context of event processing applications. We will
@@ -42,7 +42,7 @@ entry called subject. This subject is then exposed and provides consistency at a
 - This contract enforces the structure of future messages
 - This contract informs how to read existing messages
 
-![Basic Schema Management Scenario](/images/posts/07/basic_schema_senario.png)
+![Basic Schema Management Scenario](/images/posts/08/basic_schema_senario.png)
 
 The Confluent Schema Registry has been around for a while, and readers might be more familiar with
 it. On the opposite, organising a project around this recent Pub/Sub feature might be less obvious.
@@ -57,7 +57,7 @@ to [GA in June](https://cloud.google.com/pubsub/docs/release-notes#June_30_2021)
 declare an AVRO or Protobuf schema as a cloud resource. You can then point at that resource when
 creating a topic. Let's see what happens next.
 
-![Topic creation with a schema](/images/posts/07/topic_creation.png)
+![Topic creation with a schema](/images/posts/08/topic_creation.png)
 
 ## Use case example: The Dumpling App
 
@@ -69,9 +69,9 @@ Self-Ordering kiosk of your favourite fast food.
 The [dumpling-app](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/) is a preview
 of what this application could look like using Pub/Sub Message Schema.
 
-![Dumpling App screenshot](/images/posts/07/dumpling_app_screen_shot.png)
+![Dumpling App screenshot](/images/posts/08/dumpling_app_screen_shot.png)
 
-![Fancy image of a tablet next to a dumpling](/images/posts/07/self_ordering_kiosk.jpg)
+![Fancy image of a tablet next to a dumpling](/images/posts/08/self_ordering_kiosk.jpg)
 
 {{< shoutout name="Febrian Zakaria"
 picture="https://unsplash.com/@febrianzakaria?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
@@ -87,7 +87,7 @@ composed of a [Svelte](https://svelte.dev) web app and a Spring Boot web service
 Engine. The service produces events in a Pub/Sub topic. From here, a Dataflow job continuously
 processes the events.
 
-![Application Architecture](/images/posts/07/application_architecture.png)
+![Application Architecture](/images/posts/08/application_architecture.png)
 
 ### Infrastructure
 
@@ -243,7 +243,7 @@ gcloud pubsub schemas validate-message \
         --schema-name=dumpling-commands
 ```
 
-![Schema Validation via gcloud command line](/images/posts/07/schema_validation.png)
+![Schema Validation via gcloud command line](/images/posts/08/schema_validation.png)
 
 One can perform the same verification with the user interface cloud console.
 
@@ -325,7 +325,7 @@ See the entire
 file: [Main.java](https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor/src/main/java/fr/ldivad/dumpling/Main.java)
 .
 
-![Screen Shot of the Dataflow Job and the result](/images/posts/07/shopping-cart-state-in-datastore2.png)
+![Screen Shot of the Dataflow Job and the result](/images/posts/08/shopping-cart-state-in-datastore2.png)
 
 This is an oversimplified example. But still, it is concrete enough to start imagining how we could
 build materialised views in this context. Those views would contribute to a read model similar to
