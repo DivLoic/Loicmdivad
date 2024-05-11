@@ -15,15 +15,28 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Build Site
-        uses: chabad360/hugo-actions@master
+      - name: Hugo Setup
+        uses: peaceiris/actions-hugo@v3.0.0
         with:
-          args: -e PROD
-          hugoVersion: 'extended_0.90.1'
+          hugo-version: '0.125.7'
+          extended: true
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      - name: Asciidoctor Setup
+        run: gem install asciidoctor
+
+      - name: Hugo Build
+        run: |
+          alias asciidoctor="asciidoctor --attribute=experimental=true --attribute=icons=font"
+          hugo --gc --minify --cleanDestinationDir
 
       - name: Deploy Github Pages
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.LMD_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./public
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          publish_dir: ./public
+          publish_branch: gh-pages
+          personal_token: ${{ secrets.LMD_TOKEN }}
