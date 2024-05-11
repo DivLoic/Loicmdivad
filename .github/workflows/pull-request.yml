@@ -18,4 +18,4 @@ jobs:
       - name: Build Site
         uses: chabad360/hugo-actions@master
         with:
-          hugoVersion: 'extended_0.90.1'
+          hugoVersion: 'extended_0.125.7'
