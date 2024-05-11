@@ -16,6 +16,6 @@ jobs:
           submodules: recursive
 
       - name: Build Site
-        uses: chabad360/hugo-actions@master
+        uses: DivLoic/hugo-actions@0.0.1
         with:
           hugoVersion: 'extended_0.125.7'
