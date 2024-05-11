@@ -16,3 +16,4 @@ hugo.linux
 .idea/
 .DS_Store
 .color-picker.css
+/.hugo_build.lock

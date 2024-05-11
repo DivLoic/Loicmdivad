@@ -102,3 +102,17 @@ pygmentsStyle = "tango"
   quality = 75
 
   anchor = "smart"
+
+[security]
+  enableInlineShortcodes = false
+
+[security.exec]
+  allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^asciidoctor']
+  osEnv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE)$']
+
+[security.funcs]
+  getenv = ['^HUGO_', '^CI$']
+
+[security.http]
+  methods = ['(?i)GET|POST']
+  urls = ['.*']
