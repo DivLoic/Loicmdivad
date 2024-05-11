@@ -35,8 +35,8 @@ jobs:
           hugo --gc --minify --cleanDestinationDir
 
       - name: Deploy Github Pages
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.LMD_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./public
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.LMD_TOKEN }}
+          publish_dir: ./public
