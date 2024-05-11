@@ -15,7 +15,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Build Site
-        uses: DivLoic/hugo-actions@0.0.1
+      - name: Hugo Setup
+        uses: peaceiris/actions-hugo@v3.0.0
         with:
-          hugoVersion: 'extended_0.125.7'
+          hugo-version: '0.125.7'
+          extended: true
+
+      - name: Hugo Build
+        run: hugo --gc --minify --cleanDestinationDir

@@ -15,14 +15,18 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Build Site
-        uses: DivLoic/hugo-actions@0.0.1
+      - name: Hugo Setup
+        uses: peaceiris/actions-hugo@v3.0.0
         with:
-          args: -e PROD
-          hugoVersion: 'extended_0.125.7'
+          hugo-version: '0.125.7'
+          extended: true
+
+      - name: Hugo Build
+        run: hugo --gc --minify --cleanDestinationDir
 
       - name: Deploy Github Pages
-        uses: peaceiris/actions-gh-pages@v2
+        uses: peaceiris/actions-gh-pages@v3.0.0
+        if: github.ref == 'refs/heads/main'
         env:
           PERSONAL_TOKEN: ${{ secrets.LMD_TOKEN }}
           PUBLISH_BRANCH: gh-pages
