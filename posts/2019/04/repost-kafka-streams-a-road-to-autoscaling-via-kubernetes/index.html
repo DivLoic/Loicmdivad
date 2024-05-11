@@ -1,381 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/">
-    <meta property="og:description" content="Loic DIVAD's blog">
-    
-    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/post_banner004.png">
-    
-    <meta property="og:title" content="Loïc M. DIVAD: Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes">
-    <meta name="twitter:site" content="@LoicMDivad">
-    <meta name="twitter:creator" content="@LoicMDivad">
-    <meta name="generator" content="Hugo 0.90.1" />
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/normalize.css">
-    
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    
-    
-    
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/cayman.5a2fe776a06cfb260a3f11eb50e3352d87c5538d3859b25383a418afa66dd095.css">
-    
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/fontawesome.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/chromastyles.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/applause-button.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
-    <title>Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes | Loïc M. Divad</title>
-</head>
-
-  <body>
-    <section class="outer-page-header">
-    <section class="inner-page-header"></section>
-    <section class="page-header">
-        <a href="/" id="home-link">
-            <h1 class="project-name">
-            Loïc M. DIVAD
-            </h1>
-        </a>
-        <h2 class="project-tagline">
-            Event Streams and Monads in the Cloud
-            <span class="tg-icon">👨🏾‍💻🍹</span>
-        </h2>
-        <nav>
-            
-            
-            
-            
-            
-            
-            <a href="/posts/" class="btn">Posts</a>
-            
-            
-            
-            
-            
-            <a href="/talks/" class="btn">Talks</a>
-            
-            
-            
-            
-            
-            <a href="/tags/" class="btn">Tags</a>
-            
-            
-            
-            
-            
-            <a href="/about/" class="btn">About</a>
-            
-        </nav>
-        <div>
-            <p id="socials">
-            <a href="https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/LoicMDivad" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://github.com/DivLoic" target="_blank"><i class="fab fa-github"></i></a>
-            </p>
-        </div>
-    </section>
-</section>
-
-    <section class="main-content">
-      
-  <h1>Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes</h1>
-   <img src="/images/posts/post_banner004.png" alt="Post banner"> 
-
-  <div class="post-info">
-    
-    
-    
-    <i><strong>Publication: </strong>Apr 15, 2019</i>
-
-    
-    
-    <ul class="hg-page-list tag-list">
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/repost/" class="tag-link ">
-                <span class="tag-name">repost</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
-                <span class="tag-name">streams</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/kafka/" class="tag-link ">
-                <span class="tag-name">kafka</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/cloud/" class="tag-link ">
-                <span class="tag-name">cloud</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/fr-link/" class="tag-link fr">
-                <span class="tag-name">fr-link</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/en-link/" class="tag-link en">
-                <span class="tag-name">en-link</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/"/>
-        </li>
-    </ul>
-
-    <br/><br/>
-    
-    
-</div>
-
-  <div class="post-content"><p>There are many reasons for working on community contributions such as a blog post, a demo, or a talk. Sometimes, you produce those contributions to share something that you&rsquo;ve learned at work. But sometimes, the contribution itself can be a way to learn and experiment something new. I was in the second case when I worked on the article Kafka Streams: a road to Autoscaling via Kubernetes.</p>
-<div class="ld-repost">
-    <div style="display: block"></div>
-    <div class="ld-repost-icon fa-1x">
-        <span class="fa-layers fa-fw">
-            <i class="fa fa-circle" data-fa-transform="shrink--8"></i>
-            <i class="fa fa-link fa-inverse" data-fa-transform="shrink-2"></i>
-        </span>
-    </div>
-    <div class="ld-repost-text">
-        <a href="https://medium.com/xebia-france/kafka-streams-a-road-to-autoscaling-via-kubernetes-417f2597439" target="_blank"> Kafka Streams: a road to autoscaling via Kubernetes</a>
-    </div>
-</div>
-<p>At that time, I was working for a consulting company, and my client was running one of it&rsquo;s first real-time project on Apache Kafka®. We were developing a Kafka Streams application meant to be deployed on three virtual machines to process data from ~12 partitions. We were satisfied with how these instances handled the normal workload. However, in some situations, we wished we could be more flexible and easily add more deployments. Issues like crashes; restarts; upgrades led to significant increases in the record lag. Meanwhile, our colleagues were all converted to the same sect: Kubernetes. So I started to ask my self: &ldquo;can we address this particular problem with Kubernetes&rdquo;. And that&rsquo;s how I&rsquo;ve started to explore Kubernetes custom metrics API.</p>
-<p>Basically the demo: <a href="https://github.com/DivLoic/xke-kingof-scaling">xke-kingof-scaling</a> brings a random data generator, a Kafka Streams application and a minimal infra (declared with Terraform) to recreate the use case and highlight the issue I was trying to address. The project was running on <a href="https://cloud.google.com">GCP</a>, and the Kafka cluster used was on <a href="https://www.confluent.io/confluent-cloud/">Confluent Cloud</a>. The first deadline for this hack project was actually a presentation. I had to present the talk <a href="https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/">Scale in / Scale out with Kafka Streams and Kubernetes</a> 🎞 🇫🇷 at <a href="https://2018.xebicon.fr/">the 2018 Edition of Xebicon</a>.</p>
-<p><img src="/images/posts/04/lolo_on_stage.jpg" alt="Loic DIVAD at Xebicon 2018"></p>
-<p>Then came the two blog posts, the first in <a href="https://blog.engineering.publicissapient.fr/2019/05/03/kafka-streams-une-voie-vers-lautoscaling-avec-kubernetes/">French</a> and the second in <a href="https://medium.com/xebia-france/kafka-streams-a-road-to-autoscaling-via-kubernetes-417f2597439">English</a>. The first draft was simply the transcript of the talk, which was really useful.</p>
-<p>Doing this demo (and the corresponding blog post) brought me a lot. Not only because I&rsquo;ve learned a lot, but also because I&rsquo;ve been stuck halfway on my demonstration and had to figure out how to get things to work. At the time, the two pieces of software I was dealing with, a Kafka Steams application and the Kube custom metrics API, didn&rsquo;t have a trivial integration. But it had a different dynamic to the story. And now that I can take a step back from it, I think it was one of the funniest demos I&rsquo;ve created.</p>
-<div class="ld-info">
-    <div style="display: block"></div>
-    <div class="ld-info-icon">
-        <span>
-            <i class="fa fa-1x fa-info-circle" data-fa-transform="shrink--6"></i>
-        </span>
-    </div>
-    <div class="ld-info-text">
-        Note on Repost Blog: blog.loicmdivad.com is a place to collect all the work I'm doing in software engineering. But to avoid content duplication when an article is published somewhere else (e.g. Medium, corporate blog), I just create a Repost Blog. This type of blog just describes the story of the publication briefly and include a link to it. Repost blog can be identified by the tag
-        <span class="tag-list">
-            <span class="tag-list-element">
-                <a href="/tags/repost/" class="tag-link">
-                    <span class="tag-name">repost</span>
-                    <span class="fa-layers fa-fw">
-                        <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                        <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-                    </span>
-                </a>
-            </span>
-        </span>
-         . They also have the
-        <span class="tag-list">
-            <span class="tag-list-element">
-                <a href="/tags/en-link/" class="tag-link fr">
-                    <span class="tag-name">fr-link</span>
-                    <span class="fa-layers fa-fw">
-                        <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                        <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-                    </span>
-                </a>
-            </span>
-        </span>
-         or
-        <span class="tag-list">
-            <span class="tag-list-element">
-                <a href="/tags/fr-link/" class="tag-link en">
-                    <span class="tag-name">en-link</span>
-                    <span class="fa-layers fa-fw">
-                        <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                        <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-                    </span>
-                </a>
-            </span>
-        </span>
-        to indicate the language of the initial publication.
-    </div>
-</div>
-</div>
-  <div class="post-info">
-    
-    
-    
-    <i><strong>Publication: </strong>Apr 15, 2019</i>
-
-    
-    
-    <ul class="hg-page-list tag-list">
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/repost/" class="tag-link ">
-                <span class="tag-name">repost</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
-                <span class="tag-name">streams</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/kafka/" class="tag-link ">
-                <span class="tag-name">kafka</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/cloud/" class="tag-link ">
-                <span class="tag-name">cloud</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/fr-link/" class="tag-link fr">
-                <span class="tag-name">fr-link</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/en-link/" class="tag-link en">
-                <span class="tag-name">en-link</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/"/>
-        </li>
-    </ul>
-
-    <br/><br/>
-    
-    
-</div>
-
-  
-
-
-
-      <footer class="site-footer">
-    <span class="site-footer-credits">
-        All rights reserved <a href="https://blog.loicmdivad.io">Loïc DIVAD</a> © 2020 • Made with <a href="https://gohugo.io/">Hugo</a>. <br/>
-        Themed by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Header Photo by <a href="https://unsplash.com/@yeeeeeeha?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Daniel Gregoire</a> on <a href="https://unsplash.com/s/photos/daniel-gregoire?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.
-    </span>
-</footer>
-
-    </section>
-  </body>
-  
-   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155287871-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-155287871-1');
-  </script>
-<script src="https://blog.loicmdivad.com/js/fontawesome.js"></script><script src="https://blog.loicmdivad.com/js/applause-button.js"></script>
-</html>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta property="og:type" content="website"><meta property="og:url" content="https://blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/"><meta property="og:description" content="Loic DIVAD's blog"><meta property="og:image" content="https://blog.loicmdivad.com/images/posts/post_banner004.png"><meta property="og:title" content="Loïc M. DIVAD: Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes"><meta name=twitter:site content="@LoicMDivad"><meta name=twitter:creator content="@LoicMDivad"><meta name=generator content="Hugo 0.125.7"><link rel=stylesheet href=https://blog.loicmdivad.com/css/normalize.css><link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel=stylesheet type=text/css><link rel=stylesheet href=https://blog.loicmdivad.com/css/cayman.5a2fe776a06cfb260a3f11eb50e3352d87c5538d3859b25383a418afa66dd095.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://blog.loicmdivad.com/css/fontawesome.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/chromastyles.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/applause-button.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/post.css><title>Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes | Loïc M. Divad</title></head><body><section class=outer-page-header><section class=inner-page-header></section><section class=page-header><a href=/ id=home-link><h1 class=project-name>Loïc M. DIVAD</h1></a><h2 class=project-tagline>Event Streams and Monads in the Cloud
+<span class=tg-icon>👨🏾‍💻🍹</span></h2><nav><a href=/posts/ class=btn>Posts</a>
+<a href=/talks/ class=btn>Talks</a>
+<a href=/tags/ class=btn>Tags</a>
+<a href=/about/ class=btn>About</a></nav><div><p id=socials><a href=https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/ target=_blank><i class="fab fa-linkedin"></i></a>
+<a href=https://twitter.com/LoicMDivad target=_blank><i class="fab fa-twitter"></i></a>
+<a href=https://github.com/DivLoic target=_blank><i class="fab fa-github"></i></a></p></div></section></section><section class=main-content><h1>Repost 🔃 Kafka Streams: a road to Autoscaling via Kubernetes</h1><img src=/images/posts/post_banner004.png alt="Post banner"><div class=post-info><i><strong>Publication: </strong>Apr 15, 2019</i><ul class="hg-page-list tag-list"><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/repost/ class=tag-link><span class=tag-name>repost</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/streams/ class=tag-link><span class=tag-name>streams</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/kafka/ class=tag-link><span class=tag-name>kafka</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/cloud/ class=tag-link><span class=tag-name>cloud</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/fr-link/ class="tag-link fr"><span class=tag-name>fr-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/en-link/ class="tag-link en"><span class=tag-name>en-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-clap><applause-button multiclap=true color=#d8753a url=blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/></li></ul><br><br></div><div class=post-content><p>There are many reasons for working on community contributions such as a blog post, a demo, or a talk. Sometimes, you produce those contributions to share something that you&rsquo;ve learned at work. But sometimes, the contribution itself can be a way to learn and experiment something new. I was in the second case when I worked on the article Kafka Streams: a road to Autoscaling via Kubernetes.</p><div class=ld-repost><div style=display:block></div><div class="ld-repost-icon fa-1x"><span class="fa-layers fa-fw"><i class="fa fa-circle" data-fa-transform=shrink--8></i>
+<i class="fa fa-link fa-inverse" data-fa-transform=shrink-2></i></span></div><div class=ld-repost-text><a href=https://medium.com/xebia-france/kafka-streams-a-road-to-autoscaling-via-kubernetes-417f2597439 target=_blank>Kafka Streams: a road to autoscaling via Kubernetes</a></div></div><p>At that time, I was working for a consulting company, and my client was running one of it&rsquo;s first real-time project on Apache Kafka®. We were developing a Kafka Streams application meant to be deployed on three virtual machines to process data from ~12 partitions. We were satisfied with how these instances handled the normal workload. However, in some situations, we wished we could be more flexible and easily add more deployments. Issues like crashes; restarts; upgrades led to significant increases in the record lag. Meanwhile, our colleagues were all converted to the same sect: Kubernetes. So I started to ask my self: &ldquo;can we address this particular problem with Kubernetes&rdquo;. And that&rsquo;s how I&rsquo;ve started to explore Kubernetes custom metrics API.</p><p>Basically the demo: <a href=https://github.com/DivLoic/xke-kingof-scaling>xke-kingof-scaling</a> brings a random data generator, a Kafka Streams application and a minimal infra (declared with Terraform) to recreate the use case and highlight the issue I was trying to address. The project was running on <a href=https://cloud.google.com>GCP</a>, and the Kafka cluster used was on <a href=https://www.confluent.io/confluent-cloud/>Confluent Cloud</a>. The first deadline for this hack project was actually a presentation. I had to present the talk <a href=https://blog.loicmdivad.com/talks/scale-in-/-scale-out-with-kafka-streams-and-kubernetes/>Scale in / Scale out with Kafka Streams and Kubernetes</a> 🎞 🇫🇷 at <a href=https://2018.xebicon.fr/>the 2018 Edition of Xebicon</a>.</p><p><img src=/images/posts/04/lolo_on_stage.jpg alt="Loic DIVAD at Xebicon 2018"></p><p>Then came the two blog posts, the first in <a href=https://blog.engineering.publicissapient.fr/2019/05/03/kafka-streams-une-voie-vers-lautoscaling-avec-kubernetes/>French</a> and the second in <a href=https://medium.com/xebia-france/kafka-streams-a-road-to-autoscaling-via-kubernetes-417f2597439>English</a>. The first draft was simply the transcript of the talk, which was really useful.</p><p>Doing this demo (and the corresponding blog post) brought me a lot. Not only because I&rsquo;ve learned a lot, but also because I&rsquo;ve been stuck halfway on my demonstration and had to figure out how to get things to work. At the time, the two pieces of software I was dealing with, a Kafka Steams application and the Kube custom metrics API, didn&rsquo;t have a trivial integration. But it had a different dynamic to the story. And now that I can take a step back from it, I think it was one of the funniest demos I&rsquo;ve created.</p><div class=ld-info><div style=display:block></div><div class=ld-info-icon><span><i class="fa fa-1x fa-info-circle" data-fa-transform=shrink--6></i></span></div><div class=ld-info-text>Note on Repost Blog: blog.loicmdivad.com is a place to collect all the work I'm doing in software engineering. But to avoid content duplication when an article is published somewhere else (e.g. Medium, corporate blog), I just create a Repost Blog. This type of blog just describes the story of the publication briefly and include a link to it. Repost blog can be identified by the tag
+<span class=tag-list><span class=tag-list-element><a href=/tags/repost/ class=tag-link><span class=tag-name>repost</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+</span></a></span></span>. They also have the
+<span class=tag-list><span class=tag-list-element><a href=/tags/en-link/ class="tag-link fr"><span class=tag-name>fr-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+</span></a></span></span>or
+<span class=tag-list><span class=tag-list-element><a href=/tags/fr-link/ class="tag-link en"><span class=tag-name>en-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+</span></a></span></span>to indicate the language of the initial publication.</div></div></div><div class=post-info><i><strong>Publication: </strong>Apr 15, 2019</i><ul class="hg-page-list tag-list"><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/repost/ class=tag-link><span class=tag-name>repost</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/streams/ class=tag-link><span class=tag-name>streams</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/kafka/ class=tag-link><span class=tag-name>kafka</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/cloud/ class=tag-link><span class=tag-name>cloud</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/fr-link/ class="tag-link fr"><span class=tag-name>fr-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/en-link/ class="tag-link en"><span class=tag-name>en-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-clap><applause-button multiclap=true color=#d8753a url=blog.loicmdivad.com/posts/2019/04/repost-kafka-streams-a-road-to-autoscaling-via-kubernetes/></li></ul><br><br></div><footer class=site-footer><span class=site-footer-credits>All rights reserved <a href=https://blog.loicmdivad.io>Loïc DIVAD</a> © 2020 • Made with <a href=https://gohugo.io/>Hugo</a>.<br>Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>. Header Photo by <a href="https://unsplash.com/@yeeeeeeha?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Daniel Gregoire</a> on <a href="https://unsplash.com/s/photos/daniel-gregoire?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</span></footer></section></body><script async src="https://www.googletagmanager.com/gtag/js?id=UA-155287871-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","UA-155287871-1")</script><script src=https://blog.loicmdivad.com/js/fontawesome.js></script><script src=https://blog.loicmdivad.com/js/applause-button.js></script></html>

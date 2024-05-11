@@ -1,325 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/">
-    <meta property="og:description" content="Loic DIVAD's blog">
-    
-    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail007.jpg">
-    
-    <meta property="og:title" content="Loïc M. DIVAD: Repost 🔃 Kafka Streams, co-partitioning requirements illustrated">
-    <meta name="twitter:site" content="@LoicMDivad">
-    <meta name="twitter:creator" content="@LoicMDivad">
-    <meta name="generator" content="Hugo 0.90.1" />
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/normalize.css">
-    
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    
-    
-    
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/cayman.5a2fe776a06cfb260a3f11eb50e3352d87c5538d3859b25383a418afa66dd095.css">
-    
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/fontawesome.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/chromastyles.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/applause-button.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
-    <title>Repost 🔃 Kafka Streams, co-partitioning requirements illustrated | Loïc M. Divad</title>
-</head>
-
-  <body>
-    <section class="outer-page-header">
-    <section class="inner-page-header"></section>
-    <section class="page-header">
-        <a href="/" id="home-link">
-            <h1 class="project-name">
-            Loïc M. DIVAD
-            </h1>
-        </a>
-        <h2 class="project-tagline">
-            Event Streams and Monads in the Cloud
-            <span class="tg-icon">👨🏾‍💻🍹</span>
-        </h2>
-        <nav>
-            
-            
-            
-            
-            
-            
-            <a href="/posts/" class="btn">Posts</a>
-            
-            
-            
-            
-            
-            <a href="/talks/" class="btn">Talks</a>
-            
-            
-            
-            
-            
-            <a href="/tags/" class="btn">Tags</a>
-            
-            
-            
-            
-            
-            <a href="/about/" class="btn">About</a>
-            
-        </nav>
-        <div>
-            <p id="socials">
-            <a href="https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/LoicMDivad" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://github.com/DivLoic" target="_blank"><i class="fab fa-github"></i></a>
-            </p>
-        </div>
-    </section>
-</section>
-
-    <section class="main-content">
-      
-  <h1>Repost 🔃 Kafka Streams, co-partitioning requirements illustrated</h1>
-   <img src="/images/posts/post_banner007.png" alt="Post banner"> 
-
-  <div class="post-info">
-    
-    
-    
-    <i><strong>Publication: </strong>Jun 20, 2020</i>
-
-    
-    
-    <ul class="hg-page-list tag-list">
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/repost/" class="tag-link ">
-                <span class="tag-name">repost</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/kafka/" class="tag-link ">
-                <span class="tag-name">kafka</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
-                <span class="tag-name">streams</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/en-link/" class="tag-link en">
-                <span class="tag-name">en-link</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/"/>
-        </li>
-    </ul>
-
-    <br/><br/>
-    
-    
-</div>
-
-  <div class="post-content"><p>Back in 2020, I wrote an article about data exchange between Kafka Streams instances. I was not working with Kafka Stream at a specific time. But my head was full of many ideas I wanted to put on paper after using the Kafka Streams library for quite a while. The way joins happen was one of those ideas.</p>
-<div class="ld-repost">
-    <div style="display: block"></div>
-    <div class="ld-repost-icon fa-1x">
-        <span class="fa-layers fa-fw">
-            <i class="fa fa-circle" data-fa-transform="shrink--8"></i>
-            <i class="fa fa-link fa-inverse" data-fa-transform="shrink-2"></i>
-        </span>
-    </div>
-    <div class="ld-repost-text">
-        <a href="https://medium.com/xebia-france/kafka-streams-co-partitioning-requirements-illustrated-2033f686b19c" target="_blank"> Kafka Streams, co-partitioning requirements illustrated</a>
-    </div>
-</div>
-<p>Like many people, when I started to work with this stream processing library, I had prior experiences with Apache Spark and other data processing frameworks. <em>Shuffling</em> was quite an important concept for stateful operations such as <em>grouping</em>, <em>joining</em> or <em>windowing</em>. The idea was not easy to grasp, and you had to avoid it as much as possible. So when I had to switch mental model to use Kafka Streams, thinking about <em>Repartitioning</em> instead of <em>Shuffling</em> felt way more intuitive. So I tried to use my knowledge of Apache Kafka to describe it by creating a demo and a colourful blog post.</p>
-<div class="ld-info">
-    <div style="display: block"></div>
-    <div class="ld-info-icon">
-        <span>
-            <i class="fa fa-1x fa-info-circle" data-fa-transform="shrink--6"></i>
-        </span>
-    </div>
-    <div class="ld-info-text">
-        Note on Repost Blog: blog.loicmdivad.com is a place to collect all the work I'm doing in software engineering. But to avoid content duplication when an article is published somewhere else (e.g. Medium, corporate blog), I just create a Repost Blog. This type of blog just describes the story of the publication briefly and include a link to it. Repost blog can be identified by the tag
-        <span class="tag-list">
-            <span class="tag-list-element">
-                <a href="/tags/repost/" class="tag-link">
-                    <span class="tag-name">repost</span>
-                    <span class="fa-layers fa-fw">
-                        <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                        <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-                    </span>
-                </a>
-            </span>
-        </span>
-         . They also have the
-        <span class="tag-list">
-            <span class="tag-list-element">
-                <a href="/tags/en-link/" class="tag-link fr">
-                    <span class="tag-name">fr-link</span>
-                    <span class="fa-layers fa-fw">
-                        <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                        <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-                    </span>
-                </a>
-            </span>
-        </span>
-         or
-        <span class="tag-list">
-            <span class="tag-list-element">
-                <a href="/tags/fr-link/" class="tag-link en">
-                    <span class="tag-name">en-link</span>
-                    <span class="fa-layers fa-fw">
-                        <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                        <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-                    </span>
-                </a>
-            </span>
-        </span>
-        to indicate the language of the initial publication.
-    </div>
-</div>
-</div>
-  <div class="post-info">
-    
-    
-    
-    <i><strong>Publication: </strong>Jun 20, 2020</i>
-
-    
-    
-    <ul class="hg-page-list tag-list">
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/repost/" class="tag-link ">
-                <span class="tag-name">repost</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/kafka/" class="tag-link ">
-                <span class="tag-name">kafka</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
-                <span class="tag-name">streams</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/en-link/" class="tag-link en">
-                <span class="tag-name">en-link</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/"/>
-        </li>
-    </ul>
-
-    <br/><br/>
-    
-    
-</div>
-
-  
-
-
-
-      <footer class="site-footer">
-    <span class="site-footer-credits">
-        All rights reserved <a href="https://blog.loicmdivad.io">Loïc DIVAD</a> © 2020 • Made with <a href="https://gohugo.io/">Hugo</a>. <br/>
-        Themed by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Header Photo by <a href="https://unsplash.com/@yeeeeeeha?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Daniel Gregoire</a> on <a href="https://unsplash.com/s/photos/daniel-gregoire?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.
-    </span>
-</footer>
-
-    </section>
-  </body>
-  
-   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155287871-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-155287871-1');
-  </script>
-<script src="https://blog.loicmdivad.com/js/fontawesome.js"></script><script src="https://blog.loicmdivad.com/js/applause-button.js"></script>
-</html>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta property="og:type" content="website"><meta property="og:url" content="https://blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/"><meta property="og:description" content="Loic DIVAD's blog"><meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail007.jpg"><meta property="og:title" content="Loïc M. DIVAD: Repost 🔃 Kafka Streams, co-partitioning requirements illustrated"><meta name=twitter:site content="@LoicMDivad"><meta name=twitter:creator content="@LoicMDivad"><meta name=generator content="Hugo 0.125.7"><link rel=stylesheet href=https://blog.loicmdivad.com/css/normalize.css><link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel=stylesheet type=text/css><link rel=stylesheet href=https://blog.loicmdivad.com/css/cayman.5a2fe776a06cfb260a3f11eb50e3352d87c5538d3859b25383a418afa66dd095.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://blog.loicmdivad.com/css/fontawesome.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/chromastyles.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/applause-button.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/post.css><title>Repost 🔃 Kafka Streams, co-partitioning requirements illustrated | Loïc M. Divad</title></head><body><section class=outer-page-header><section class=inner-page-header></section><section class=page-header><a href=/ id=home-link><h1 class=project-name>Loïc M. DIVAD</h1></a><h2 class=project-tagline>Event Streams and Monads in the Cloud
+<span class=tg-icon>👨🏾‍💻🍹</span></h2><nav><a href=/posts/ class=btn>Posts</a>
+<a href=/talks/ class=btn>Talks</a>
+<a href=/tags/ class=btn>Tags</a>
+<a href=/about/ class=btn>About</a></nav><div><p id=socials><a href=https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/ target=_blank><i class="fab fa-linkedin"></i></a>
+<a href=https://twitter.com/LoicMDivad target=_blank><i class="fab fa-twitter"></i></a>
+<a href=https://github.com/DivLoic target=_blank><i class="fab fa-github"></i></a></p></div></section></section><section class=main-content><h1>Repost 🔃 Kafka Streams, co-partitioning requirements illustrated</h1><img src=/images/posts/post_banner007.png alt="Post banner"><div class=post-info><i><strong>Publication: </strong>Jun 20, 2020</i><ul class="hg-page-list tag-list"><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/repost/ class=tag-link><span class=tag-name>repost</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/kafka/ class=tag-link><span class=tag-name>kafka</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/streams/ class=tag-link><span class=tag-name>streams</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/en-link/ class="tag-link en"><span class=tag-name>en-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-clap><applause-button multiclap=true color=#d8753a url=blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/></li></ul><br><br></div><div class=post-content><p>Back in 2020, I wrote an article about data exchange between Kafka Streams instances. I was not working with Kafka Stream at a specific time. But my head was full of many ideas I wanted to put on paper after using the Kafka Streams library for quite a while. The way joins happen was one of those ideas.</p><div class=ld-repost><div style=display:block></div><div class="ld-repost-icon fa-1x"><span class="fa-layers fa-fw"><i class="fa fa-circle" data-fa-transform=shrink--8></i>
+<i class="fa fa-link fa-inverse" data-fa-transform=shrink-2></i></span></div><div class=ld-repost-text><a href=https://medium.com/xebia-france/kafka-streams-co-partitioning-requirements-illustrated-2033f686b19c target=_blank>Kafka Streams, co-partitioning requirements illustrated</a></div></div><p>Like many people, when I started to work with this stream processing library, I had prior experiences with Apache Spark and other data processing frameworks. <em>Shuffling</em> was quite an important concept for stateful operations such as <em>grouping</em>, <em>joining</em> or <em>windowing</em>. The idea was not easy to grasp, and you had to avoid it as much as possible. So when I had to switch mental model to use Kafka Streams, thinking about <em>Repartitioning</em> instead of <em>Shuffling</em> felt way more intuitive. So I tried to use my knowledge of Apache Kafka to describe it by creating a demo and a colourful blog post.</p><div class=ld-info><div style=display:block></div><div class=ld-info-icon><span><i class="fa fa-1x fa-info-circle" data-fa-transform=shrink--6></i></span></div><div class=ld-info-text>Note on Repost Blog: blog.loicmdivad.com is a place to collect all the work I'm doing in software engineering. But to avoid content duplication when an article is published somewhere else (e.g. Medium, corporate blog), I just create a Repost Blog. This type of blog just describes the story of the publication briefly and include a link to it. Repost blog can be identified by the tag
+<span class=tag-list><span class=tag-list-element><a href=/tags/repost/ class=tag-link><span class=tag-name>repost</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+</span></a></span></span>. They also have the
+<span class=tag-list><span class=tag-list-element><a href=/tags/en-link/ class="tag-link fr"><span class=tag-name>fr-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+</span></a></span></span>or
+<span class=tag-list><span class=tag-list-element><a href=/tags/fr-link/ class="tag-link en"><span class=tag-name>en-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
+</span></a></span></span>to indicate the language of the initial publication.</div></div></div><div class=post-info><i><strong>Publication: </strong>Jun 20, 2020</i><ul class="hg-page-list tag-list"><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/repost/ class=tag-link><span class=tag-name>repost</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/kafka/ class=tag-link><span class=tag-name>kafka</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/streams/ class=tag-link><span class=tag-name>streams</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/en-link/ class="tag-link en"><span class=tag-name>en-link</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-clap><applause-button multiclap=true color=#d8753a url=blog.loicmdivad.com/posts/2020/06/repost-kafka-streams-co-partitioning-requirements-illustrated/></li></ul><br><br></div><footer class=site-footer><span class=site-footer-credits>All rights reserved <a href=https://blog.loicmdivad.io>Loïc DIVAD</a> © 2020 • Made with <a href=https://gohugo.io/>Hugo</a>.<br>Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>. Header Photo by <a href="https://unsplash.com/@yeeeeeeha?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Daniel Gregoire</a> on <a href="https://unsplash.com/s/photos/daniel-gregoire?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</span></footer></section></body><script async src="https://www.googletagmanager.com/gtag/js?id=UA-155287871-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","UA-155287871-1")</script><script src=https://blog.loicmdivad.com/js/fontawesome.js></script><script src=https://blog.loicmdivad.com/js/applause-button.js></script></html>

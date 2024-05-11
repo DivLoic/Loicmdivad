@@ -1,491 +1,227 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pubsub/">
-    <meta property="og:description" content="Loic DIVAD's blog">
-    
-    <meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail008.jpg">
-    
-    <meta property="og:title" content="Loïc M. DIVAD: Explore data contracts with Cloud Pub/Sub">
-    <meta name="twitter:site" content="@LoicMDivad">
-    <meta name="twitter:creator" content="@LoicMDivad">
-    <meta name="generator" content="Hugo 0.90.1" />
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/normalize.css">
-    
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    
-    
-    
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/cayman.5a2fe776a06cfb260a3f11eb50e3352d87c5538d3859b25383a418afa66dd095.css">
-    
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/fontawesome.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/chromastyles.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/applause-button.css">
-    <link rel="stylesheet" href="https://blog.loicmdivad.com/css/post.css">
-    <title>Explore data contracts with Cloud Pub/Sub | Loïc M. Divad</title>
-</head>
-
-  <body>
-    <section class="outer-page-header">
-    <section class="inner-page-header"></section>
-    <section class="page-header">
-        <a href="/" id="home-link">
-            <h1 class="project-name">
-            Loïc M. DIVAD
-            </h1>
-        </a>
-        <h2 class="project-tagline">
-            Event Streams and Monads in the Cloud
-            <span class="tg-icon">👨🏾‍💻🍹</span>
-        </h2>
-        <nav>
-            
-            
-            
-            
-            
-            
-            <a href="/posts/" class="btn">Posts</a>
-            
-            
-            
-            
-            
-            <a href="/talks/" class="btn">Talks</a>
-            
-            
-            
-            
-            
-            <a href="/tags/" class="btn">Tags</a>
-            
-            
-            
-            
-            
-            <a href="/about/" class="btn">About</a>
-            
-        </nav>
-        <div>
-            <p id="socials">
-            <a href="https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/LoicMDivad" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://github.com/DivLoic" target="_blank"><i class="fab fa-github"></i></a>
-            </p>
-        </div>
-    </section>
-</section>
-
-    <section class="main-content">
-      
-  <h1>Explore data contracts with Cloud Pub/Sub</h1>
-  
-
-  <div class="post-info">
-    
-    
-    
-    <i><strong>Publication: </strong>Dec 5, 2021</i>
-
-    
-    
-    <ul class="hg-page-list tag-list">
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/cloud/" class="tag-link ">
-                <span class="tag-name">cloud</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
-                <span class="tag-name">streams</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pubsub/"/>
-        </li>
-    </ul>
-
-    <br/><br/>
-    
-    
-</div>
-
-  <div class="post-content"><p>This article aims to discuss data contracts in the context of event processing applications. We will
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta property="og:type" content="website"><meta property="og:url" content="https://blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pubsub/"><meta property="og:description" content="Loic DIVAD's blog"><meta property="og:image" content="https://blog.loicmdivad.com/images/posts/thumbnail008.jpg"><meta property="og:title" content="Loïc M. DIVAD: Explore data contracts with Cloud Pub/Sub"><meta name=twitter:site content="@LoicMDivad"><meta name=twitter:creator content="@LoicMDivad"><meta name=generator content="Hugo 0.125.7"><link rel=stylesheet href=https://blog.loicmdivad.com/css/normalize.css><link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel=stylesheet type=text/css><link rel=stylesheet href=https://blog.loicmdivad.com/css/cayman.5a2fe776a06cfb260a3f11eb50e3352d87c5538d3859b25383a418afa66dd095.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://blog.loicmdivad.com/css/fontawesome.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/chromastyles.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/applause-button.css><link rel=stylesheet href=https://blog.loicmdivad.com/css/post.css><title>Explore data contracts with Cloud Pub/Sub | Loïc M. Divad</title></head><body><section class=outer-page-header><section class=inner-page-header></section><section class=page-header><a href=/ id=home-link><h1 class=project-name>Loïc M. DIVAD</h1></a><h2 class=project-tagline>Event Streams and Monads in the Cloud
+<span class=tg-icon>👨🏾‍💻🍹</span></h2><nav><a href=/posts/ class=btn>Posts</a>
+<a href=/talks/ class=btn>Talks</a>
+<a href=/tags/ class=btn>Tags</a>
+<a href=/about/ class=btn>About</a></nav><div><p id=socials><a href=https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/ target=_blank><i class="fab fa-linkedin"></i></a>
+<a href=https://twitter.com/LoicMDivad target=_blank><i class="fab fa-twitter"></i></a>
+<a href=https://github.com/DivLoic target=_blank><i class="fab fa-github"></i></a></p></div></section></section><section class=main-content><h1>Explore data contracts with Cloud Pub/Sub</h1><div class=post-info><i><strong>Publication: </strong>Dec 5, 2021</i><ul class="hg-page-list tag-list"><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/cloud/ class=tag-link><span class=tag-name>cloud</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/streams/ class=tag-link><span class=tag-name>streams</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-clap><applause-button multiclap=true color=#d8753a url=blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pubsub/></li></ul><br><br></div><div class=post-content><p>This article aims to discuss data contracts in the context of event processing applications. We will
 follow a short example: The Dumpling App! The post also looks at that concept through specific
-technologies. <a href="https://cloud.google.com/pubsub/docs/schemas">Pub/Sub message schemas</a> is a
-relatively recent feature, so let&rsquo;s take it for a spin in that article.</p>
-<ul>
-<li><a href="#motivation">Motivation</a></li>
-<li><a href="#pubsub-message-schemas">Pub/Sub Message Schemas</a></li>
-<li><a href="#use-case-example-the-dumpling-app">Use case example: The Dumpling App</a>
-<ul>
-<li><a href="#infrastructure">Infrastructure</a></li>
-<li><a href="#schema">Schema</a></li>
-<li><a href="#service-and-interface">Service and interface</a></li>
-</ul>
-</li>
-<li><a href="#schema-enforcement">Schema Enforcement</a></li>
-<li><a href="#message-consumption">Message Consumption</a></li>
-<li><a href="#conclusion">Conclusion</a></li>
-</ul>
-<h2 id="motivation">Motivation</h2>
-<p>Event oriented architectures are powerful. They provide advanced audit capability, replayability and
+technologies. <a href=https://cloud.google.com/pubsub/docs/schemas>Pub/Sub message schemas</a> is a
+relatively recent feature, so let&rsquo;s take it for a spin in that article.</p><ul><li><a href=#motivation>Motivation</a></li><li><a href=#pubsub-message-schemas>Pub/Sub Message Schemas</a></li><li><a href=#use-case-example-the-dumpling-app>Use case example: The Dumpling App</a><ul><li><a href=#infrastructure>Infrastructure</a></li><li><a href=#schema>Schema</a></li><li><a href=#service-and-interface>Service and interface</a></li></ul></li><li><a href=#schema-enforcement>Schema Enforcement</a></li><li><a href=#message-consumption>Message Consumption</a></li><li><a href=#conclusion>Conclusion</a></li></ul><h2 id=motivation>Motivation</h2><p>Event oriented architectures are powerful. They provide advanced audit capability, replayability and
 flexibility. But to enjoy all those features, the different applications have to interact safely
 with each other. Similarly to how a team would create API specifications (with a WSDL when using
 SOAP), there is a need to declare the shape of events flowing in a stream. The name and the type of
 the different fields usually completely describe the structure of the events. It is commonly called
 event schema. This post will refer to the association of schema and materialised stream of events (
-i.e. topic, message queue) as a data contract.</p>
-<p>One tool managing this type of data contract is
-the <a href="https://docs.confluent.io/platform/current/schema-registry/index.html">Confluent Schema Registry</a>
+i.e. topic, message queue) as a data contract.</p><p>One tool managing this type of data contract is
+the <a href=https://docs.confluent.io/platform/current/schema-registry/index.html>Confluent Schema Registry</a>
 . When assigning a schema to the keys or values of a Kafka topic, the Schema Registry creates a new
-entry called subject. This subject is then exposed and provides consistency at a message level.</p>
-<ul>
-<li>This contract enforces the structure of future messages</li>
-<li>This contract informs how to read existing messages</li>
-</ul>
-<p><img src="/images/posts/08/basic_schema_senario.png" alt="Basic Schema Management Scenario"></p>
-<p>The Confluent Schema Registry has been around for a while, and readers might be more familiar with
+entry called subject. This subject is then exposed and provides consistency at a message level.</p><ul><li>This contract enforces the structure of future messages</li><li>This contract informs how to read existing messages</li></ul><p><img src=/images/posts/08/basic_schema_senario.png alt="Basic Schema Management Scenario"></p><p>The Confluent Schema Registry has been around for a while, and readers might be more familiar with
 it. On the opposite, organising a project around this recent Pub/Sub feature might be less obvious.
 This highlights the practices and techniques one can think of when working with Message
-Schemas. So let’s explore data contracts with Cloud Pub/Sub!</p>
-<h2 id="pubsub-message-schemas">Pub/Sub Message Schemas</h2>
-<p>GCP introduced the Message Schemas feature
-in <a href="https://cloud.google.com/pubsub/docs/release-notes#March_01_2021">March 2021</a> and moved it
-to <a href="https://cloud.google.com/pubsub/docs/release-notes#June_30_2021">GA in June</a>. It lets you
+Schemas. So let’s explore data contracts with Cloud Pub/Sub!</p><h2 id=pubsub-message-schemas>Pub/Sub Message Schemas</h2><p>GCP introduced the Message Schemas feature
+in <a href=https://cloud.google.com/pubsub/docs/release-notes#March_01_2021>March 2021</a> and moved it
+to <a href=https://cloud.google.com/pubsub/docs/release-notes#June_30_2021>GA in June</a>. It lets you
 declare an AVRO or Protobuf schema as a cloud resource. You can then point at that resource when
-creating a topic. Let&rsquo;s see what happens next.</p>
-<p><img src="/images/posts/08/topic_creation.png" alt="Topic creation with a schema"></p>
-<h2 id="use-case-example-the-dumpling-app">Use case example: The Dumpling App</h2>
-<p>Let be the Dumpling Store, a small fictional restaurant that serves dumplings. Let&rsquo;s also imagine
+creating a topic. Let&rsquo;s see what happens next.</p><p><img src=/images/posts/08/topic_creation.png alt="Topic creation with a schema"></p><h2 id=use-case-example-the-dumpling-app>Use case example: The Dumpling App</h2><p>Let be the Dumpling Store, a small fictional restaurant that serves dumplings. Let&rsquo;s also imagine
 that each table has a small device providing an interface to order food. Each time you click on
 add an item, the app publishes an event to add a line to your order. Once you click on order, the
 app sends the second type of event to prepare your order. It&rsquo;s basically similar to the
 Self-Ordering kiosk of your favourite fast food.
-The <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/">dumpling-app</a> is a preview
-of what this application could look like using Pub/Sub Message Schema.</p>
-<p><img src="/images/posts/08/dumpling_app_screen_shot.png" alt="Dumpling App screenshot"></p>
-<p><img src="/images/posts/08/self_ordering_kiosk.jpg" alt="Fancy image of a tablet next to a dumpling"></p>
-<p><small>
-    <i>
-        Photo by <a href="https://unsplash.com/@febrianzakaria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Febrian Zakaria</a>
-        on <a href="https://unsplash.com/s/photos/dumpling?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
-    </i>
-</small>;</p>
-<small>
-    <i>
-        Photo by <a href="https://unsplash.com/@martafilipczyk?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marta Filipczyk</a>
-        on <a href="https://unsplash.com/s/photos/tablet?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
-    </i>
-</small>
-<p>The application
-is (<a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/">dumpling-app-service</a>)
-composed of a <a href="https://svelte.dev">Svelte</a> web app and a Spring Boot web service running in App
+The <a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/>dumpling-app</a> is a preview
+of what this application could look like using Pub/Sub Message Schema.</p><p><img src=/images/posts/08/dumpling_app_screen_shot.png alt="Dumpling App screenshot"></p><p><img src=/images/posts/08/self_ordering_kiosk.jpg alt="Fancy image of a tablet next to a dumpling"></p><p><small><i>Photo by <a href="https://unsplash.com/@febrianzakaria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Febrian Zakaria</a>
+on <a href="https://unsplash.com/s/photos/dumpling?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+</i></small>;</p><small><i>Photo by <a href="https://unsplash.com/@martafilipczyk?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marta Filipczyk</a>
+on <a href="https://unsplash.com/s/photos/tablet?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></i></small><p>The application
+is (<a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/>dumpling-app-service</a>)
+composed of a <a href=https://svelte.dev>Svelte</a> web app and a Spring Boot web service running in App
 Engine. The service produces events in a Pub/Sub topic. From here, a Dataflow job continuously
-processes the events.</p>
-<p><img src="/images/posts/08/application_architecture.png" alt="Application Architecture"></p>
-<h3 id="infrastructure">Infrastructure</h3>
-<p>The team building and running the application might also be responsible for the cloud resources.
+processes the events.</p><p><img src=/images/posts/08/application_architecture.png alt="Application Architecture"></p><h3 id=infrastructure>Infrastructure</h3><p>The team building and running the application might also be responsible for the cloud resources.
 That’s why at the root of the project, a terraform directory contains the different infrastructure
 manifests. Luckily for the Dumpling team,
-the <a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs">GCP terraform provider</a>
-allows the declaration of schemas.</p>
-<div class="highlight"><div style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#204a87;font-weight:bold">resource</span> <span style="color:#4e9a06">&#34;google_pubsub_schema&#34; &#34;commands&#34;</span> {
-<span style="color:#000">  name</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;dumpling-commands&#34;</span>
-<span style="color:#000">  type</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;PROTOCOL_BUFFER&#34;</span>
-<span style="color:#000">  definition</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">file</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;${path.module}//src/main/proto/command.proto&#34;</span><span style="color:#000;font-weight:bold">)</span>
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>See the entire
-file: <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/terraform/pubsub/schemas.tf">schemas.tf</a>
-.</p>
-<p>This would be the equivalent of the following gcloud command line:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcloud pubsub schemas create dumpling-commands <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>        --type<span style="color:#ce5c00;font-weight:bold">=</span>PROTOCOL_BUFFER <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>        --definition<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>cat src/main/proto/command.proto<span style="color:#204a87;font-weight:bold">)</span>
-</code></pre></div><p>An interesting aspect of this setup is that we define schemas only once. Both Terraform and the code
+the <a href=https://registry.terraform.io/providers/hashicorp/google/latest/docs>GCP terraform provider</a>
+allows the declaration of schemas.</p><div class=highlight><div style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-hcl data-lang=hcl><span style=display:flex><span><span style=color:#204a87;font-weight:700>resource</span> <span style=color:#4e9a06>&#34;google_pubsub_schema&#34; &#34;commands&#34;</span> {
+</span></span><span style=display:flex><span><span style=color:#000>  name</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#4e9a06>&#34;dumpling-commands&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#000>  type</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#4e9a06>&#34;PROTOCOL_BUFFER&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#000>  definition</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#204a87;font-weight:700>file</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;${path.module}//src/main/proto/command.proto&#34;</span><span style=color:#000;font-weight:700>)</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>See the entire
+file: <a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/terraform/pubsub/schemas.tf>schemas.tf</a>
+.</p><p>This would be the equivalent of the following gcloud command line:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>gcloud pubsub schemas create dumpling-commands <span style=color:#4e9a06>\
+</span></span></span><span style=display:flex><span><span style=color:#4e9a06></span>        --type<span style=color:#ce5c00;font-weight:700>=</span>PROTOCOL_BUFFER <span style=color:#4e9a06>\
+</span></span></span><span style=display:flex><span><span style=color:#4e9a06></span>        --definition<span style=color:#ce5c00;font-weight:700>=</span><span style=color:#204a87;font-weight:700>$(</span>cat src/main/proto/command.proto<span style=color:#204a87;font-weight:700>)</span>
+</span></span></code></pre></div><p>An interesting aspect of this setup is that we define schemas only once. Both Terraform and the code
 generation load the same file. Terraform does it with the <code>file()</code>
-function (<a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/a65d0fa932670995e71d1a0364ffbe4560c1c37f/blog_007/dumpling-app-service/terraform/pubsub/schemas.tf#L10">line 10</a>)
+function (<a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/a65d0fa932670995e71d1a0364ffbe4560c1c37f/blog_007/dumpling-app-service/terraform/pubsub/schemas.tf#L10>line 10</a>)
 and the code generation (with the Protobuf Maven
-Plugin (<a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/a65d0fa932670995e71d1a0364ffbe4560c1c37f/blog_007/dumpling-app-service/pom.xml#L143">line 143</a>).
-Next, the different Pub/Sub topics depend on and reference the schemas.</p>
-<div class="highlight"><div style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="display:block;width:100%;background-color:#dfdfdf"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#204a87;font-weight:bold">resource</span> <span style="color:#4e9a06">&#34;google_pubsub_topic&#34; &#34;commands&#34;</span> {<span style="color:#8f5902;font-style:italic">
-</span><span style="color:#8f5902;font-style:italic">  # [...]
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">  depends_on</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">google_pubsub_schema</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">commands</span><span style="color:#000;font-weight:bold">]</span>
-  <span style="color:#204a87;font-weight:bold">schema_settings</span> {
-<span style="display:block;width:100%;background-color:#dfdfdf"><span style="color:#000">    schema</span>   <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;projects/${var.gcp_project}/schemas/${google_pubsub_schema.commands.name}&#34;</span>
-</span><span style="color:#000">    encoding</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;BINARY&#34;</span>
-  }
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>See the entire
-file: <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/terraform/pubsub/topics.tf">topics.tf</a>
-.</p>
-<p>Now, let&rsquo;s dig into the schema file itself and how the rest of the application uses it.</p>
-<h3 id="schema">Schema</h3>
-<p>In our example, the team is using the Protobuf serialisation system. The structure needs to be flat.
+Plugin (<a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/a65d0fa932670995e71d1a0364ffbe4560c1c37f/blog_007/dumpling-app-service/pom.xml#L143>line 143</a>).
+Next, the different Pub/Sub topics depend on and reference the schemas.</p><div class=highlight><div style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style=background-color:#dfdfdf><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-hcl data-lang=hcl><span style=display:flex><span><span style=color:#204a87;font-weight:700>resource</span> <span style=color:#4e9a06>&#34;google_pubsub_topic&#34; &#34;commands&#34;</span> {<span style=color:#8f5902;font-style:italic>
+</span></span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>  # [...]
+</span></span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic></span><span style=color:#000>  depends_on</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000;font-weight:700>[</span><span style=color:#204a87;font-weight:700>google_pubsub_schema</span><span style=color:#000;font-weight:700>.</span><span style=color:#204a87;font-weight:700>commands</span><span style=color:#000;font-weight:700>]</span>
+</span></span><span style=display:flex><span>  <span style=color:#204a87;font-weight:700>schema_settings</span> {
+</span></span><span style=display:flex;background-color:#dfdfdf><span><span style=color:#000>    schema</span>   <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#4e9a06>&#34;projects/${var.gcp_project}/schemas/${google_pubsub_schema.commands.name}&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#000>    encoding</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#4e9a06>&#34;BINARY&#34;</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>See the entire
+file: <a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-service/terraform/pubsub/topics.tf>topics.tf</a>
+.</p><p>Now, let&rsquo;s dig into the schema file itself and how the rest of the application uses it.</p><h3 id=schema>Schema</h3><p>In our example, the team is using the Protobuf serialisation system. The structure needs to be flat.
 So far, the Message Schemas feature does not support imports or complex types. The add <code>(+)</code> and
-remove <code>(-)</code> buttons are associated with the <code>Command</code> event, which has the following shape:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-protobuf" data-lang="protobuf"><span style="color:#204a87;font-weight:bold">message</span> <span style="color:#000">Command</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#204a87;font-weight:bold">int64</span> <span style="color:#000">event_time</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#000">item_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#000">item_name</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#204a87;font-weight:bold">enum</span> <span style="color:#000">Operation</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>    <span style="color:#000">ADD</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>    <span style="color:#000">REMOVE</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#000;font-weight:bold">}</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#000">Operation</span> <span style="color:#000">operation</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#204a87;font-weight:bold">message</span> <span style="color:#000">Session</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>    <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#000">user_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>    <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#000">table_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>    <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#000">store_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#000;font-weight:bold">}</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span>  <span style="color:#000">Session</span> <span style="color:#000">session</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">;</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span><span style="color:#000;font-weight:bold">}</span><span style="color:#a40000">
-</span></code></pre></div><p>The message ordering key is the <code>user_id</code>. Every event carries an <code>event_time</code> set by the front-end
+remove <code>(-)</code> buttons are associated with the <code>Command</code> event, which has the following shape:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-protobuf data-lang=protobuf><span style=display:flex><span><span style=color:#204a87;font-weight:700>message</span> <span style=color:#000>Command</span> <span style=color:#000;font-weight:700>{</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#204a87;font-weight:700>int64</span> <span style=color:#000>event_time</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>1</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#204a87;font-weight:700>string</span> <span style=color:#000>item_id</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>2</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#204a87;font-weight:700>string</span> <span style=color:#000>item_name</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>3</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#204a87;font-weight:700>enum</span> <span style=color:#000>Operation</span> <span style=color:#000;font-weight:700>{</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>    <span style=color:#000>ADD</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>0</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>    <span style=color:#000>REMOVE</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>1</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#000;font-weight:700>}</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#000>Operation</span> <span style=color:#000>operation</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>4</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#204a87;font-weight:700>message</span> <span style=color:#000>Session</span> <span style=color:#000;font-weight:700>{</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>    <span style=color:#204a87;font-weight:700>string</span> <span style=color:#000>user_id</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>1</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>    <span style=color:#204a87;font-weight:700>string</span> <span style=color:#000>table_id</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>2</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>    <span style=color:#204a87;font-weight:700>string</span> <span style=color:#000>store_id</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>3</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#000;font-weight:700>}</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span>  <span style=color:#000>Session</span> <span style=color:#000>session</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#0000cf;font-weight:700>5</span><span style=color:#000;font-weight:700>;</span><span style=color:#a40000>
+</span></span></span><span style=display:flex><span><span style=color:#a40000></span><span style=color:#000;font-weight:700>}</span><span style=color:#a40000>
+</span></span></span></code></pre></div><p>The message ordering key is the <code>user_id</code>. Every event carries an <code>event_time</code> set by the front-end
 app and a type of Operation to specify if the item should be added or removed from the user cart.
 The application set some attributes such as env, version, source. But in addition to those
-attributes, the client library adds two technical attributes relate to the message schema</p>
-<table>
-<thead>
-<tr>
-<th>Attributes</th>
-<th>Value example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>googclient_schemaencoding</code></td>
-<td>BINARY / JSON</td>
-</tr>
-<tr>
-<td><code>googclient_schemaname</code></td>
-<td>projects/<code>?</code>/schemas/<code>?</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="service-and-interface">Service and interface</h3>
-<p>The HTTP API is just a typical Spring Boot module. One special thing about it is that it does not
+attributes, the client library adds two technical attributes relate to the message schema</p><table><thead><tr><th>Attributes</th><th>Value example</th></tr></thead><tbody><tr><td><code>googclient_schemaencoding</code></td><td>BINARY / JSON</td></tr><tr><td><code>googclient_schemaname</code></td><td>projects/<code>?</code>/schemas/<code>?</code></td></tr></tbody></table><h3 id=service-and-interface>Service and interface</h3><p>The HTTP API is just a typical Spring Boot module. One special thing about it is that it does not
 present any entities or model package filled with POJO. Instead, the application only uses the
 Protobuf generated code as the data model. The <code>command.proto</code> file from the previous
 paragraph gives a <code>Command.java</code> class. The Spring Boot module automatically converts Protobuf
-to JSON to interact with the front-end.</p>
-<div class="highlight"><div style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="display:block;width:100%;background-color:#dfdfdf"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Bean</span>
-<span style="color:#000">ProtobufJsonFormatHttpMessageConverter</span> <span style="color:#000">protobufHttpMessageConverter</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-  <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">ProtobufJsonFormatHttpMessageConverter</span> <span style="color:#000">protoConverter</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
-      <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ProtobufJsonFormatHttpMessageConverter</span><span style="color:#ce5c00;font-weight:bold">();</span>
-  <span style="color:#000">protoConverter</span>
-<span style="display:block;width:100%;background-color:#dfdfdf">    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSupportedMediaTypes</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">singletonList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MediaType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">APPLICATION_JSON</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span>  <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">protoConverter</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#ce5c00;font-weight:bold">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Finally, the single-page web app is a Svelte module. The Spring Boot module considers
-the <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/8da6aa1752cf97bda2e5c7e1492a78aecc5dbeb9/blog_007/dumpling-app-service/pom.xml#L99">Svelte output as a resources directory</a>
+to JSON to interact with the front-end.</p><div class=highlight><div style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style=background-color:#dfdfdf><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#5c35cc;font-weight:700>@Bean</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>ProtobufJsonFormatHttpMessageConverter</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>protobufHttpMessageConverter</span><span style=color:#000;font-weight:700>()</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>{</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>final</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ProtobufJsonFormatHttpMessageConverter</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>protoConverter</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#f8f8f8;text-decoration:underline> 
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>new</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ProtobufJsonFormatHttpMessageConverter</span><span style=color:#000;font-weight:700>();</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#000>protoConverter</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex;background-color:#dfdfdf><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>setSupportedMediaTypes</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>singletonList</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>MediaType</span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>APPLICATION_JSON</span><span style=color:#000;font-weight:700>));</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>return</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>protoConverter</span><span style=color:#000;font-weight:700>;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000;font-weight:700>}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span></code></pre></td></tr></table></div></div><p>Finally, the single-page web app is a Svelte module. The Spring Boot module considers
+the <a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/8da6aa1752cf97bda2e5c7e1492a78aecc5dbeb9/blog_007/dumpling-app-service/pom.xml#L99>Svelte output as a resources directory</a>
 . The page is not pretty, but don&rsquo;t be mean to the Dumpling team, &ldquo;they&rdquo; are not great at front-end
-development.</p>
-<blockquote>
-<p>Every time I write Javascript, a kid loses a balloon &ndash; <em>Loïc DIVAD</em></p>
-</blockquote>
-<p>Here is a short video showing the app publishing records in the input topic. We can observe the
+development.</p><blockquote><p>Every time I write Javascript, a kid loses a balloon &ndash; <em>Loïc DIVAD</em></p></blockquote><p>Here is a short video showing the app publishing records in the input topic. We can observe the
 series of events, in the console, by consuming them back via
-a <a href="https://github.com/DivLoic/blog-loicmdivad-com/tree/main/blog_007/dumpling-cli">debugging tool</a>
-created for the presentation.</p>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://www.youtube.com/embed/WMCgi3e28B4?rel=0&autoplay=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<p>That concludes the chapter on the application. We have listed a few things that one could put in
+a <a href=https://github.com/DivLoic/blog-loicmdivad-com/tree/main/blog_007/dumpling-cli>debugging tool</a>
+created for the presentation.</p><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src="https://www.youtube.com/embed/WMCgi3e28B4?rel=0&autoplay=1" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe></div><p>That concludes the chapter on the application. We have listed a few things that one could put in
 place to organise around the idea of event schema. Now let&rsquo;s try to capture the impact of the usage
-of this feature on external teams or components.</p>
-<h2 id="schema-enforcement">Schema Enforcement</h2>
-<p>It turns out another team is working on the same app. This other team works separately on a new
+of this feature on external teams or components.</p><h2 id=schema-enforcement>Schema Enforcement</h2><p>It turns out another team is working on the same app. This other team works separately on a new
 feature: a checkbox giving access to some additional sauce. Let’s call them the Sauce team. The
 problem here is that they have started to work in isolation. They have implemented the feature with
 a completely different schema. And yet, they try to publish messages on the same topic. It is
 dangerous for consumers who assume that this topic contains an order event and try to decode it. By
 nature, most of the applications based on events are continuous and long-running processes. They can
 not suffer from crashes due to an invalid type of message. Otherwise, while these applications are
-down, some lag will start to build up.</p>
-<p>Here is a short video showing the application&rsquo;s behaviour when clicking on the new button. When
+down, some lag will start to build up.</p><p>Here is a short video showing the application&rsquo;s behaviour when clicking on the new button. When
 the server tries to publish the messages from the checkbox, it fails with an Exception??? And return
 a 500 error code. Hopefully, the team will handle that response correctly. They display a warning and
-toggle off the extra sauce option.</p>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://www.youtube.com/embed/ugKy5ZbzF3E?rel=0&autoplay=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<p>In the future, the sauce team will want to fix this problem. It turns out Cloud Pub/Sub provides an
+toggle off the extra sauce option.</p><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src="https://www.youtube.com/embed/ugKy5ZbzF3E?rel=0&autoplay=1" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe></div><p>In the future, the sauce team will want to fix this problem. It turns out Cloud Pub/Sub provides an
 API to check a message against an existing Pus/Sub Message Schema. By giving the body of the message
 and a schema name, the API tells you if it is correct. It helps to comply with existing data
-contracts.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcloud pubsub schemas validate-message <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>        --message-encoding<span style="color:#ce5c00;font-weight:bold">=</span>BINARY <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>        --message<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>cat ./test.json<span style="color:#204a87;font-weight:bold">)</span> <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>        --schema-name<span style="color:#ce5c00;font-weight:bold">=</span>dumpling-commands
-</code></pre></div><p><img src="/images/posts/08/schema_validation.png" alt="Schema Validation via gcloud command line"></p>
-<p>One can perform the same verification with the user interface cloud console.</p>
-<h2 id="message-consumption">Message Consumption</h2>
-<p>Now, let&rsquo;s move to another aspect of working with schema: Message consumption. Let&rsquo;s imagine a third
+contracts.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>gcloud pubsub schemas validate-message <span style=color:#4e9a06>\
+</span></span></span><span style=display:flex><span><span style=color:#4e9a06></span>        --message-encoding<span style=color:#ce5c00;font-weight:700>=</span>BINARY <span style=color:#4e9a06>\
+</span></span></span><span style=display:flex><span><span style=color:#4e9a06></span>        --message<span style=color:#ce5c00;font-weight:700>=</span><span style=color:#204a87;font-weight:700>$(</span>cat ./test.json<span style=color:#204a87;font-weight:700>)</span> <span style=color:#4e9a06>\
+</span></span></span><span style=display:flex><span><span style=color:#4e9a06></span>        --schema-name<span style=color:#ce5c00;font-weight:700>=</span>dumpling-commands
+</span></span></code></pre></div><p><img src=/images/posts/08/schema_validation.png alt="Schema Validation via gcloud command line"></p><p>One can perform the same verification with the user interface cloud console.</p><h2 id=message-consumption>Message Consumption</h2><p>Now, let&rsquo;s move to another aspect of working with schema: Message consumption. Let&rsquo;s imagine a third
 team that would build another type of application, this time, a stream processing app. Using
 Dataflow, they gather all user interaction events to compute their shopping cart in real-time.
-The <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor">dumpling-app-processor</a>
+The <a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor>dumpling-app-processor</a>
 is a simplistic module representing this idea. The very first step is to consume and deserialise the
-input records.</p>
-<div class="highlight"><div style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="display:block;width:100%;background-color:#dfdfdf"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span></span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Pipeline</span> <span style="color:#000">pipeline</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Pipeline</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">create</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">options</span><span style="color:#ce5c00;font-weight:bold">);</span>
-
-<span style="color:#000">pipeline</span>
-<span style="display:block;width:100%;background-color:#dfdfdf">    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Read PubSub Messages&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">PubsubIO</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">readProtos</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Command</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">))</span>
-</span></code></pre></td></tr></table>
-</div>
-</div><p>For this reason, we quickly realise that we need the schema we&rsquo;ve introduced before in this module
-too. How to share it?</p>
-<p>The service team produces that data, and at the moment, owns the corresponding schema. The
+input records.</p><div class=highlight><div style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style=background-color:#dfdfdf><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#000>Pipeline</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>pipeline</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>Pipeline</span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>create</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>options</span><span style=color:#000;font-weight:700>);</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>pipeline</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex;background-color:#dfdfdf><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>apply</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;Read PubSub Messages&#34;</span><span style=color:#000;font-weight:700>,</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PubsubIO</span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>readProtos</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>Command</span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>class</span><span style=color:#000;font-weight:700>))</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span></code></pre></td></tr></table></div></div><p>For this reason, we quickly realise that we need the schema we&rsquo;ve introduced before in this module
+too. How to share it?</p><p>The service team produces that data, and at the moment, owns the corresponding schema. The
 processing team should definitely not copy the schema into its module. Instead, we can think of a
 plugin to resolve the schema dependency before running the code generation. Tools such
-as <a href="https://github.com/spotify/protoman">Protoman</a> exist, but they mostly come with their own
+as <a href=https://github.com/spotify/protoman>Protoman</a> exist, but they mostly come with their own
 registry. In our example, we want to integrate the Google Cloud API as a source of thought for the
-schema.</p>
-<p><a href="https://github.com/DivLoic/blog-loicmdivad-com/tree/main/blog_007/pubsub-schema-maven-plugin">pubsub-schema-maven-plugin</a>
+schema.</p><p><a href=https://github.com/DivLoic/blog-loicmdivad-com/tree/main/blog_007/pubsub-schema-maven-plugin>pubsub-schema-maven-plugin</a>
 is a quick implementation of that idea. It is a maven plugin that the processing team could use to
-fetch the schema.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">
-<span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>fr.ldivad.dumpling<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>pubsub-schema-maven-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;version&gt;</span>0.1.0-SNAPSHOT<span style="color:#204a87;font-weight:bold">&lt;/version&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;configuration&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;project&gt;</span>${gcp.project}<span style="color:#204a87;font-weight:bold">&lt;/project&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;schemas&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;schema&gt;</span>dumpling-commands<span style="color:#204a87;font-weight:bold">&lt;/schema&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;schema&gt;</span>dumpling-checkout<span style="color:#204a87;font-weight:bold">&lt;/schema&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/schemas&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/configuration&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;executions&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;execution&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;phase&gt;</span>generate-sources<span style="color:#204a87;font-weight:bold">&lt;/phase&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;goals&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;goal&gt;</span>proto-files<span style="color:#204a87;font-weight:bold">&lt;/goal&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;/goals&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/execution&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/executions&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
-</code></pre></div><p>After reading the commands, the Dataflow job maps them in key-value pairs. The job groups the pairs
+fetch the schema.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>&lt;plugin&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#204a87;font-weight:700>&lt;groupId&gt;</span>fr.ldivad.dumpling<span style=color:#204a87;font-weight:700>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#204a87;font-weight:700>&lt;artifactId&gt;</span>pubsub-schema-maven-plugin<span style=color:#204a87;font-weight:700>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#204a87;font-weight:700>&lt;version&gt;</span>0.1.0-SNAPSHOT<span style=color:#204a87;font-weight:700>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#204a87;font-weight:700>&lt;configuration&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#204a87;font-weight:700>&lt;project&gt;</span>${gcp.project}<span style=color:#204a87;font-weight:700>&lt;/project&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#204a87;font-weight:700>&lt;schemas&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#204a87;font-weight:700>&lt;schema&gt;</span>dumpling-commands<span style=color:#204a87;font-weight:700>&lt;/schema&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#204a87;font-weight:700>&lt;schema&gt;</span>dumpling-checkout<span style=color:#204a87;font-weight:700>&lt;/schema&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#204a87;font-weight:700>&lt;/schemas&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#204a87;font-weight:700>&lt;/configuration&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#204a87;font-weight:700>&lt;executions&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#204a87;font-weight:700>&lt;execution&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#204a87;font-weight:700>&lt;phase&gt;</span>generate-sources<span style=color:#204a87;font-weight:700>&lt;/phase&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#204a87;font-weight:700>&lt;goals&gt;</span>
+</span></span><span style=display:flex><span>                <span style=color:#204a87;font-weight:700>&lt;goal&gt;</span>proto-files<span style=color:#204a87;font-weight:700>&lt;/goal&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#204a87;font-weight:700>&lt;/goals&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#204a87;font-weight:700>&lt;/execution&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#204a87;font-weight:700>&lt;/executions&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>&lt;/plugin&gt;</span>
+</span></span></code></pre></div><p>After reading the commands, the Dataflow job maps them in key-value pairs. The job groups the pairs
 by key over a large time window. A trigger is a setup so that quickly after a state update, the job
 will emit the new state of the shopping cart. Finally, this example writes in Datastore (which is
-just an arbitrary choice to get simple feedback for the job).</p>
-<div class="highlight"><div style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">pipeline</span>
-    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Read PubSub Messages&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">readFromPubSub</span><span style="color:#ce5c00;font-weight:bold">)</span>
-
-    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Map in key/value pairs&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">KeyValueCommandMapper</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">())</span>
-
-    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Group command in 3h windows&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">CommandProcessor</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">windowingCommand</span><span style="color:#ce5c00;font-weight:bold">())</span>
-
-    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Group command per key&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Combine</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">perKey</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">CommandAggregator</span><span style="color:#ce5c00;font-weight:bold">()))</span>
-
-    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Format user cart for Datastore&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ParDo</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">of</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">CartEntityMapper</span><span style="color:#ce5c00;font-weight:bold">()))</span>
-
-    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Write Datastore cart state&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">writeInDatastore</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>See the entire
-file: <a href="https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor/src/main/java/fr/ldivad/dumpling/Main.java">Main.java</a>
-.</p>
-<p><img src="/images/posts/08/shopping-cart-state-in-datastore2.png" alt="Screen Shot of the Dataflow Job and the result"></p>
-<p>This is an oversimplified example. But still, it is concrete enough to start imagining how we could
+just an arbitrary choice to get simple feedback for the job).</p><div class=highlight><div style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#000>pipeline</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>apply</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;Read PubSub Messages&#34;</span><span style=color:#000;font-weight:700>,</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>readFromPubSub</span><span style=color:#000;font-weight:700>)</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>apply</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;Map in key/value pairs&#34;</span><span style=color:#000;font-weight:700>,</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>new</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>KeyValueCommandMapper</span><span style=color:#000;font-weight:700>().</span><span style=color:#c4a000>map</span><span style=color:#000;font-weight:700>())</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>apply</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;Group command in 3h windows&#34;</span><span style=color:#000;font-weight:700>,</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>CommandProcessor</span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>windowingCommand</span><span style=color:#000;font-weight:700>())</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>apply</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;Group command per key&#34;</span><span style=color:#000;font-weight:700>,</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>Combine</span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>perKey</span><span style=color:#000;font-weight:700>(</span><span style=color:#204a87;font-weight:700>new</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>CommandAggregator</span><span style=color:#000;font-weight:700>()))</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>apply</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;Format user cart for Datastore&#34;</span><span style=color:#000;font-weight:700>,</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ParDo</span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>of</span><span style=color:#000;font-weight:700>(</span><span style=color:#204a87;font-weight:700>new</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>CartEntityMapper</span><span style=color:#000;font-weight:700>()))</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span><span style=display:flex><span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000;font-weight:700>.</span><span style=color:#c4a000>apply</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;Write Datastore cart state&#34;</span><span style=color:#000;font-weight:700>,</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>writeInDatastore</span><span style=color:#000;font-weight:700>);</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></span></span></code></pre></td></tr></table></div></div><p>See the entire
+file: <a href=https://github.com/DivLoic/blog-loicmdivad-com/blob/main/blog_007/dumpling-app-processor/src/main/java/fr/ldivad/dumpling/Main.java>Main.java</a>
+.</p><p><img src=/images/posts/08/shopping-cart-state-in-datastore2.png alt="Screen Shot of the Dataflow Job and the result"></p><p>This is an oversimplified example. But still, it is concrete enough to start imagining how we could
 build materialised views in this context. Those views would contribute to a read model similar to
-the one we rely on when using CQRS or other event-sourcing patterns.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>We have seen the benefice of having a data contract in place through this demo example. The data
+the one we rely on when using CQRS or other event-sourcing patterns.</p><h2 id=conclusion>Conclusion</h2><p>We have seen the benefice of having a data contract in place through this demo example. The data
 contract protects the application against its own failure by enforcing the type of message for a
 topic. And it helps the other application to decode those messages. However, in the particular case
 of the Pub/Sub Message Schemas feature, the advantages fall short. The feature is really new (about
@@ -497,76 +233,8 @@ compatibility levels is also quite tricky. Having a zero compatibility level pol
 a lower entry barrier on schema management. Similarly, the support for Pub/Sub Lite, the support for
 complex types or imports in Protobufs schema, feel like options that should be present but are
 missing at the moment. That is why we might see many exciting things coming into that product in the
-future.</p>
-</div>
-  <div class="post-info">
-    
-    
-    
-    <i><strong>Publication: </strong>Dec 5, 2021</i>
-
-    
-    
-    <ul class="hg-page-list tag-list">
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/cloud/" class="tag-link ">
-                <span class="tag-name">cloud</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-element">
-            
-            
-            
-            <a href="https://blog.loicmdivad.com/tags/streams/" class="tag-link ">
-                <span class="tag-name">streams</span>
-                <span class="fa-layers fa-fw">
-                  <i class="fas fa-circle" data-fa-transform="shrink--3"></i>
-                  <i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i>
-              </span>
-            </a>
-        </li>
-        
-        <li class="tag-list-clap">
-            <applause-button multiclap="true" color="#d8753a" url="blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pubsub/"/>
-        </li>
-    </ul>
-
-    <br/><br/>
-    
-    
-</div>
-
-  
-
-
-
-      <footer class="site-footer">
-    <span class="site-footer-credits">
-        All rights reserved <a href="https://blog.loicmdivad.io">Loïc DIVAD</a> © 2020 • Made with <a href="https://gohugo.io/">Hugo</a>. <br/>
-        Themed by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Header Photo by <a href="https://unsplash.com/@yeeeeeeha?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Daniel Gregoire</a> on <a href="https://unsplash.com/s/photos/daniel-gregoire?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.
-    </span>
-</footer>
-
-    </section>
-  </body>
-  
-   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155287871-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-155287871-1');
-  </script>
-<script src="https://blog.loicmdivad.com/js/fontawesome.js"></script><script src="https://blog.loicmdivad.com/js/applause-button.js"></script>
-</html>
+future.</p></div><div class=post-info><i><strong>Publication: </strong>Dec 5, 2021</i><ul class="hg-page-list tag-list"><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/cloud/ class=tag-link><span class=tag-name>cloud</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-element><a href=https://blog.loicmdivad.com/tags/streams/ class=tag-link><span class=tag-name>streams</span>
+<span class="fa-layers fa-fw"><i class="fas fa-circle" data-fa-transform=shrink--3></i>
+<i class="fas fa-tag" data-fa-transform="shrink-3 right-1 bottom-1"></i></span></a></li><li class=tag-list-clap><applause-button multiclap=true color=#d8753a url=blog.loicmdivad.com/posts/2021/12/explore-data-contracts-with-cloud-pubsub/></li></ul><br><br></div><footer class=site-footer><span class=site-footer-credits>All rights reserved <a href=https://blog.loicmdivad.io>Loïc DIVAD</a> © 2020 • Made with <a href=https://gohugo.io/>Hugo</a>.<br>Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>. Header Photo by <a href="https://unsplash.com/@yeeeeeeha?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Daniel Gregoire</a> on <a href="https://unsplash.com/s/photos/daniel-gregoire?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</span></footer></section></body><script async src="https://www.googletagmanager.com/gtag/js?id=UA-155287871-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","UA-155287871-1")</script><script src=https://blog.loicmdivad.com/js/fontawesome.js></script><script src=https://blog.loicmdivad.com/js/applause-button.js></script></html>
