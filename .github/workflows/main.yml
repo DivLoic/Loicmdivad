@@ -21,8 +21,13 @@ jobs:
           hugo-version: '0.125.7'
           extended: true
 
+      - name: Asciidoctor Setup
+        run: gem install asciidoctor
+
       - name: Hugo Build
-        run: hugo --gc --minify --cleanDestinationDir
+        run: |
+          alias asciidoctor="asciidoctor --attribute=experimental=true --attribute=icons=font"
+          hugo --gc --minify --cleanDestinationDir
 
       - name: Deploy Github Pages
         uses: peaceiris/actions-gh-pages@v3.0.0
