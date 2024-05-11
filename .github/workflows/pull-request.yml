@@ -21,7 +21,7 @@ jobs:
           hugo-version: '0.125.7'
           extended: true
 
-      - name: Setup Ruby
+      - name: Ruby Setup
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
@@ -29,10 +29,7 @@ jobs:
       - name: Asciidoctor Setup
         run: gem install asciidoctor
 
-      - name: Hugo Build
+      - name: Build Hugo
         run: |
           alias asciidoctor="asciidoctor --attribute=experimental=true --attribute=icons=font"
           hugo --gc --minify --cleanDestinationDir
-
-      - name: Hugo Build
-        run: hugo --gc --minify --cleanDestinationDir
