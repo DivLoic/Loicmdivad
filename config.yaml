@@ -7,7 +7,6 @@ summarylength: 50
 
 # Google Analytics
 googleAnalytics: "UA-155287871-1"
-tagManagerId: "GTM-KXQLGWGM"
 
 # Syntax highlighting
 pygmentsCodefences: true
@@ -46,6 +45,7 @@ params:
   project_tagline: "Event Streams and Monads in the Cloud"
   author:
     name: "Loïc DIVAD"
+  tagManagerId: "GTM-KXQLGWGM"
   mainSections: "posts"
   socials:
     linkedin: "https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/"
