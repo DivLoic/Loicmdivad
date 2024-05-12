@@ -1,4 +1,5 @@
 <head>
+    {{ partial "google-analytics4-head.html" . }}
     {{ $og_image := (cond (ne (.Param "thumbnail") nil) (.Param "thumbnail") (.Param "post_banner") ) }}
     {{ $og_desc := (cond (ne (.Param "title") nil) (.Param "title" | printf ": %s") (", Event Streams and Monads in the Cloud") ) }}
     <meta charset="utf-8">
