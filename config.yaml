@@ -6,7 +6,7 @@ theme: "cayman-hugo-theme"
 summarylength: 50
 
 # Google Analytics
-googleAnalytics: "UA-155287871-1"
+googleAnalytics: "G-82MJXQL81K"
 
 # Syntax highlighting
 pygmentsCodefences: true
