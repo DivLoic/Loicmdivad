@@ -9,6 +9,7 @@
       {{ partial "footer.html" . }}
     </section>
   </body>
+  {{ partial "google-analytics-async.html" . }}
   {{- range .Site.Params.extra_js }}<script src="{{ . | absURL }}"></script>{{- end }}
   {{- range .Params.extra_js }}<script src="{{ . | absURL }}"></script>{{- end }}
 </html>
