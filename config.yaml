@@ -49,7 +49,7 @@ params:
   mainSections: "posts"
   socials:
     linkedin: "https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/"
-    twitter: "https://twitter.com/LoicMDivad"
+    threads: "https://www.threads.net/@loicmdivad"
     github: "https://github.com/DivLoic"
 
   extra_css:

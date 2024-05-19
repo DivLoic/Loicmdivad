@@ -10,7 +10,7 @@ extra_js: ["js/jquery-2.1.4.js", "js/jquery-flip.min.js", "js/about.js"]
 ++++
 <div id="card">
     <div class="front">
-        <img src="/images/about.jpeg" id="mugshot" alt="Loïc M. DIVAD Mugshot"/>
+        <img src="/images/about.jpg" id="mugshot" alt="Loïc M. DIVAD Mugshot"/>
     </div>
     <div class="back">
         <img src="/images/logo.png" id="ld-logo" alt="blog.loicmdivad.com logo"/>
@@ -20,17 +20,14 @@ extra_js: ["js/jquery-2.1.4.js", "js/jquery-flip.min.js", "js/about.js"]
 
 == Bio
 
-Loïc DIVAD is a French🇫🇷🍷🧀  software engineer working at Spotify in Sweden. He graduated from
-https://fr.wikipedia.org/wiki/Institut_supérieur_d%27électronique_de_Paris/[ISEP] and started to
-work at https://twitter.com/PubSapientEng/[Xebia France] as a Scala developer, mainly on data
-engineering projects. That’s where he got involved with event streaming and started making several
-community contributions. Training, blogging, and speaking at conferences were part of his job as
-well. He considers knowledge sharing as an essential part of his developer role. Loïc co-founded
-http://dataxday.fr/[DataXDay] and was previously an organiser. He is part of the first class of
-https://www.confluent.io/nominate/[Confluent Community Catalysts] and was a member of the
-https://kafka-summit.org/program-committee/[Kafka Summit 2020 Program Committee].
+I'm Loïc DIVAD, a French software engineer working at Spotify and located in Sweden.
+I graduated from https://fr.wikipedia.org/wiki/Institut_supérieur_d%27électronique_de_Paris/[ISEP] and started to work at https://twitter.com/PubSapientEng/[Xebia France] as a Scala developer, mainly working on data engineering projects.
+That's when I got involved with event streaming and started making several community contributions.
+Training, blogging, and speaking at conferences were part of my job as well, back then.
+Maybe this blog will help me to keep this alive! Hope you enjoy.
 
-== Career
+== Engineering Career
+
 ++++
 <div class="paragraph company-paragraph">
     <div class="company">
@@ -49,32 +46,37 @@ https://kafka-summit.org/program-committee/[Kafka Summit 2020 Program Committee]
 ++++
 
 == Speaker Experience
-Kafka Summit, DEVOXX France, Xebicon, Paris Container Day, Confluent Streaming Event, Confluent
-Webinair, Kafka Meetups, Google Cloud Meetups, _Le mois de cloud_ Meetups, _Le mois de la Data_
+
+Kafka Summit, DEVOXX France, Xebicon, Paris Container Day, Confluent Streaming Event, Confluent Webinair, Kafka Meetups, Google Cloud Meetups, _Le mois de cloud_ Meetups, _Le mois de la Data_
 Meetups ... and more at https://speakerdeck.com/loicdivad[https://speakerdeck.com/loicdivad]
 
 == Photography 📸
-I've been trying to understand how a camera works lately. A small part of that journey is on
+
+In the midst of the pandemic I've been trying to understand how a camera works.
+A small part of that journey is on
 https://unsplash.com/@loicmdivad[my unsplash page].
 
 // == Cocking 🥘
 
-== I'm also on +++ <a class="insta" href="https://www.instagram.com/loicmdivad/">IG<i class="fab fa-instagram"></i></a> +++
+== Instagram +++ <a class="insta" href="https://www.instagram.com/loicmdivad/"><i class="fab fa-instagram"></i></a> +++
+
+Way to many food pics and kitchen experiments in here!
+But still, come and say Hi!
 
 ++++
 <div class="paragraph insta-paragraph">
     <div class="insta">
-        <a href="https://www.instagram.com/p/BoKLXE9AqgJ/" target="_blank">
+        <a href="https://www.instagram.com/loicmdivad/" target="_blank">
             <img src="/images/about/insta1.png" alt="La Javelle - Guinguette effervescente"/>
         </a>
     </div>
     <div class="insta">
-        <a href="https://www.instagram.com/p/B7wI3D0opf0/" target="_blank">
+        <a href="https://www.instagram.com/loicmdivad/" target="_blank">
             <img src="/images/about/insta2.png" alt="Palais Brongniart (Xebicon 2019)"/>
         </a>
     </div>
     <div class="insta">
-        <a href="https://www.instagram.com/p/B3bzCVbodeu/" target="_blank">
+        <a href="https://www.instagram.com/loicmdivad/" target="_blank">
             <img src="/images/about/insta3.png" alt="Golden Gate Bridge, San Francisco"/>
         </a>
     </div>
@@ -82,16 +84,26 @@ https://unsplash.com/@loicmdivad[my unsplash page].
 ++++
 
 == Contact
+
 ++++
 <div class="paragraph socials-paragraph">
-    <a class="social twitter" href="https://twitter.com/LoicMDivad" target="_blank">
-        <i class="fab fa-2x fa-twitter"></i>
+    <a class="social linkedin" href="https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/" target="_blank">
+        <i class="fab fa-2x fa-linkedin"></i>
     </a>
     <a class="social github" href="https://github.com/DivLoic" target="_blank">
         <i class="fab fa-2x fa-github"></i>
     </a>
-    <a class="social linkedin" href="https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/" target="_blank">
-        <i class="fab fa-2x fa-linkedin"></i>
+    <a class="social threads" href="https://www.threads.net/@loicmdivad" target="_blank">
+        <i class="fab fa-2x fa-brands fa-threads"></i>
     </a>
 </div>
+++++
+
+== The Playlist +++ <a class="insta" href="https://open.spotify.com/user/lo%C3%AFcmdivad?si=624452013e3c4d98"><i class="fab fa-spotify"></i></a> +++
+
+Nothing hits like remake or a call back.
+Here a playlist of songs followed by a recent sampled or remix!
+
+++++
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/561gCtDam9aNncNXCMYRae?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 ++++
