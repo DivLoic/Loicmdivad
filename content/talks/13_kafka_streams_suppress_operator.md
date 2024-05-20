@@ -1,18 +1,15 @@
 ---
 title: "SAK Meetup: Kafka Streams and the Suppress Operator"
 date: 2021-01-26T09:00:00+01:00
-draft: true
+draft: false
 tags: ["en-link", "kafka", "streams"]
 author: "Loïc DIVAD"
 ---
-Backstory: 
-
-A few months after I moved in Stockholm I decided to support the Stockholm Apache Kafka Meetup (SAK).
-So to kick of the 2021 season, I gave a talk about a tutorial I have created a few months ago on 
+Backstory: A few months after I moved to Stockholm, I've decided to support the Stockholm Apache Kafka Meetup (SAK).
+So, to kick off the 2021 season, I gave a talk about a tutorial that I had created a few months earlier and published on
 [https://kafka-tutorials.confluent.io](https://kafka-tutorials.confluent.io). 
 
-Tutorial:
-
+Tutorial: 
 [Emit a final result from a time window](https://kafka-tutorials.confluent.io/window-final-result/kstreams.html)
 
 The abstract:
