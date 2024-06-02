@@ -3,7 +3,7 @@ name: Pull Request Checks
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -12,9 +12,24 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+        with:
+          submodules: recursive
 
-      - name: Checkout Submodules
-        uses: textbook/git-checkout-submodule-action@2.0.0
+      - name: Hugo Setup
+        uses: peaceiris/actions-hugo@v3.0.0
+        with:
+          hugo-version: '0.125.7'
+          extended: true
 
-      - name: Build Site
-        uses: chabad360/hugo-actions@master
+      - name: Ruby Setup
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      - name: Asciidoctor Setup
+        run: gem install asciidoctor
+
+      - name: Build Hugo
+        run: |
+          alias asciidoctor="asciidoctor --attribute=experimental=true --attribute=icons=font"
+          hugo --gc --minify --cleanDestinationDir

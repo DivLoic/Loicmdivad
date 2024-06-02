@@ -5,7 +5,7 @@ draft: false
 author: "Loïc DIVAD"
 extra_css: ["css/post.css"]
 tags: ["tooling", "cloud"]
-thumbnail: thumbnail006.png
+post_banner: post_banner006.png
 ---
 
 On your journey to build event stream and real-time applications you have probably heard about [Confluent Cloud](https://www.confluent.io/confluent-cloud/):

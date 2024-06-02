@@ -3,7 +3,7 @@ name: Web Site Publication
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-deploy:
@@ -12,18 +12,31 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
-
-      - name: Checkout Submodules
-        uses: textbook/git-checkout-submodule-action@2.0.0
-
-      - name: Build Site
-        uses: chabad360/hugo-actions@master
         with:
-          args: -e PROD
+          submodules: recursive
+
+      - name: Hugo Setup
+        uses: peaceiris/actions-hugo@v3.0.0
+        with:
+          hugo-version: '0.125.7'
+          extended: true
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      - name: Asciidoctor Setup
+        run: gem install asciidoctor
+
+      - name: Hugo Build
+        run: |
+          alias asciidoctor="asciidoctor --attribute=experimental=true --attribute=icons=font"
+          hugo --gc --minify --cleanDestinationDir
 
       - name: Deploy Github Pages
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.LMD_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./public
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          publish_dir: ./public
+          publish_branch: gh-pages
+          personal_token: ${{ secrets.LMD_TOKEN }}

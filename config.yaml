@@ -1,0 +1,113 @@
+baseURL: "https://blog.loicmdivad.com"
+languageCode: "en-us"
+defaultContentLanguage: "en"
+title: "Loïc M. Divad"
+theme: "cayman-hugo-theme"
+summarylength: 50
+
+# Google Analytics
+googleAnalytics: "G-82MJXQL81K"
+
+# Syntax highlighting
+pygmentsCodefences: true
+pygmentsStyle: "tango"
+
+taxonomies:
+  tag: "tags"
+
+permalinks:
+  posts: "/:section/:year/:month/:slug/"
+  talks: "/:section/:title/"
+
+blackfriday:
+  plainIDAnchors: true
+  hrefTargetBlank: true
+  angledQuotes: false
+  latexDashes: true
+
+menu:
+  nav:
+    - name: "Posts"
+      url: "/posts/"
+      weight: 1
+    - name: "Talks"
+      url: "/talks/"
+      weight: 2
+    - name: "Tags"
+      url: "/tags/"
+      weight: 3
+    - name: "About"
+      url: "/about/"
+      weight: 4
+
+params:
+  project_name: "Loïc M. DIVAD"
+  project_tagline: "Event Streams and Monads in the Cloud"
+  author:
+    name: "Loïc DIVAD"
+  tagManagerId: "GTM-KXQLGWGM"
+  mainSections: "posts"
+  socials:
+    linkedin: "https://www.linkedin.com/in/lo%C3%AFc-divad-3a5a9893/"
+    threads: "https://www.threads.net/@loicmdivad"
+    github: "https://github.com/DivLoic"
+
+  extra_css:
+    - "css/fontawesome.css"
+    - "css/chromastyles.css"
+    - "css/applause-button.css"
+  extra_js:
+    - "js/fontawesome.js"
+    - "js/applause-button.js"
+
+  justifyContent: true
+  header_img: "banner.jpg"
+
+  # Breakpoints
+  large_breakpoint: "64em"
+  medium_breakpoint: "42em"
+
+  # Header colors
+  header_heading_color: "#eaeaea"
+  header_background_color: "#733c3c"
+  header_background_color_secondary: "#f2a444"
+
+  # Text colors
+  section_headings_color: "#733c3c"
+  body_text_color: "#606c71"
+  body_link_color: "#d8753a"
+  blockquote_text_color: "#819198"
+
+  # Code colors
+  code_background_color: "#edecea"
+  code_text_color: "#be533b"
+
+  # Border colors
+  border_color: "#edecea"
+  table_border_color: "#c4c5c4"
+  hr_border_color: "#eff0f1"
+
+  footer: "All rights reserved [Loïc DIVAD](https://blog.loicmdivad.io) © 2020 • Made with [Hugo](https://gohugo.io/)."
+  footer_img_credits: "Themed by [Cayman](https://github.com/zwbetz-gh/cayman-hugo-theme). Header Photo by [Daniel Gregoire](https://unsplash.com/@yeeeeeeha?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/daniel-gregoire?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)."
+
+
+imaging:
+# See https://github.com/disintegration/imaging
+# CatmullRom is a sharp bicubic filter which should fit the docs site well with its many screenshots.
+# Note that you can also set this per image processing.
+  resampleFilter: "CatmullRom"
+# Default JPEG quality setting. Default is 75.
+  quality: 75
+  anchor: "smart"
+
+
+security:
+  enableInlineShortcodes: false
+  exec:
+    allow: ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+    osEnv: ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE)$']
+  funcs:
+    getenv: ['^HUGO_', '^CI$']
+  http:
+    methods: ['(?i)GET|POST']
+    urls: ['.*']
